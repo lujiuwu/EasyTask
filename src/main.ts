@@ -13,6 +13,8 @@ import App from './App.vue'
 // Composables
 import { createApp } from 'vue'
 
+import 'uno.css'
+
 // Styles
 import 'unfonts.css'
 

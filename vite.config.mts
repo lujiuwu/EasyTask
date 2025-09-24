@@ -12,6 +12,8 @@ import Vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 import { defineConfig } from 'vite'
 import { fileURLToPath, URL } from 'node:url'
 
+import UnoCss from 'unocss/vite'
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -39,6 +41,7 @@ export default defineConfig({
     Vue({
       template: { transformAssetUrls },
     }),
+    UnoCss({ configFile: './uno.config.js' }),
     // https://github.com/vuetifyjs/vuetify-loader/tree/master/packages/vite-plugin#readme
     Vuetify({
       autoImport: true,
