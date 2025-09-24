@@ -3,15 +3,15 @@
  *
  * Bootstraps Vuetify and other plugins then mounts the App`
  */
+// Composables
+import { createApp } from 'vue'
 
+import { VueMasonryPlugin } from 'vue-masonry'
 // Plugins
 import { registerPlugins } from '@/plugins'
 
 // Components
 import App from './App.vue'
-
-// Composables
-import { createApp } from 'vue'
 
 import 'uno.css'
 
@@ -19,6 +19,8 @@ import 'uno.css'
 import 'unfonts.css'
 
 const app = createApp(App)
+
+app.use(VueMasonryPlugin)
 
 registerPlugins(app)
 

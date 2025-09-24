@@ -5,16 +5,18 @@
  */
 
 // Plugins
-import vuetify from './vuetify'
-import pinia from '../stores'
-import router from '../router'
-
 // Types
+
+// plugins/index.ts
 import type { App } from 'vue'
+import { createPinia } from 'pinia'
+import router from '../router'
+import vuetify from './vuetify'
 
 export function registerPlugins (app: App) {
-  app
-    .use(vuetify)
-    .use(router)
-    .use(pinia)
+  const pinia = createPinia()
+  // 正确的注册顺序：
+  app.use(pinia)
+  app.use(vuetify)
+  app.use(router)
 }
