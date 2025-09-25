@@ -1,5 +1,10 @@
 <template>
-  <v-toolbar :density="'comfortable'" :elevation="8">
+  <v-toolbar
+    class="fixed-toolbar"
+    color="surface"
+    :density="'comfortable'"
+    :elevation="8"
+  >
     <v-btn :disabled="!canGoBack" icon="mdi-arrow-left" @click="router.back()" />
     <v-btn :disabled="!canGoForward" icon="mdi-arrow-right" @click="router.forward()" />
     <v-toolbar-title class="text-h6">
@@ -97,3 +102,14 @@
     updateNavigationState()
   })
 </script>
+
+<style scoped>
+.fixed-toolbar {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  width: 100%;
+}
+</style>

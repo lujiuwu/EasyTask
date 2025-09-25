@@ -1,8 +1,12 @@
 <template>
-  <v-btn class="btn" color="primary" icon="mdi-plus" />
+  <v-btn class="btn" color="primary" icon="mdi-plus" @click="handleAddTask" />
 </template>
 <script lang="ts" setup>
-//
+  import { useRouter } from 'vue-router'
+  const router = useRouter()
+  function handleAddTask () {
+    router.push('/tasks/add')
+  }
 </script>
 <style lang="scss" scoped>
   .btn {

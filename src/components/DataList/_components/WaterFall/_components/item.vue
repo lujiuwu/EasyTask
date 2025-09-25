@@ -16,7 +16,8 @@
           </v-chip>
         </span>
       </v-card-subtitle>
-      <v-card-text style="cursor: pointer;padding: 5px;border-top: 1px solid #ccc;">
+      <v-divider />
+      <v-card-text style="cursor: pointer;padding: 5px;">
         <PublicContent :data="props.data" />
       </v-card-text>
       <template #actions>
