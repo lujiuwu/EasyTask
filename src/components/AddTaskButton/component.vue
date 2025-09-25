@@ -10,5 +10,6 @@
     bottom: 80px;
     right: 10px;
     font-weight: bold;
+    z-index: 1000;
   }
 </style>

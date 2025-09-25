@@ -35,32 +35,50 @@
           v-for="item in filterItems"
           :key="item.value"
           :append-icon="item.icon"
+          @click="handleFilter(item.value)"
         >
           <v-list-item-title>{{ item.label }}</v-list-item-title>
         </v-list-item>
       </v-list>
     </v-menu>
+    <v-btn
+      :icon="isDark ? 'mdi-weather-sunny' : 'mdi-weather-night'"
+      @click="toggleTheme"
+    />
   </v-toolbar>
 </template>
 
 <script lang="ts" setup>
+  import _ from 'lodash'
+  import { computed, ref } from 'vue'
   import { useRouter } from 'vue-router'
+  import { useTheme } from 'vuetify'
+  import { TaskStatus } from '@/enum/task_status'
   import router from '@/router'
   import { useAppStore } from '@/stores/app'
-  const appStore = useAppStore()
 
+  const appStore = useAppStore()
+  const theme = useTheme()
   const r = useRouter()
+
+  // 计算是否为暗色主题
+  const isDark = computed(() => theme.global.current.value.dark)
   const filterItems = [
     { label: '全部任务', value: 'all', icon: 'mdi-format-list-checks' },
-    { label: '未完成', value: 'undone', icon: 'mdi-format-list-bulleted' },
-    { label: '已完成', value: 'done', icon: 'mdi-check' },
+    { label: '未完成', value: TaskStatus.UNFINISHED, icon: 'mdi-format-list-bulleted' },
+    { label: '已完成', value: TaskStatus.FINISHED, icon: 'mdi-check' },
   ]
   const layoutItems = [
     { label: '列表', value: 'normal-list', icon: 'mdi-view-list' },
-    { label: '瀑布流', value: 'water-fall', icon: 'mdi-view-grid' },
+    { label: '瀑布', value: 'water-fall', icon: 'mdi-view-grid' },
   ]
   function changeLayout (mode: string) {
     appStore.setLayoutMode(mode)
+  }
+
+  function toggleTheme () {
+    appStore.toggleTheme()
+    theme.global.name.value = appStore.theme
   }
   const canGoBack = ref(false)
   const canGoForward = ref(false)
@@ -69,6 +87,12 @@
     canGoBack.value = window.history.length > 1
     canGoForward.value = window.history.length > 1
   }
+
+  function handleFilter (value: string) {
+    console.log(value)
+    appStore.toggleListData(value)
+  }
+
   r.afterEach(() => {
     updateNavigationState()
   })

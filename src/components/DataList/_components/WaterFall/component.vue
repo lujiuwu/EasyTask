@@ -11,7 +11,8 @@
 </template>
 
 <script lang="ts" setup>
-  import type { TaskItem } from '../../type'
+  import type { TaskItem } from '@/types/TaskItem'
+  import { type ComputedRef, inject } from 'vue'
   import Item from './_components/item.vue'
-  const listData = inject('listData') as Array<TaskItem>
+  const listData = inject<ComputedRef<Array<TaskItem>>>('listData')!
 </script>

@@ -5,12 +5,13 @@
   </div>
 </template>
 <script lang="ts" setup>
-  import { provide } from 'vue'
+  import { computed, provide } from 'vue'
   import { useAppStore } from '@/stores/app'
   import { NormalList } from './_components/NormalList'
   import { WaterFall } from './_components/WaterFall'
-  import { listData } from './constants'
+
   const appStore = useAppStore()
+  const listData = computed(() => appStore.listData)
 
   provide('listData', listData)
 </script>
