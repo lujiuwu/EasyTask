@@ -6,13 +6,13 @@
     :elevation="8"
   >
     <v-btn :disabled="!canGoBack" icon="mdi-arrow-left" @click="router.back()" />
-    <v-btn :disabled="!canGoForward" icon="mdi-arrow-right" @click="router.forward()" />
     <v-toolbar-title class="text-h6">
       {{ router.currentRoute.value.meta.title }}
     </v-toolbar-title>
     <v-menu>
       <template #activator="{ props }">
         <v-btn
+          id="layout-check-btn"
           icon="mdi-view-module"
           v-bind="props"
         />
@@ -86,21 +86,19 @@
     theme.global.name.value = appStore.theme
   }
   const canGoBack = ref(false)
-  const canGoForward = ref(false)
 
   function updateNavigationState () {
-    canGoBack.value = window.history.length > 1
-    canGoForward.value = window.history.length > 1
+    canGoBack.value = window.history.state?.back
   }
 
   function handleFilter (value: string) {
-    console.log(value)
     appStore.toggleListData(value)
   }
 
   r.afterEach(() => {
     updateNavigationState()
   })
+
 </script>
 
 <style scoped>

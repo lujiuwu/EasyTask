@@ -1,0 +1,44 @@
+/* 跳过按钮 */
+.introjs-skipbutton {
+    width: auto;
+    height: auto;
+    line-height: 20px;
+    font-size: 13px !important;
+    color: rgba(0,0,0,.45) !important;
+    font-weight: normal !important;
+}
+/* 弹窗div */
+.introjs-tooltip{
+    padding: 5px;
+    font-size: 13px !important;
+}
+.introjs-tooltip .introjs-tooltip-header {
+  padding:0 !important;
+}
+.introjs-tooltip .introjs-tooltiptext {
+  padding:5px 0!important;
+}
+.introjs-tooltip .introjs-bullets {
+  padding:0 !important;
+}
+/* 弹窗提示按钮 */
+.introjs-button{
+    padding:5px;
+    /* background: seagreen; */
+}
+/* 弹窗提示中的文字样式 */
+.introjs-tooltiptext {
+    line-height: 32px;
+    font-size: 16px !important;
+    padding: 15px 0 !important;
+    color: rgba(0,0,0,.65);
+}
+/* 框出来的区域的框框颜色 */
+.introjs-helperLayer{
+    box-shadow: #c2e7b0 0px 0px 1px 2px, rgba(33, 33, 33, 0.5) 0px 0px 0px 5000px !important;
+}
+/* 下一步按钮，鼠标focus时候 */
+.introjs-button:focus{
+    box-shadow: 0 0 0 .2rem #c2e7b0;
+    border: 1px solid seagreen;
+}

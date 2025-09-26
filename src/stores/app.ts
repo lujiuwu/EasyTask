@@ -79,6 +79,13 @@ export const useAppStore = defineStore('app', {
           { key: 23, text: '部署上线' },
         ],
       },
+      {
+        title: '周内计划',
+        id: 6,
+        type: TaskType.SCHEDULE,
+        status: TaskStatus.UNFINISHED,
+        content: [],
+      },
     ],
     currentFilter: 'all' as TaskStatus | string,
   }),
@@ -104,6 +111,9 @@ export const useAppStore = defineStore('app', {
       this.currentFilter = filter
       console.log('Current filter:', filter)
       console.log('Filtered data:', this.listData)
+    },
+    addTask (task: TaskItem) {
+      this.originalListData.push(task)
     },
   },
 })

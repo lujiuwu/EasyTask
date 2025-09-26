@@ -3,6 +3,8 @@
  *
  * Bootstraps Vuetify and other plugins then mounts the App`
  */
+
+import introJs from 'intro.js'
 // Composables
 import { createApp } from 'vue'
 
@@ -17,10 +19,13 @@ import 'uno.css'
 
 // Styles
 import 'unfonts.css'
+import 'intro.js/introjs.css'
+import '@/assets/css/introjs.css'
 
 const app = createApp(App)
 
 app.use(VueMasonryPlugin)
+app.config.globalProperties.$introJs = introJs
 
 registerPlugins(app)
 

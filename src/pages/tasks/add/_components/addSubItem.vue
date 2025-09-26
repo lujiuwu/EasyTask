@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mb-30px">
     <v-bottom-sheet :model-value="open" @update:model-value="open = $event">
       <template #activator="{ props: activatorProps }">
         <v-btn v-bind="activatorProps">新增子任务</v-btn>
@@ -14,55 +14,57 @@
         </v-card-text>
       </v-card>
     </v-bottom-sheet>
-    <v-table
-      class="mt-5"
-      density="compact"
-      fixed-header
-      height="200px"
-      striped="even"
-      style="border: 1px solid #ccc;"
-    >
-      <thead>
-        <tr>
-          <th class="text-left">
-            id
-          </th>
-          <th class="text-left">
-            子任务内容
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          v-for="(item, index) in props.items"
-          :key="item.key"
-        >
-          <td>{{ index+1 }}</td>
-          <td>{{ item.text }}</td>
-        </tr>
-      </tbody>
-    </v-table>
+    <v-card class="mt-5">
+      <v-table
+        density="compact"
+        fixed-header
+        height="400px"
+        striped="even"
+      >
+        <thead>
+          <tr>
+            <th class="text-left">
+              id
+            </th>
+            <th class="text-left">
+              子任务内容
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            v-for="(item, index) in content"
+            :key="item.key"
+          >
+            <td>{{ index+1 }}</td>
+            <td>{{ item.text }}</td>
+          </tr>
+        </tbody>
+      </v-table>
+    </v-card>
   </div>
 </template>
 
 <script lang="ts" setup>
-  import type { TaskItem } from '@/types/TaskItem'
+  import { toTypedSchema } from '@vee-validate/zod'
   import { v4 as uuidv4 } from 'uuid'
-  import { ref } from 'vue'
+  import { useForm } from 'vee-validate'
+  import { computed, ref } from 'vue'
+  import { TaskItemSchema } from '@/types/TaskItem'
+
+  const { defineField, meta, errors } = useForm({
+    validationSchema: toTypedSchema(TaskItemSchema),
+    initialValues: {
+      content: [],
+    },
+  })
 
   const value = ref('')
+  const [content] = defineField('content')
   const open = ref(false)
 
-  const props = defineProps<{
-    items: TaskItem[]
-  }>()
-
-  const emit = defineEmits<{
-    'add-sub-item': [item: TaskItem]
-  }>()
-
   function addSubItem () {
-    emit('add-sub-item', {
+    content.value.push({
       text: value.value,
       key: uuidv4(),
       done: false,
@@ -72,4 +74,12 @@
     value.value = '' // 清空输入框
     open.value = false // 关闭底部表单
   }
+
+  defineExpose({
+    isValid: computed(() => meta.value.valid),
+    errors: errors,
+    formData: computed(() => ({
+      content: content.value,
+    })),
+  })
 </script>

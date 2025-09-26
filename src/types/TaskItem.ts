@@ -1,19 +1,13 @@
-import { v4 as uuidv4 } from 'uuid'
 import z from 'zod'
 import { TaskStatus } from '@/enum/task_status'
 import { TaskType } from '@/enum/task_type'
+import { SubTaskItemSchema } from './SubTaskItem'
 
 export const TaskItemSchema = z.object({
   title: z.string().min(3, '任务名称不得少于三个字符'),
   type: z.nativeEnum(TaskType).default(TaskType.NORMAL),
   status: z.nativeEnum(TaskStatus).default(TaskStatus.UNFINISHED),
-  content: z.array(z.object({
-    text: z.string().optional(),
-    key: z.string().default(() => uuidv4()),
-    done: z.boolean().default(false),
-    finishTime: z.string().default(''),
-    remark: z.string().default(''),
-  })).optional().default([]),
+  content: z.array(SubTaskItemSchema).optional().default([]),
   chips: z.array(z.object({
     label: z.string(),
     icon: z.string().optional(),
