@@ -44,24 +44,7 @@
           multiple
           placeholder="任务标签"
           v-bind="chipsProps"
-        >
-          <template #item="{ props }">
-            <v-list-item class="h-50px lh-50px">
-              <template #prepend>
-                <v-checkbox v-bind="props" />
-              </template>
-              <template #default>
-                <v-chip
-                  :color="props.title.color"
-                  :prepend-icon="props.title.icon"
-                  v-bind="props"
-                >
-                  {{ props.title.label }}
-                </v-chip>
-              </template>
-            </v-list-item>
-          </template>
-        </v-select>
+        />
       </v-container>
     </v-form>
   </div>

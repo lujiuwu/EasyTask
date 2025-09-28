@@ -1,19 +1,31 @@
 <template>
-  <v-btn class="btn" color="primary" icon="mdi-plus" @click="handleAddTask" />
+  <use-draggable
+    class="draggable-button"
+    :initial-value="initialPosition"
+  >
+    <v-btn
+      color="primary"
+      icon="mdi-plus"
+      @click="handleAddTask"
+    />
+  </use-draggable>
 </template>
 <script lang="ts" setup>
+  import { UseDraggable } from '@vueuse/components'
   import { useRouter } from 'vue-router'
+
   const router = useRouter()
+  const initialPosition = { x: window.innerWidth - 60, y: window.innerHeight - 120 }
+
   function handleAddTask () {
     router.push('/tasks/add')
   }
 </script>
+
 <style lang="scss" scoped>
-  .btn {
-    position: fixed;
-    bottom: 80px;
-    right: 10px;
-    font-weight: bold;
-    z-index: 1000;
-  }
+.draggable-button {
+  position: fixed;
+  z-index: 1000;
+  cursor: move;
+}
 </style>

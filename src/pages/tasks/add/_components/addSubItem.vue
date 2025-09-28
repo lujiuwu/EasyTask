@@ -64,7 +64,7 @@
   const open = ref(false)
 
   function addSubItem () {
-    content.value.push({
+    content.value?.push({
       text: value.value,
       key: uuidv4(),
       done: false,

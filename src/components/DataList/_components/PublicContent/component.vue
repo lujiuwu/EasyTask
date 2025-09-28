@@ -1,8 +1,8 @@
 <template>
   <div>
-    <v-list v-if="props.data.content.length > 0" class="bg-transparent">
+    <v-list v-if="props.data?.content?.length > 0" class="bg-transparent">
       <v-list-item
-        v-for="(item, index) in props.data.content"
+        v-for="(item, index) in props.data?.content || []"
         :key="item.key"
         color="primary"
         style="border-bottom: 1px dashed #ccc;"

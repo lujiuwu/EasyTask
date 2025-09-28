@@ -35,6 +35,7 @@
 </template>
 
 <script lang="ts" setup>
+  import type { TaskItem } from '@/types/TaskItem'
   import { computed, ref } from 'vue'
   import { useRouter } from 'vue-router'
   import { useAppStore } from '@/stores/app'
@@ -52,7 +53,7 @@
       ...addFormRef.value?.formData,
       ...addSubItemRef.value?.formData,
     }
-    appStore.addTask(newTask)
+    appStore.addTask(newTask as TaskItem)
     router.push('/tasks')
   }
 

@@ -32,7 +32,7 @@
             <PublicContent :data="item" :style="{ backgroundColor: getTaskTypeColor(item.type, isDark) }" />
             <v-row>
               <v-col cols="1" offset="9">
-                <v-btn variant="tonal">
+                <v-btn variant="tonal" @click="handleDetail(item)">
                   详情
                 </v-btn>
               </v-col>
@@ -46,15 +46,20 @@
 <script lang="ts" setup>
   import type { TaskItem } from '@/types/TaskItem'
   import { computed, type ComputedRef, inject } from 'vue'
+  import { useRouter } from 'vue-router'
   import { useTheme } from 'vuetify'
   import { PublicContent } from '@/components/DataList/_components/PublicContent'
   import { getTaskTypeColor } from '@/utils/theme'
 
   const data = inject<ComputedRef<Array<TaskItem>>>('listData')!
   const theme = useTheme()
-
+  const router = useRouter()
   // 计算是否为暗色主题
   const isDark = computed(() => theme.global.current.value.dark)
+
+  function handleDetail (item: TaskItem) {
+    router.push(`/tasks/${item.id}`)
+  }
 </script>
 <style scoped lang="scss">
   .v-expansion-panel-text {
