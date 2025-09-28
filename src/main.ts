@@ -3,7 +3,7 @@
  *
  * Bootstraps Vuetify and other plugins then mounts the App`
  */
-
+import { VueQueryPlugin } from '@tanstack/vue-query'
 import introJs from 'intro.js'
 // Composables
 import { createApp } from 'vue'
@@ -25,6 +25,7 @@ import '@/assets/css/introjs.css'
 const app = createApp(App)
 
 app.use(VueMasonryPlugin)
+app.use(VueQueryPlugin)
 app.config.globalProperties.$introJs = introJs
 
 registerPlugins(app)

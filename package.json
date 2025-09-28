@@ -14,10 +14,12 @@
   "dependencies": {
     "@fontsource/roboto": "5.2.7",
     "@mdi/font": "7.4.47",
+    "@tanstack/vue-query": "^5.90.2",
     "@vee-validate/zod": "^4.15.1",
     "@vueuse/components": "^13.9.0",
     "@vueuse/core": "^13.9.0",
     "@vueuse/router": "^13.9.0",
+    "axios": "^1.12.2",
     "dayjs": "^1.11.18",
     "intro.js": "^8.3.2",
     "lodash": "^4.17.21",

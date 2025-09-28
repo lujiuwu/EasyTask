@@ -1,7 +1,7 @@
 <template>
   <div v-masonry>
     <Item
-      v-for="item in listData"
+      v-for="item in props.data"
       :key="item.title"
       v-masonry-tile
       class="w-50%"
@@ -11,8 +11,12 @@
 </template>
 
 <script lang="ts" setup>
-  import type { TaskItem } from '@/types/TaskItem'
-  import { type ComputedRef, inject } from 'vue'
+
   import Item from './_components/item.vue'
-  const listData = inject<ComputedRef<Array<TaskItem>>>('listData')!
+  const props = defineProps({
+    data: {
+      type: Array,
+      required: true,
+    },
+  })
 </script>

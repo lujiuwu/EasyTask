@@ -1,6 +1,6 @@
 <template>
   <v-list>
-    <v-list-item v-for="item in data" :key="item.title" class="mb-4">
+    <v-list-item v-for="item in props.data" :key="item.title" class="mb-4">
       <v-expansion-panels variant="popout">
         <v-expansion-panel :eager="true">
           <v-expansion-panel-title style="font-weight: bold;">
@@ -45,13 +45,18 @@
 </template>
 <script lang="ts" setup>
   import type { TaskItem } from '@/types/TaskItem'
-  import { computed, type ComputedRef, inject } from 'vue'
+  import { computed } from 'vue'
   import { useRouter } from 'vue-router'
   import { useTheme } from 'vuetify'
   import { PublicContent } from '@/components/DataList/_components/PublicContent'
   import { getTaskTypeColor } from '@/utils/theme'
 
-  const data = inject<ComputedRef<Array<TaskItem>>>('listData')!
+  const props = defineProps({
+    data: {
+      type: Array,
+      required: true,
+    },
+  })
   const theme = useTheme()
   const router = useRouter()
   // 计算是否为暗色主题
