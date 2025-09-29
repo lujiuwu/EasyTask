@@ -5,7 +5,7 @@ export const useAppStore = defineStore('app', {
   state: () => ({
     layoutMode: 'water-fall', // water-fall | normal-list
     theme: 'light', // light | dark,
-    currentFilter: 'all' as TaskStatus | string,
+    filter: 'all', // all | finished | unfinished
   }),
   actions: {
     setLayoutMode (mode: string) {
@@ -13,9 +13,6 @@ export const useAppStore = defineStore('app', {
     },
     setTheme (theme: string) {
       this.theme = theme
-    },
-    toggleTheme () {
-      this.theme = this.theme === 'light' ? 'dark' : 'light'
     },
   },
 })

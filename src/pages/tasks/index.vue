@@ -31,7 +31,7 @@
           class="absolute top-14 left-[-1] w-full z-10"
         >
           <v-col cols="12">
-            <v-list>
+            <v-list class="max-h-[300px] overflow-y-auto border-b-md">
               <v-list-item
                 v-for="item in list"
                 :key="item.title"
@@ -57,10 +57,12 @@
 <script lang="ts" setup>
   import { useDebounceFn } from '@vueuse/core'
   import introJs from 'intro.js'
+  import _ from 'lodash'
   import { ref } from 'vue'
   import { AddTaskButton } from '@/components/AddTaskButton'
   import { DataList } from '@/components/DataList'
-  import { useAppStore } from '@/stores/app'
+  import { useTasksCache } from '@/composables/useTasksCache'
+
   definePage({
     meta: { key: 'mdi-format-list-checks', title: '任务' },
   })
@@ -68,8 +70,8 @@
   const show = ref(true)
   const showList = ref(false)
   const list = ref<{ title: string, to: string, supItem?: string }[]>([])
-  const appStore = useAppStore()
 
+  const { getCachedTasks } = useTasksCache()
   function startIntro () {
     // 等待 DOM 渲染完成
     nextTick(() => {
@@ -96,14 +98,29 @@
       }, 100) // 延迟100ms确保任务项已渲染
     })
   }
-  // 原始搜索函数
-  function performSearch () {
-    list.value = appStore.filterItem(value.value)
-    console.log(list.value)
-    showList.value = list.value.length > 0
-  }
 
-  const handleSearch = useDebounceFn(performSearch, 300)
+  const handleSearch = useDebounceFn(() => {
+    if (value.value === '') {
+      list.value = []
+      return
+    }
+    const currentTasks = _.flatMap(getCachedTasks().pages, page => page.data)
+    // eslint-disable-next-line unicorn/no-array-for-each
+    _.forEach(currentTasks, item => {
+      if (item.title.includes(value.value)) {
+        list.value.push({ title: item.title, to: `/tasks/${item.id}` })
+      }
+      if (item.content) {
+        // eslint-disable-next-line unicorn/no-array-for-each
+        _.forEach(item.content, subItem => {
+          if (subItem.text.includes(value.value)) {
+            list.value.push({ title: subItem.text, supItem: item.title, to: `/tasks/${subItem.id}` })
+          }
+        })
+      }
+    })
+    showList.value = list.value.length > 0
+  }, 300)
 </script>
 <style lang="scss" scoped>
   .v-col {

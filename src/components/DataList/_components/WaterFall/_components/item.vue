@@ -9,11 +9,8 @@
         <v-card-title>已完成</v-card-title>
       </v-overlay>
       <v-card-title>{{ props.data.title }}</v-card-title>
-      <v-card-subtitle class="mb-2">
-        <div>
-          {{ props.data.createTime }}
-          <span class="ml-2">共 {{ props.data.content.length }} 项</span>
-        </div>
+      <v-card-subtitle class="mb-2 p-5px!">
+        <span class="ml-2">共 {{ props.data.content.length }} 项</span>
         <span>
           <v-chip
             v-for="chip in props.data.chips"
@@ -38,7 +35,7 @@
           <v-col cols="1">
             <v-icon @click="handleDelete">mdi-trash-can-outline</v-icon>
           </v-col>
-          <v-col cols="2" offset="5">
+          <v-col cols="2" offset="4">
             <v-btn density="comfortable" variant="outlined" @click="$router.push(`/tasks/${props.data.id}`)">
               详情
             </v-btn>

@@ -11,7 +11,6 @@
 </template>
 
 <script lang="ts" setup>
-
   import Item from './_components/item.vue'
   const props = defineProps({
     data: {
