@@ -17,6 +17,7 @@
 <script lang="ts" setup>
   const navigationItems = [
     { label: '任务', value: 'task', icon: 'mdi-format-list-checks', to: '/tasks' },
+    { label: '里程碑', value: 'milestone', icon: 'mdi-flag-checkered', to: '/milestones' },
     { label: '设置', value: 'settings', icon: 'mdi-cogs', to: '/setting' },
   ]
 </script>

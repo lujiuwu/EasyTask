@@ -46,30 +46,22 @@
         </v-list-item>
       </v-list>
     </v-menu>
-    <v-btn
-      :icon="isDark ? 'mdi-weather-sunny' : 'mdi-weather-night'"
-      @click="toggleTheme"
-    />
   </v-toolbar>
 </template>
 
 <script lang="ts" setup>
   import _ from 'lodash'
-  import { computed, ref } from 'vue'
+  import { ref } from 'vue'
   import { useRouter } from 'vue-router'
-  import { useTheme } from 'vuetify'
   import { TaskStatus } from '@/enum/task_status'
   import router from '@/router'
   import { useAppStore } from '@/stores/app'
 
   const appStore = useAppStore()
-  const theme = useTheme()
   const r = useRouter()
 
-  // 计算是否为暗色主题
-  const isDark = computed(() => theme.global.current.value.dark)
   const filterItems = [
-    { label: '全部任务', value: 'all', icon: 'mdi-format-list-checks' },
+    { label: '全部任务', value: TaskStatus.ALL, icon: 'mdi-format-list-checks' },
     { label: '未完成', value: TaskStatus.UNFINISHED, icon: 'mdi-format-list-bulleted' },
     { label: '已完成', value: TaskStatus.FINISHED, icon: 'mdi-check' },
   ]
@@ -81,10 +73,6 @@
     appStore.setLayoutMode(mode)
   }
 
-  function toggleTheme () {
-    appStore.toggleTheme()
-    theme.global.name.value = appStore.theme
-  }
   const canGoBack = ref(false)
 
   function updateNavigationState () {
@@ -92,7 +80,7 @@
   }
 
   function handleFilter (value: string) {
-    appStore.toggleListData(value)
+    appStore.setFilter(value)
   }
 
   r.afterEach(() => {

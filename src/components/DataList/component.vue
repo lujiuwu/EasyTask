@@ -31,11 +31,13 @@
   </div>
 </template>
 <script lang="ts" setup>
+  import type { TaskItem } from '@/types/TaskItem'
   import { useInfiniteQuery } from '@tanstack/vue-query'
   import axios from 'axios'
   import _ from 'lodash'
   import { onMounted, onUnmounted, ref, watch } from 'vue'
-  import { EmptyState } from '@/components'
+  import { EmptyState } from '@/components/EmptyState'
+  import { TaskStatus } from '@/enum/task_status'
   import { useAppStore } from '@/stores/app'
 
   import { NormalList, WaterFall } from './_components'
@@ -62,9 +64,6 @@
   } = useInfiniteQuery({
     queryKey: ['tasks'],
     queryFn: getTasksByPage,
-    staleTime: 5 * 60 * 1000, // 5分钟内数据被认为是新鲜的
-    gcTime: 10 * 60 * 1000, // 10分钟后清理缓存
-    refetchInterval: 5 * 60 * 1000,
     getNextPageParam: lastPage => {
       return lastPage.hasNextPage ? lastPage.nextPage : undefined
     },
@@ -95,6 +94,13 @@
   })
 
   const allItems = computed(() => {
+    const filter = appStore.filter
+    console.log(filter)
+    if (filter === TaskStatus.UNFINISHED) {
+      return _.flatMap(data.value?.pages, page => page.data.filter((page: TaskItem) => page.status === TaskStatus.UNFINISHED)) || []
+    } else if (filter === TaskStatus.FINISHED) {
+      return _.flatMap(data.value?.pages, page => page.data.filter((page: TaskItem) => page.status === TaskStatus.FINISHED)) || []
+    }
     return _.flatMap(data.value?.pages, page => page.data) || []
   })
 

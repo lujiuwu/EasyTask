@@ -8,7 +8,8 @@ export function useTasksCache () {
   }
 
   const isStale = () => {
-    return queryClient.isStale(['tasks'])
+    const query = queryClient.getQueryCache().find({ queryKey: ['tasks'] })
+    return query ? query.isStale() : true
   }
 
   return {

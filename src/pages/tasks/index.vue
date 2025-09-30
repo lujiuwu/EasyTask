@@ -50,54 +50,26 @@
       </v-container>
     </v-form>
     <data-list />
-    <add-task-button />
+    <public-add-button to="/tasks/add" />
   </div>
 </template>
 
 <script lang="ts" setup>
   import { useDebounceFn } from '@vueuse/core'
-  import introJs from 'intro.js'
   import _ from 'lodash'
   import { ref } from 'vue'
-  import { AddTaskButton } from '@/components/AddTaskButton'
-  import { DataList } from '@/components/DataList'
+  import { DataList, PublicAddButton } from '@/components'
   import { useTasksCache } from '@/composables/useTasksCache'
+  import { startIntro } from '@/utils/intro'
 
   definePage({
     meta: { key: 'mdi-format-list-checks', title: '任务' },
   })
   const value = ref('')
-  const show = ref(true)
   const showList = ref(false)
   const list = ref<{ title: string, to: string, supItem?: string }[]>([])
 
   const { getCachedTasks } = useTasksCache()
-  function startIntro () {
-    // 等待 DOM 渲染完成
-    nextTick(() => {
-      setTimeout(() => {
-        const steps = [
-          {
-            element: '#layout-check-btn',
-            title: '第一步',
-            intro: '点击这里可以切换任务列表布局',
-            position: 'bottom' as const,
-          },
-        ]
-        const intro = introJs()
-        intro.setOptions({
-          prevLabel: '上一步',
-          nextLabel: '下一步',
-          skipLabel: '跳过',
-          doneLabel: '完成',
-          steps,
-        }).onbeforeexit((): boolean => {
-          show.value = false
-          return true
-        }).start()
-      }, 100) // 延迟100ms确保任务项已渲染
-    })
-  }
 
   const handleSearch = useDebounceFn(() => {
     if (value.value === '') {

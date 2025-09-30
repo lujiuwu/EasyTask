@@ -51,7 +51,6 @@
     { label: '偏好设置', icon: 'mdi-heart' },
   ]
   const other_fns = [
-    { label: '我要反馈', icon: 'mdi-alert' },
     { label: '其他功能', icon: 'mdi-help-circle' },
   ]
 </script>

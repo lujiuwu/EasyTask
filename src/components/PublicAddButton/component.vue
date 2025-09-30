@@ -1,6 +1,6 @@
 <template>
   <use-draggable
-    class="draggable-button"
+    class="draggable-button add-tasks"
     :initial-value="initialPosition"
   >
     <v-btn
@@ -14,11 +14,18 @@
   import { UseDraggable } from '@vueuse/components'
   import { useRouter } from 'vue-router'
 
+  const props = defineProps({
+    to: {
+      type: String,
+      required: true,
+    },
+  })
+
   const router = useRouter()
   const initialPosition = { x: window.innerWidth - 60, y: window.innerHeight - 120 }
 
   function handleAddTask () {
-    router.push('/tasks/add')
+    router.push(props.to)
   }
 </script>
 

@@ -45,11 +45,8 @@
 </template>
 <script lang="ts" setup>
   import type { TaskItem } from '@/types/TaskItem'
-  import { computed } from 'vue'
   import { useRouter } from 'vue-router'
-  import { useTheme } from 'vuetify'
   import { PublicContent } from '@/components/DataList/_components/PublicContent'
-  import { getTaskTypeColor } from '@/utils/theme'
 
   const props = defineProps({
     data: {
@@ -57,10 +54,7 @@
       required: true,
     },
   })
-  const theme = useTheme()
   const router = useRouter()
-  // 计算是否为暗色主题
-  const isDark = computed(() => theme.global.current.value.dark)
 
   function handleDetail (item: TaskItem) {
     router.push(`/tasks/${item.id}`)

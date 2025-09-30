@@ -1,6 +1,6 @@
 <template>
   <div style="border: 1px solid #eee;margin-bottom: 5px;padding: 2px;">
-    <v-card :style="{ backgroundColor: taskTypeColor }">
+    <v-card :style="{ backgroundColor: props.data.type }">
       <v-overlay
         class="color-white align-center justify-center"
         contained
@@ -52,12 +52,9 @@
 </template>
 
 <script lang="ts" setup>
-  import { computed } from 'vue'
-  import { useTheme } from 'vuetify'
   import { PublicContent } from '@/components/DataList/_components/PublicContent'
   import { Dialog } from '@/components/Dialog'
   import { TaskStatus } from '@/enum/task_status'
-  import { getTaskTypeColor } from '@/utils/theme'
 
   const props = defineProps({
     data: {
@@ -66,19 +63,12 @@
     },
   })
 
-  const theme = useTheme()
-
   const icon = ref('mdi-heart-outline')
 
   const showDialog = ref(false)
   function updateShowDialog (value: boolean) {
     showDialog.value = value
   }
-
-  // 计算任务类型颜色
-  const taskTypeColor = computed(() => {
-    return getTaskTypeColor(props.data.type, theme.global.current.value.dark)
-  })
 
   function handleStar () {
     icon.value = icon.value === 'mdi-heart-outline' ? 'mdi-heart' : 'mdi-heart-outline'
