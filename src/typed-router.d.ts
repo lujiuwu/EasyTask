@@ -19,7 +19,9 @@ declare module 'vue-router/auto-routes' {
    */
   export interface RouteNamedMap {
     '/milestones/': RouteRecordInfo<'/milestones/', '/milestones', Record<never, never>, Record<never, never>>,
-    '/milestones/_components/component': RouteRecordInfo<'/milestones/_components/component', '/milestones/_components/component', Record<never, never>, Record<never, never>>,
+    '/milestones/_components/CardList': RouteRecordInfo<'/milestones/_components/CardList', '/milestones/_components/CardList', Record<never, never>, Record<never, never>>,
+    '/milestones/_components/DoubleLineList': RouteRecordInfo<'/milestones/_components/DoubleLineList', '/milestones/_components/DoubleLineList', Record<never, never>, Record<never, never>>,
+    '/milestones/_components/MileStoneList': RouteRecordInfo<'/milestones/_components/MileStoneList', '/milestones/_components/MileStoneList', Record<never, never>, Record<never, never>>,
     '/milestones/[id]/': RouteRecordInfo<'/milestones/[id]/', '/milestones/:id', { id: ParamValue<true> }, { id: ParamValue<false> }>,
     '/milestones/add/': RouteRecordInfo<'/milestones/add/', '/milestones/add', Record<never, never>, Record<never, never>>,
     '/setting/': RouteRecordInfo<'/setting/', '/setting', Record<never, never>, Record<never, never>>,
@@ -45,8 +47,16 @@ declare module 'vue-router/auto-routes' {
       routes: '/milestones/'
       views: never
     }
-    'src/pages/milestones/_components/component.vue': {
-      routes: '/milestones/_components/component'
+    'src/pages/milestones/_components/CardList.vue': {
+      routes: '/milestones/_components/CardList'
+      views: never
+    }
+    'src/pages/milestones/_components/DoubleLineList.vue': {
+      routes: '/milestones/_components/DoubleLineList'
+      views: never
+    }
+    'src/pages/milestones/_components/MileStoneList.vue': {
+      routes: '/milestones/_components/MileStoneList'
       views: never
     }
     'src/pages/milestones/[id]/index.vue': {

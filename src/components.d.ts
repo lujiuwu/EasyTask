@@ -8,9 +8,13 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    Col: typeof import('./components/ToolBar/_components/col.vue')['default']
     Component: typeof import('./components/AddSubTaskButton/component.vue')['default']
+    Filter: typeof import('./components/ToolBar/_components/filter.vue')['default']
     Item: typeof import('./components/DataList/_components/WaterFall/_components/item.vue')['default']
+    Layout: typeof import('./components/ToolBar/_components/layout.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Share: typeof import('./components/ToolBar/_components/share.vue')['default']
   }
 }

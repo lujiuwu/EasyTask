@@ -6,6 +6,7 @@ export const useAppStore = defineStore('app', {
     layoutMode: 'water-fall', // water-fall | normal-list
     filter: 'all', // all | finished | unfinished
     type: 'all', // all | normal | schedule | important | daily | work
+    col: '1', // 1 | 2 | 4
   }),
   actions: {
     setLayoutMode (mode: string) {
@@ -16,6 +17,9 @@ export const useAppStore = defineStore('app', {
     },
     setType (type: string) {
       this.type = type
+    },
+    setCol (col: string) {
+      this.col = col
     },
   },
 })

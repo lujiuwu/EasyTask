@@ -67,6 +67,7 @@
   })
   const value = ref('')
   const showList = ref(false)
+  const show = ref(true)
   const list = ref<{ title: string, to: string, supItem?: string }[]>([])
 
   const { getCachedTasks } = useTasksCache()

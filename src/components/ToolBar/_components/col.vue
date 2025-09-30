@@ -1,0 +1,27 @@
+<template>
+  <v-menu>
+    <template #activator="{ props }">
+      <v-btn icon="mdi-view-module" v-bind="props" />
+    </template>
+    <v-list>
+      <v-list-item
+        v-for="item in colItems"
+        :key="item.value"
+        :append-icon="item.icon"
+        @click="handleCol(item.value)"
+      >
+        <v-list-item-title>{{ item.label }}</v-list-item-title>
+      </v-list-item>
+    </v-list>
+  </v-menu>
+</template>
+<script lang="ts" setup>
+  import { useAppStore } from '@/stores/app'
+  import { colItems } from '../constants'
+
+  const appStore = useAppStore()
+
+  function handleCol (value: string) {
+    appStore.setCol(value)
+  }
+</script>

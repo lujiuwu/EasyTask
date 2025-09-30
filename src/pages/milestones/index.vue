@@ -1,21 +1,30 @@
 <template>
   <div>
-    <h3>里程碑</h3>
-    <v-list>
-      <MilestoneItem v-for="item in data" :key="item.id" :data="item" />
-    </v-list>
+    <v-container class="relative">
+      <v-row>
+        <v-col class="p-0!" cols="12">
+          <v-text-field
+            placeholder="搜索里程碑"
+            prepend-inner-icon="mdi-magnify"
+          />
+        </v-col>
+      </v-row>
+    </v-container>
+    <MileStoneList v-if="appStore.col === '1'" :data="data" />
+    <CardList v-if="appStore.col === '4'" :data="data" />
+    <DoubleLineList v-if="appStore.col === '2'" :data="data" />
   </div>
 </template>
 
 <script lang="ts" setup>
   import { useQuery } from '@tanstack/vue-query'
   import axios from 'axios'
-  import { MilestoneItem } from './_components'
-
+  import { useAppStore } from '@/stores/app'
+  import { CardList, DoubleLineList, MileStoneList } from './_components'
   definePage({
     meta: { key: 'mdi-flag-checkered', title: '里程碑' },
   })
-
+  const appStore = useAppStore()
   const {
     data,
   } = useQuery({
@@ -23,7 +32,6 @@
     queryFn: () => axios.get('/api/flags').then(res => res.data.data),
   })
 
-  console.log(data)
 </script>
 
 <style scoped>
