@@ -1,0 +1,18 @@
+filter:
+  all: All
+  unfinished: Unfinished
+  finished: Finished
+
+col:
+  list: List
+  grid: Grid
+  table: Table
+
+layout:
+  list: List
+  grid: Grid
+  table: Table
+
+sort:
+  createTime: Recently Created
+  updateTime: Recently Updated

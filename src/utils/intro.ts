@@ -1,17 +1,18 @@
 import introJs from 'intro.js'
+import { nextTick } from 'vue'
 
-export function startIntro () {
+export function startIntro (t: (key: string) => string) {
   const steps = [
     {
       element: '#layout-check-btn',
-      title: '第一步',
-      intro: '点击这里可以切换任务列表布局',
+      title: t('first-step.title'),
+      intro: t('first-step.intro'),
       position: 'bottom' as const,
     },
     {
       element: '.add-tasks',
-      title: '第二步',
-      intro: '点击这里可以添加任务',
+      title: t('second-step.title'),
+      intro: t('second-step.intro'),
       position: 'bottom' as const,
     },
   ]
@@ -20,10 +21,10 @@ export function startIntro () {
     setTimeout(() => {
       const intro = introJs()
       intro.setOptions({
-        prevLabel: '上一步',
-        nextLabel: '下一步',
-        skipLabel: '跳过',
-        doneLabel: '完成',
+        prevLabel: t('prev-step'),
+        nextLabel: t('next-step'),
+        skipLabel: t('skip-step'),
+        doneLabel: t('done-step'),
         steps,
       }).oncomplete(() => {
         // 需要注意的是，这里用了箭头函数

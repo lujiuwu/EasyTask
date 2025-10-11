@@ -23,7 +23,7 @@
                 <td class="border-e-sm">描述</td>
                 <td>{{ item.description }}</td>
               </tr>
-              <tr>
+              <!-- <tr>
                 <td class="border-e-sm">关联任务</td>
                 <td>
                   <v-chip
@@ -36,7 +36,7 @@
                     {{ getTask(taskId) }}
                   </v-chip>
                 </td>
-              </tr>
+              </tr> -->
             </tbody>
           </v-table>
           <v-row>
@@ -53,9 +53,9 @@
 </template>
 <script lang="ts" setup>
   import type { MileStoneItem } from '@/types/MileStoneItem'
-  import type { TaskItem } from '@/types/TaskItem'
-  import { useQuery } from '@tanstack/vue-query'
-  import axios from 'axios'
+  // import type { TaskItem } from '@/types/TaskItem'
+  // import { useQuery } from '@tanstack/vue-query'
+  // import axios from 'axios'
   const props = defineProps({
     data: {
       type: Array as PropType<MileStoneItem[]>,
@@ -63,15 +63,14 @@
       required: false,
     },
   })
-  const tasks = ref<TaskItem[]>([])
-  function getTask (id: string) {
-    const { data: task } = useQuery({
-      queryKey: ['task', id],
-      queryFn: () => {
-        return axios.get(`/api/tasks/id/${id}`).then(res => res.data.data)
-      },
-    })
-    return task.value?.title
-  }
-  console.log(tasks.value)
+  // const tasks = ref<TaskItem[]>([])
+  // function getTask (id: string) {
+  //   const { data: task } = useQuery({
+  //     queryKey: ['task', id],
+  //     queryFn: () => {
+  //       return axios.get(`/api/tasks/id/${id}`).then(res => res.data.data)
+  //     },
+  //   })
+  //   return task.value?.title
+  // }
 </script>

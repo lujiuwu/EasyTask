@@ -27,9 +27,9 @@
             </template>
           </v-expansion-panel-title>
           <v-expansion-panel-text
-            :style="{ backgroundColor: getTaskTypeColor(item.type, isDark) }"
+            :style="{ backgroundColor: item.type }"
           >
-            <PublicContent :data="item" :style="{ backgroundColor: getTaskTypeColor(item.type, isDark) }" />
+            <PublicContent :data="item" :style="{ backgroundColor: item.type }" />
             <v-row>
               <v-col cols="1" offset="9">
                 <v-btn variant="tonal" @click="handleDetail(item)">

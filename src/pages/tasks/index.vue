@@ -7,10 +7,10 @@
       style="padding: 5px!important;"
       type="info"
     >
-      <span>是否开启新手指引？</span>
+      <span>{{ $t('tasks.intro.start') }}</span>
       <template #append>
-        <v-btn class="mr-2px" density="compact" @click="startIntro">开启</v-btn>
-        <v-btn density="compact" @click="show = false">关闭</v-btn>
+        <v-btn class="mr-2px" density="compact" @click="() => startIntro($t)">{{ $t('tasks.intro.open') }}</v-btn>
+        <v-btn density="compact" @click="show = false">{{ $t('tasks.intro.close') }}</v-btn>
       </template>
     </v-alert>
     <v-form>
@@ -20,7 +20,7 @@
             <v-text-field
               v-model="value"
               clearable
-              placeholder="搜索任务"
+              :placeholder="$t('tasks.search.tasks')"
               prepend-inner-icon="mdi-magnify"
               @update:model-value="handleSearch"
             />
@@ -58,12 +58,13 @@
   import { useDebounceFn } from '@vueuse/core'
   import _ from 'lodash'
   import { ref } from 'vue'
-  import { DataList, PublicAddButton } from '@/components'
+  import DataList from '@/components/DataList/component.vue'
+  import PublicAddButton from '@/components/PublicAddButton/component.vue'
   import { useTasksCache } from '@/composables/useTasksCache'
   import { startIntro } from '@/utils/intro'
 
   definePage({
-    meta: { key: 'mdi-format-list-checks', title: '任务' },
+    meta: { key: 'mdi-format-list-checks', title: 'r' },
   })
   const value = ref('')
   const showList = ref(false)
@@ -77,7 +78,7 @@
       list.value = []
       return
     }
-    const currentTasks = _.flatMap(getCachedTasks().pages, page => page.data)
+    const currentTasks = _.flatMap((getCachedTasks().pages as any[]), page => page.data)
     // eslint-disable-next-line unicorn/no-array-for-each
     _.forEach(currentTasks, item => {
       if (item.title.includes(value.value)) {

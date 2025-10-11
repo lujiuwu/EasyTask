@@ -25,6 +25,11 @@ declare module 'vue-router/auto-routes' {
     '/milestones/[id]/': RouteRecordInfo<'/milestones/[id]/', '/milestones/:id', { id: ParamValue<true> }, { id: ParamValue<false> }>,
     '/milestones/add/': RouteRecordInfo<'/milestones/add/', '/milestones/add', Record<never, never>, Record<never, never>>,
     '/setting/': RouteRecordInfo<'/setting/', '/setting', Record<never, never>, Record<never, never>>,
+    '/setting/_components/SwitchLanguage': RouteRecordInfo<'/setting/_components/SwitchLanguage', '/setting/_components/SwitchLanguage', Record<never, never>, Record<never, never>>,
+    '/setting/account/': RouteRecordInfo<'/setting/account/', '/setting/account', Record<never, never>, Record<never, never>>,
+    '/setting/others/': RouteRecordInfo<'/setting/others/', '/setting/others', Record<never, never>, Record<never, never>>,
+    '/setting/prefer/': RouteRecordInfo<'/setting/prefer/', '/setting/prefer', Record<never, never>, Record<never, never>>,
+    '/setting/system/': RouteRecordInfo<'/setting/system/', '/setting/system', Record<never, never>, Record<never, never>>,
     '/tasks/': RouteRecordInfo<'/tasks/', '/tasks', Record<never, never>, Record<never, never>>,
     '/tasks/[id]/': RouteRecordInfo<'/tasks/[id]/', '/tasks/:id', { id: ParamValue<true> }, { id: ParamValue<false> }>,
     '/tasks/add/': RouteRecordInfo<'/tasks/add/', '/tasks/add', Record<never, never>, Record<never, never>>,
@@ -69,6 +74,26 @@ declare module 'vue-router/auto-routes' {
     }
     'src/pages/setting/index.vue': {
       routes: '/setting/'
+      views: never
+    }
+    'src/pages/setting/_components/SwitchLanguage.vue': {
+      routes: '/setting/_components/SwitchLanguage'
+      views: never
+    }
+    'src/pages/setting/account/index.vue': {
+      routes: '/setting/account/'
+      views: never
+    }
+    'src/pages/setting/others/index.vue': {
+      routes: '/setting/others/'
+      views: never
+    }
+    'src/pages/setting/prefer/index.vue': {
+      routes: '/setting/prefer/'
+      views: never
+    }
+    'src/pages/setting/system/index.vue': {
+      routes: '/setting/system/'
       views: never
     }
     'src/pages/tasks/index.vue': {

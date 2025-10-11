@@ -29,7 +29,10 @@
     data,
   } = useQuery({
     queryKey: ['milestones'],
-    queryFn: () => axios.get('/api/flags').then(res => res.data.data),
+    queryFn: () => axios.get('/api/milestones').then(res => res.data.data),
+    staleTime: 10 * 60 * 1000, // 10分钟内数据被认为是新鲜的
+    refetchOnWindowFocus: false, // 禁用窗口焦点时自动刷新
+    refetchOnReconnect: false, // 禁用重连时自动刷新
   })
 
 </script>

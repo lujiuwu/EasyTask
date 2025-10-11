@@ -16,5 +16,6 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Share: typeof import('./components/ToolBar/_components/share.vue')['default']
+    Sort: typeof import('./components/ToolBar/_components/sort.vue')['default']
   }
 }

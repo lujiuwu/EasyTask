@@ -15,9 +15,12 @@
 </template>
 
 <script lang="ts" setup>
+  import { computed } from 'vue'
+  import { useI18n } from '@/composables/useI18n'
+  const { t } = useI18n()
   const navigationItems = [
-    { label: '任务', value: 'task', icon: 'mdi-format-list-checks', to: '/tasks' },
-    { label: '里程碑', value: 'milestone', icon: 'mdi-flag-checkered', to: '/milestones' },
-    { label: '设置', value: 'settings', icon: 'mdi-cogs', to: '/setting' },
+    { label: computed(() => t('/tasks')), value: 'task', icon: 'mdi-format-list-checks', to: '/tasks' },
+    { label: computed(() => t('/milestones')), value: 'milestone', icon: 'mdi-flag-checkered', to: '/milestones' },
+    { label: computed(() => t('/setting')), value: 'settings', icon: 'mdi-cogs', to: '/setting' },
   ]
 </script>

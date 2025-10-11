@@ -1,0 +1,15 @@
+tasks:
+  search:
+    tasks: Search tasks
+  intro:
+    start: User guide
+    open: Open
+    close: Close
+  items:
+    detail: Detail
+    id: Task ID
+    delete:
+      title: Delete { title }?
+      content: After deletion, it can be recovered in the personal recycle bin
+      cancel: Cancel
+      delete: Delete

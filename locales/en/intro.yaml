@@ -1,0 +1,12 @@
+first-step:
+  title: First step
+  intro: Click here to switch the task list layout
+
+second-step:
+  title: Second step
+  intro: Click here to add a task
+
+prev-step: Prev
+next-step: Next
+skip-step: Skip
+done-step: Done

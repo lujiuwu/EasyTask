@@ -27,7 +27,7 @@
   } = useQuery({
     queryKey: ['task', id],
     queryFn: () => {
-      return axios.get(`/api/tasks/id/${id}`).then(res => res.data.data)
+      return axios.get(`/api/tasks/${id}`).then(res => res.data.data)
     },
   })
 </script>

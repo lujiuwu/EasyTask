@@ -37,7 +37,7 @@
           </v-col>
           <v-col cols="2" offset="4">
             <v-btn density="comfortable" variant="outlined" @click="$router.push(`/tasks/${props.data.id}`)">
-              详情
+              {{ $t('tasks.items.detail') }}
             </v-btn>
           </v-col>
         </v-row>
@@ -75,7 +75,6 @@
   }
 
   function handleDelete () {
-    console.log(props.data.id)
     showDialog.value = true
   }
 </script>

@@ -2,13 +2,13 @@
   <v-dialog :model-value="props.modelValue" @update:model-value="updateModelValue">
     <template #default>
       <v-card>
-        <v-card-title>确认要删除{{ props.info.title }}吗？</v-card-title>
+        <v-card-title>{{ $t('tasks.items.delete.title', { title: props.info.title }) }}</v-card-title>
         <v-card-text>
-          删除后可以在个人回收站恢复
+          {{ $t('tasks.items.delete.content') }}
         </v-card-text>
         <v-card-actions>
-          <v-btn @click="updateModelValue(false)">取消</v-btn>
-          <v-btn color="error" @click="handleConfirm">删除</v-btn>
+          <v-btn @click="updateModelValue(false)">{{ $t('tasks.items.delete.cancel') }}</v-btn>
+          <v-btn color="error" @click="handleConfirm">{{ $t('tasks.items.delete.delete') }}</v-btn>
         </v-card-actions>
       </v-card>
     </template>

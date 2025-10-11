@@ -15,3 +15,8 @@ export const colItems = [
   { label: '两列', value: '2', icon: 'mdi-format-columns' },
   { label: '卡片', value: '4', icon: 'mdi-apps' },
 ]
+
+export const sortItems = [
+  { label: '最近创建', value: 'createTime', icon: 'mdi-sort-clock-descending' },
+  { label: '最近更新', value: 'updateTime', icon: 'mdi-sort-bool-descending' },
+]

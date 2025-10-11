@@ -7,12 +7,13 @@
   >
     <v-btn :disabled="!canGoBack" icon="mdi-arrow-left" @click="router.back()" />
     <v-toolbar-title class="text-h6">
-      {{ currentRoute.meta.title }}
+      {{ t(currentRoute.path as string) }}
     </v-toolbar-title>
     <Filter v-if="currentRoute.path !== '/setting'" />
     <Layout v-if="currentRoute.path === '/tasks'" />
     <Share v-if="currentRoute.path === '/setting'" />
     <Col v-if="currentRoute.path === '/milestones'" />
+    <Sort v-if="currentRoute.path === '/tasks'" />
   </v-toolbar>
 </template>
 
@@ -20,11 +21,12 @@
   import _ from 'lodash'
   import { computed, ref } from 'vue'
   import { useRouter } from 'vue-router'
+  import { useI18n } from '@/composables/useI18n'
   import router from '@/router'
-  import { Col, Filter, Layout, Share } from './_components'
+  import { Col, Filter, Layout, Share, Sort } from './_components'
 
   const currentRoute = computed(() => router.currentRoute.value)
-  console.log(currentRoute.value)
+  const { t } = useI18n()
 
   const r = useRouter()
   const canGoBack = ref(false)

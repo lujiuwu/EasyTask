@@ -37,7 +37,6 @@
           v-bind="statusProps"
         />
         <v-select
-          v-model="chips"
           chips
           :items="chipsOptions"
           label="任务标签"
@@ -67,9 +66,9 @@
   ]
 
   const chipsOptions = [
-    { label: '重要', color: 'red', icon: 'mdi-alert' },
-    { label: '计划表', color: 'black' },
-    { label: '养成习惯', color: 'pink', icon: 'mdi-home' },
+    '重要',
+    '计划表',
+    '养成习惯',
   ]
 
   const taskStatusOptions = [

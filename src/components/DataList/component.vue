@@ -49,7 +49,7 @@
   const customIsFetchingNextPage = ref(false)
 
   async function getTasksByPage ({ pageParam = 1 }) {
-    const res = await axios.get('/api/tasks/' + pageParam)
+    const res = await axios.get('/api/tasks?page=' + pageParam)
 
     return res.data.data
   }
@@ -68,6 +68,9 @@
       return lastPage.hasNextPage ? lastPage.nextPage : undefined
     },
     initialPageParam: 1,
+  })
+  watch(data, newValue => {
+    console.log(newValue)
   })
 
   // 延迟
@@ -95,7 +98,6 @@
 
   const allItems = computed(() => {
     const filter = appStore.filter
-    console.log(filter)
     if (filter === TaskStatus.UNFINISHED) {
       return _.flatMap(data.value?.pages, page => page.data.filter((page: TaskItem) => page.status === TaskStatus.UNFINISHED)) || []
     } else if (filter === TaskStatus.FINISHED) {
