@@ -16,5 +16,9 @@
 </template>
 
 <script lang="ts" setup>
-  import { sortItems } from '../constants'
+  import { useI18n } from '@/composables/useI18n'
+  import { getSortItems } from '../constants'
+
+  const { t } = useI18n()
+  const sortItems = getSortItems(t)
 </script>

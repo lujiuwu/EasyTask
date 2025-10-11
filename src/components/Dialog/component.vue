@@ -2,21 +2,21 @@
   <v-dialog :model-value="props.modelValue" @update:model-value="updateModelValue">
     <template #default>
       <v-card>
-        <v-card-title>{{ $t('tasks.items.delete.title', { title: props.info.title }) }}</v-card-title>
+        <v-card-title class="text-wrap">{{ $t('pages.tasks.item.delete.title', { title: props.info.title }) }}</v-card-title>
         <v-card-text>
-          {{ $t('tasks.items.delete.content') }}
+          {{ $t('pages.tasks.item.delete.content') }}
         </v-card-text>
         <v-card-actions>
-          <v-btn @click="updateModelValue(false)">{{ $t('tasks.items.delete.cancel') }}</v-btn>
-          <v-btn color="error" @click="handleConfirm">{{ $t('tasks.items.delete.delete') }}</v-btn>
+          <v-btn @click="updateModelValue(false)">{{ $t('pages.tasks.item.delete.cancel') }}</v-btn>
+          <v-btn color="error" @click="handleConfirm">{{ $t('pages.tasks.item.delete.delete') }}</v-btn>
         </v-card-actions>
       </v-card>
     </template>
   </v-dialog>
 </template>
 <script lang="ts" setup>
-  import { useAppStore } from '@/stores/app'
-  const appStore = useAppStore()
+  // import { useAppStore } from '@/stores/app'
+  // const appStore = useAppStore()
   const props = defineProps({
     modelValue: {
       type: Boolean,
@@ -40,7 +40,17 @@
   }
 
   function handleConfirm () {
-    appStore.deleteTask(props.info.id)
+    // TODO: 实现删除任务的逻辑
+    console.log('删除任务:', props.info.id)
     updateModelValue(false) // 关闭对话框
   }
 </script>
+
+<style scoped>
+.text-wrap {
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  word-break: break-word !important;
+  line-height: 1.4 !important;
+}
+</style>

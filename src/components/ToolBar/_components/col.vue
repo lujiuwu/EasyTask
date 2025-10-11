@@ -16,10 +16,13 @@
   </v-menu>
 </template>
 <script lang="ts" setup>
+  import { useI18n } from '@/composables/useI18n'
   import { useAppStore } from '@/stores/app'
-  import { colItems } from '../constants'
+  import { getColItems } from '../constants'
 
   const appStore = useAppStore()
+  const { t } = useI18n()
+  const colItems = getColItems(t)
 
   function handleCol (value: string) {
     appStore.setCol(value)

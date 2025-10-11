@@ -6,11 +6,13 @@
         contained
         :model-value="props.data.status === TaskStatus.FINISHED"
       >
-        <v-card-title>已完成</v-card-title>
+        <v-card-title>{{ $t('tool-bar.filter.types.finished') }}</v-card-title>
       </v-overlay>
       <v-card-title>{{ props.data.title }}</v-card-title>
       <v-card-subtitle class="mb-2 p-5px!">
-        <span class="ml-2">共 {{ props.data.content.length }} 项</span>
+        <span class="ml-2">
+          {{ $t('pages.tasks.item.total-number', { total: props.data.content.length }) }}
+        </span>
         <span>
           <v-chip
             v-for="chip in props.data.chips"
@@ -37,7 +39,7 @@
           </v-col>
           <v-col cols="2" offset="4">
             <v-btn density="comfortable" variant="outlined" @click="$router.push(`/tasks/${props.data.id}`)">
-              {{ $t('tasks.items.detail') }}
+              {{ $t('pages.tasks.item.detail') }}
             </v-btn>
           </v-col>
         </v-row>
@@ -54,7 +56,10 @@
 <script lang="ts" setup>
   import { PublicContent } from '@/components/DataList/_components/PublicContent'
   import { Dialog } from '@/components/Dialog'
+  import { useI18n } from '@/composables/useI18n'
   import { TaskStatus } from '@/enum/task_status'
+
+  const { t } = useI18n()
 
   const props = defineProps({
     data: {

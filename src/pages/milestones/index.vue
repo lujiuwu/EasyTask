@@ -4,7 +4,7 @@
       <v-row>
         <v-col class="p-0!" cols="12">
           <v-text-field
-            placeholder="搜索里程碑"
+            :placeholder="$t('pages.milestones.search.milestones')"
             prepend-inner-icon="mdi-magnify"
           />
         </v-col>

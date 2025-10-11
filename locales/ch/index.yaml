@@ -1,0 +1,91 @@
+language:
+  ch: 中文
+  en: 英文
+tool-bar:
+  filter:
+    types: 
+      all: 全部
+      unfinished: 未完成
+      finished: 已完成
+  col:
+    types:
+      oneLine: 一列
+      twoLine: 两列
+      card: 卡片
+  layout:
+    types:
+      list: 列表
+      grid: 网格
+      table: 表格
+  sort:
+    types:
+      createTime: 最近创建
+      updateTime: 最近更新
+footer-nav:
+  tasks: 任务
+  milestones: 里程碑
+  setting: 设置
+intro:
+  alert:
+    title: 是否开启新手指引？
+    open: 开启
+    close: 关闭
+  steps:
+    first-step: 第一步
+    second-step: 第二步
+    prev-step: 上一步
+    next-step: 下一步
+    skip-step: 跳过
+    done-step: 完成
+  contents:
+    first-step:
+      title: 第一步
+      intro: 点击此处更换布局
+    
+    second-step:
+      title: 第二步
+      intro: 点击此处添加任务
+pages:
+  tasks:
+    search:
+      tasks: 搜索任务
+    item:
+      total-number: 共 {{ total }} 项
+      delete:
+        title: 确定要删除 {{ title }} 吗？
+        content: 删除后可以在个人回收站中恢复
+        cancel: 取消
+        delete: 删除
+      detail: 详情
+  milestones:
+    search:
+      milestones: 搜索里程碑
+    item:
+      total-number: 共 {{ total }} 项
+      delete:
+        title: 确定要删除 {{ title }} 吗？
+        content: 删除后可以在个人回收站中恢复
+        cancel: 取消
+        delete: 删除
+      detail: 详情
+  setting:
+    user:
+      function:
+        switchLanguage:
+          title: 切换语言
+          cancel: 取消
+          confirm: 确认
+          language: 语言
+          languages:
+            ch: 中文
+            en: 英文
+    useful-functions:
+      title: 常用功能
+      items:
+        about-system: 关于系统
+        about-account: 关于账户
+        prefer-setting: 偏好设置
+    other:
+      title: 其他
+      items:
+        other-functions: 其他功能

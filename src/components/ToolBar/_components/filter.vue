@@ -21,9 +21,12 @@
 
 <script lang="ts" setup>
   import { useAppStore } from '@/stores/app'
-  import { filterItems } from '../constants'
+  import { useI18n } from '@/composables/useI18n'
+  import { getFilterItems } from '../constants'
 
   const appStore = useAppStore()
+  const { t } = useI18n()
+  const filterItems = getFilterItems(t)
 
   function handleFilter (value: string) {
     appStore.setFilter(value)

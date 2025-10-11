@@ -19,8 +19,8 @@
   import { useI18n } from '@/composables/useI18n'
   const { t } = useI18n()
   const navigationItems = [
-    { label: computed(() => t('/tasks')), value: 'task', icon: 'mdi-format-list-checks', to: '/tasks' },
-    { label: computed(() => t('/milestones')), value: 'milestone', icon: 'mdi-flag-checkered', to: '/milestones' },
-    { label: computed(() => t('/setting')), value: 'settings', icon: 'mdi-cogs', to: '/setting' },
+    { label: computed(() => t('footer-nav.tasks')), value: 'task', icon: 'mdi-format-list-checks', to: '/tasks' },
+    { label: computed(() => t('footer-nav.milestones')), value: 'milestone', icon: 'mdi-flag-checkered', to: '/milestones' },
+    { label: computed(() => t('footer-nav.setting')), value: 'settings', icon: 'mdi-cogs', to: '/setting' },
   ]
 </script>

@@ -21,10 +21,13 @@
 </template>
 
 <script lang="ts" setup>
+  import { useI18n } from '@/composables/useI18n'
   import { useAppStore } from '@/stores/app'
-  import { layoutItems } from '../constants'
+  import { getLayoutItems } from '../constants'
 
   const appStore = useAppStore()
+  const { t } = useI18n()
+  const layoutItems = getLayoutItems(t)
 
   function changeLayout (mode: string) {
     appStore.setLayoutMode(mode)

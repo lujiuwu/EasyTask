@@ -1,14 +1,20 @@
 <template>
   <v-dialog :model-value="props.open" @update:model-value="$emit('update:open', $event)">
     <v-card>
-      <v-card-title>切换语言</v-card-title>
+      <v-card-title>{{ t('pages.setting.user.function.switchLanguage.title') }}</v-card-title>
       <v-card-text>
-        <v-select v-model="language" :items="languages" @update:model-value="handleLanguage" />
+        <v-select v-model="language" :items="languages" @update:model-value="language = $event" />
       </v-card-text>
       <v-card-actions>
         <v-spacer />
         <v-btn
-          :text="t('close')"
+          :text="t('pages.setting.user.function.switchLanguage.confirm')"
+          variant="outlined"
+          @click="handleLanguage()"
+        />
+        <v-btn
+          :text="t('pages.setting.user.function.switchLanguage.cancel')"
+          variant="outlined"
           @click="emit('update:open', false)"
         />
       </v-card-actions>
@@ -26,14 +32,15 @@
       default: false,
     },
   })
+  const { switchLocale, t } = useI18n()
   const emit = defineEmits(['update:open'])
   const language = ref('en')
-  const languages = ref(['ch', 'en'])
-  const { switchLocale, t } = useI18n()
-
-  function handleLanguage (value: string) {
-    language.value = value
+  const languages = ref([
+    { title: t('language.ch'), value: 'ch' },
+    { title: t('language.en'), value: 'en' },
+  ])
+  function handleLanguage () {
     emit('update:open', false)
-    switchLocale(value)
+    switchLocale(language.value)
   }
 </script>

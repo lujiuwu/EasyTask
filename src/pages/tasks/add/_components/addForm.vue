@@ -53,6 +53,7 @@
   import { toTypedSchema } from '@vee-validate/zod'
   import { useForm } from 'vee-validate'
   import { computed, watch } from 'vue'
+  import { useI18n } from '@/composables/useI18n'
   import { TaskStatus } from '@/enum/task_status'
   import { TaskType } from '@/enum/task_type'
   import { TaskItemSchema } from '@/types/TaskItem'
@@ -71,9 +72,11 @@
     '养成习惯',
   ]
 
+  const { t } = useI18n()
+
   const taskStatusOptions = [
-    { title: '未完成', value: TaskStatus.UNFINISHED },
-    { title: '已完成', value: TaskStatus.FINISHED },
+    { title: t('tool-bar.filter.types.unfinished'), value: TaskStatus.UNFINISHED },
+    { title: t('tool-bar.filter.types.finished'), value: TaskStatus.FINISHED },
   ]
 
   const { defineField, errors, meta } = useForm({

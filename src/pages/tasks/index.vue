@@ -7,10 +7,10 @@
       style="padding: 5px!important;"
       type="info"
     >
-      <span>{{ $t('tasks.intro.start') }}</span>
+      <span>{{ t('intro.alert.title') }}</span>
       <template #append>
-        <v-btn class="mr-2px" density="compact" @click="() => startIntro($t)">{{ $t('tasks.intro.open') }}</v-btn>
-        <v-btn density="compact" @click="show = false">{{ $t('tasks.intro.close') }}</v-btn>
+        <v-btn class="mr-2px" density="compact" @click="() => startIntro(t)">{{ t('intro.alert.open') }}</v-btn>
+        <v-btn density="compact" @click="show = false">{{ t('intro.alert.close') }}</v-btn>
       </template>
     </v-alert>
     <v-form>
@@ -20,7 +20,7 @@
             <v-text-field
               v-model="value"
               clearable
-              :placeholder="$t('tasks.search.tasks')"
+              :placeholder="t('pages.tasks.search.tasks')"
               prepend-inner-icon="mdi-magnify"
               @update:model-value="handleSearch"
             />
@@ -60,12 +60,14 @@
   import { ref } from 'vue'
   import DataList from '@/components/DataList/component.vue'
   import PublicAddButton from '@/components/PublicAddButton/component.vue'
+  import { useI18n } from '@/composables/useI18n'
   import { useTasksCache } from '@/composables/useTasksCache'
   import { startIntro } from '@/utils/intro'
 
   definePage({
     meta: { key: 'mdi-format-list-checks', title: 'r' },
   })
+  const { t } = useI18n()
   const value = ref('')
   const showList = ref(false)
   const show = ref(true)
@@ -78,7 +80,8 @@
       list.value = []
       return
     }
-    const currentTasks = _.flatMap((getCachedTasks().pages as any[]), page => page.data)
+    const cachedData = getCachedTasks()
+    const currentTasks = _.flatMap((cachedData.pages as any[]), (page: any) => page.data)
     // eslint-disable-next-line unicorn/no-array-for-each
     _.forEach(currentTasks, item => {
       if (item.title.includes(value.value)) {

@@ -18,7 +18,7 @@
             </template>
             <v-list>
               <v-list-item @click="handleOpen">
-                <v-list-item-title>切换语言</v-list-item-title>
+                <v-list-item-title>{{ t('pages.setting.user.function.switchLanguage.title') }}</v-list-item-title>
               </v-list-item>
             </v-list>
           </v-menu>
@@ -26,7 +26,7 @@
       </v-list-item>
       <v-divider />
       <v-list>
-        <v-list-subheader>常用功能</v-list-subheader>
+        <v-list-subheader>{{ t('pages.setting.useful-functions.title') }}</v-list-subheader>
         <v-list-item v-for="item in useful_fns" :key="item.label" color="primary" :to="item.to">
           <template #prepend>
             <v-icon :icon="item.icon" />
@@ -37,7 +37,7 @@
         </v-list-item>
       </v-list>
       <v-list>
-        <v-list-subheader>其他</v-list-subheader>
+        <v-list-subheader>{{ t('pages.setting.other.title') }}</v-list-subheader>
         <v-list-item v-for="item in other_fns" :key="item.label" color="primary" :to="item.to">
           <template #prepend>
             <v-icon :icon="item.icon" />
@@ -53,8 +53,11 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref } from 'vue'
+  import { computed, ref } from 'vue'
+  import { useI18n } from '@/composables/useI18n'
   import { SwitchLanguage } from './_components'
+
+  const { t } = useI18n()
 
   const open = ref(false)
   function handleOpen () {
@@ -64,11 +67,11 @@
     meta: { key: 'mdi-cogs', title: '设置' },
   })
   const useful_fns = [
-    { label: '关于系统', icon: 'mdi-alert-circle', to: '/setting/system' },
-    { label: '关于账户', icon: 'mdi-account', to: '/setting/account' },
-    { label: '偏好设置', icon: 'mdi-heart', to: '/setting/prefer' },
+    { label: computed(() => t('pages.setting.useful-functions.items.about-system')), icon: 'mdi-alert-circle', to: '/setting/system' },
+    { label: computed(() => t('pages.setting.useful-functions.items.about-account')), icon: 'mdi-account', to: '/setting/account' },
+    { label: computed(() => t('pages.setting.useful-functions.items.prefer-setting')), icon: 'mdi-heart', to: '/setting/prefer' },
   ]
   const other_fns = [
-    { label: '其他功能', icon: 'mdi-help-circle', to: '/setting/others' },
+    { label: computed(() => t('pages.setting.other.items.other-functions')), icon: 'mdi-help-circle', to: '/setting/others' },
   ]
 </script>

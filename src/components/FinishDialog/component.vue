@@ -10,7 +10,7 @@
     <template #default="{ isActive }">
       <v-card>
         <v-card-title class="d-flex justify-space-between align-center">
-          <div class="text-h5 text-medium-emphasis ps-2">{{ item.done ? '已完成任务子项' : '完成任务子项' }}</div>
+          <div class="text-h5 text-medium-emphasis ps-2">{{ item.done ? $t('tool-bar.filter.types.finished') + '任务子项' : '完成任务子项' }}</div>
           <v-btn
             icon="mdi-close"
             variant="text"

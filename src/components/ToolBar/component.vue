@@ -7,7 +7,7 @@
   >
     <v-btn :disabled="!canGoBack" icon="mdi-arrow-left" @click="router.back()" />
     <v-toolbar-title class="text-h6">
-      {{ t(currentRoute.path as string) }}
+      {{ t(`footer-nav.${currentRoute.path.slice(1)}`) }}
     </v-toolbar-title>
     <Filter v-if="currentRoute.path !== '/setting'" />
     <Layout v-if="currentRoute.path === '/tasks'" />

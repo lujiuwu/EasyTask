@@ -1,0 +1,91 @@
+language:
+  ch: Chinese
+  en: English
+tool-bar:
+  filter:
+    types: 
+      all: All
+      unfinished: Unfinished
+      finished: Finished
+  col:
+    types:
+      oneLine: One Column
+      twoLine: Two Columns
+      card: Card
+  layout:
+    types:
+      list: List
+      grid: Grid
+      table: Table
+  sort:
+    types:
+      createTime: Recently Created
+      updateTime: Recently Updated
+footer-nav:
+  tasks: Tasks
+  milestones: Milestones
+  setting: Settings
+intro:
+  alert:
+    title: Would you like to enable the new user guide?
+    open: Enable
+    close: Disable
+  steps:
+    first-step: First Step
+    second-step: Second Step
+    prev-step: Previous
+    next-step: Next
+    skip-step: Skip
+    done-step: Done
+  contents:
+    first-step:
+      title: First Step
+      intro: Click here to change layout
+    
+    second-step:
+      title: Second Step
+      intro: Click here to add tasks
+pages:
+  tasks:
+    search:
+      tasks: Search tasks
+    item:
+      total-number: Total { total } items
+      delete:
+        title: Are you sure you want to delete { title }?
+        content: Deleted items can be restored from personal recycle bin
+        cancel: Cancel
+        delete: Delete
+      detail: Detail
+  milestones:
+    search:
+      milestones: Search milestones
+    item:
+      total-number: Total {{ total }} items
+      delete:
+        title: Are you sure you want to delete {{ title }}?
+        content: Deleted items can be restored from personal recycle bin
+        cancel: Cancel
+        delete: Delete
+      detail: Details
+  setting:
+    user:
+      function:
+        switchLanguage:
+          title: Switch Language
+          cancel: Cancel
+          confirm: Confirm
+          language: Language
+          languages:
+            ch: Chinese
+            en: English
+    useful-functions:
+      title: Useful Functions
+      items:
+        about-system: About System
+        about-account: About Account
+        prefer-setting: Preferences
+    other:
+      title: Other
+      items:
+        other-functions: Other Functions
