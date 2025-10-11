@@ -27,7 +27,7 @@
       <v-divider />
       <v-list>
         <v-list-subheader>{{ t('pages.setting.useful-functions.title') }}</v-list-subheader>
-        <v-list-item v-for="item in useful_fns" :key="item.label" color="primary" :to="item.to">
+        <v-list-item v-for="item in useful_fns" :key="item.to" color="primary" :to="item.to">
           <template #prepend>
             <v-icon :icon="item.icon" />
           </template>
@@ -38,7 +38,7 @@
       </v-list>
       <v-list>
         <v-list-subheader>{{ t('pages.setting.other.title') }}</v-list-subheader>
-        <v-list-item v-for="item in other_fns" :key="item.label" color="primary" :to="item.to">
+        <v-list-item v-for="item in other_fns" :key="item.to" color="primary" :to="item.to">
           <template #prepend>
             <v-icon :icon="item.icon" />
           </template>
@@ -66,12 +66,12 @@
   definePage({
     meta: { key: 'mdi-cogs', title: '设置' },
   })
-  const useful_fns = [
-    { label: computed(() => t('pages.setting.useful-functions.items.about-system')), icon: 'mdi-alert-circle', to: '/setting/system' },
-    { label: computed(() => t('pages.setting.useful-functions.items.about-account')), icon: 'mdi-account', to: '/setting/account' },
-    { label: computed(() => t('pages.setting.useful-functions.items.prefer-setting')), icon: 'mdi-heart', to: '/setting/prefer' },
-  ]
-  const other_fns = [
-    { label: computed(() => t('pages.setting.other.items.other-functions')), icon: 'mdi-help-circle', to: '/setting/others' },
-  ]
+  const useful_fns = computed(() => [
+    { label: t('pages.setting.useful-functions.items.about-system'), icon: 'mdi-alert-circle', to: '/setting/system' },
+    { label: t('pages.setting.useful-functions.items.about-account'), icon: 'mdi-account', to: '/setting/account' },
+    { label: t('pages.setting.useful-functions.items.prefer-setting'), icon: 'mdi-heart', to: '/setting/prefer' },
+  ])
+  const other_fns = computed(() => [
+    { label: t('pages.setting.other.items.other-functions'), icon: 'mdi-help-circle', to: '/setting/others' },
+  ])
 </script>

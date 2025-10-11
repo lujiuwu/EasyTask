@@ -64,7 +64,7 @@
   } = useInfiniteQuery({
     queryKey: ['tasks'],
     queryFn: getTasksByPage,
-    getNextPageParam: lastPage => {
+    getNextPageParam: (lastPage: any) => {
       return lastPage.hasNextPage ? lastPage.nextPage : undefined
     },
     initialPageParam: 1,
