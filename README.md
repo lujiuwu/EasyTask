@@ -1,4 +1,4 @@
-# EasyTask - 任务管理应用
+# EasyTask - 定时任务管理系统
 
 <p>less task, more fun!</p>
 一个基于 Vue 3 + Vuetify 3 构建的现代化任务管理应用，提供直观的任务创建、管理和跟踪功能。
