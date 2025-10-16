@@ -1,26 +1,52 @@
 <template>
-  <div class="p-20px">
+  <div class="p-10px">
     <v-card>
-      <v-card-title>{{ data?.title }}</v-card-title>
-      <v-card-subtitle>任务ID: {{ data?.id }}</v-card-subtitle>
+      <v-card-title>
+        <v-row>
+          <v-col cols="10">
+            {{ data?.title }}
+          </v-col>
+          <v-col cols="2">
+            <v-icon>mdi-pencil</v-icon>
+          </v-col>
+        </v-row>
+      </v-card-title>
+      <v-card-subtitle>{{ t('pages.tasks.item.detail.id') }}: {{ data?.id }}</v-card-subtitle>
+      <v-card-subtitle>{{ t('pages.tasks.item.detail.create-time') }}: {{ data?.createTime }}</v-card-subtitle>
+      <v-card-subtitle>{{ t('pages.tasks.item.detail.update-time') }}: {{ data?.updateTime }}</v-card-subtitle>
+      <v-card-subtitle>
+        <span>{{ t('pages.tasks.item.detail.status') }}: </span>
+        <v-chip size="small">
+          {{ data?.status }}
+        </v-chip>
+      </v-card-subtitle>
       <v-card-text>
         <v-skeleton v-if="isPending" type="text" />
-        <PublicContent v-else-if="data" :data="data" />
+        <TaskDetailPanel v-else-if="data" :data="data" />
         <div v-else>
-          任务未找到
+          {{ t('pages.tasks.item.detail.not-found') }}
         </div>
       </v-card-text>
+      <v-card-actions>
+        <div class="flex flex-col">
+          <v-btn color="primary" variant="flat">{{ t('pages.tasks.item.detail.save-changes') }}</v-btn>
+          <AddSubTaskButton />
+        </div>
+      </v-card-actions>
     </v-card>
   </div>
 </template>
 <script lang="ts" setup>
   import { useQuery } from '@tanstack/vue-query'
   import axios from 'axios'
-  import _ from 'lodash'
-  import { PublicContent } from '@/components/DataList/_components/PublicContent'
+  import { watch } from 'vue'
+  import { AddSubTaskButton } from '@/components/AddSubTaskButton'
+  import { TaskDetailPanel } from '@/components/TaskDetailPanel'
+  import { useI18n } from '@/composables/useI18n'
 
+  const { t } = useI18n()
   const route = useRoute()
-  const id = _.toNumber((route.params as { id: string }).id)
+  const id = (route.params as { id: string }).id
   const {
     data,
     isPending,
@@ -29,5 +55,8 @@
     queryFn: () => {
       return axios.get(`/api/tasks/${id}`).then(res => res.data.data)
     },
+  })
+  watch(data, newValue => {
+    console.log(newValue)
   })
 </script>

@@ -36,25 +36,38 @@
 
 <script lang="ts" setup>
   import type { TaskItem } from '@/types/TaskItem'
+  import { useMutation } from '@tanstack/vue-query'
+  import axios from 'axios'
+  import { v4 as uuidv4 } from 'uuid'
   import { computed, ref } from 'vue'
-  import { useRouter } from 'vue-router'
-  import { useAppStore } from '@/stores/app'
+  import { useToast } from 'vue-toastification'
   import AddForm from './_components/addForm.vue'
   import AddSubItem from './_components/addSubItem.vue'
 
+  const toast = useToast()
   const currentStep = ref(0)
   const addFormRef = ref<InstanceType<typeof AddForm> | null>(null)
   const addSubItemRef = ref<InstanceType<typeof AddSubItem> | null>(null)
-  const router = useRouter()
-  const appStore = useAppStore()
+  function addTask (newTask: TaskItem) {
+    return axios.post('/api/tasks', newTask)
+  }
 
+  const { mutate: addTaskFn } = useMutation({
+    mutationFn: addTask,
+    onSuccess: _data => {
+      toast.success('任务创建成功', { timeout: 1000 })
+    },
+    onError: _error => {
+      toast.error('任务创建失败')
+    },
+  })
   function handleSubmit () {
     const newTask = {
       ...addFormRef.value?.formData,
       ...addSubItemRef.value?.formData,
+      id: uuidv4(),
     }
-    appStore.addTask(newTask as TaskItem)
-    router.push('/tasks')
+    addTaskFn(newTask as TaskItem)
   }
 
   // 计算下一步按钮是否可用

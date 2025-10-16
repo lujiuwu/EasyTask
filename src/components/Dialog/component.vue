@@ -15,8 +15,27 @@
   </v-dialog>
 </template>
 <script lang="ts" setup>
-  // import { useAppStore } from '@/stores/app'
-  // const appStore = useAppStore()
+  import { useMutation, useQueryClient } from '@tanstack/vue-query'
+  import axios from 'axios'
+  import { useToast } from 'vue-toastification'
+
+  const toast = useToast()
+  const queryClient = useQueryClient()
+  function deleteTask (taskId: string) {
+    return axios.delete(`/api/tasks/${taskId}`)
+  }
+
+  const { mutate: deleteTaskFn } = useMutation({
+    mutationFn: deleteTask,
+    onSuccess: _data => {
+      toast.success('任务删除成功', { timeout: 1000 })
+      queryClient.invalidateQueries({ queryKey: ['tasks'] })
+    },
+    onError: _error => {
+      toast.error('任务删除失败')
+    },
+  })
+
   const props = defineProps({
     modelValue: {
       type: Boolean,
@@ -40,8 +59,7 @@
   }
 
   function handleConfirm () {
-    // TODO: 实现删除任务的逻辑
-    console.log('删除任务:', props.info.id)
+    deleteTaskFn(props.info.id)
     updateModelValue(false) // 关闭对话框
   }
 </script>

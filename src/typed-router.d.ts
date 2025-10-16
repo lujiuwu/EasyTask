@@ -35,6 +35,7 @@ declare module 'vue-router/auto-routes' {
     '/tasks/add/': RouteRecordInfo<'/tasks/add/', '/tasks/add', Record<never, never>, Record<never, never>>,
     '/tasks/add/_components/addForm': RouteRecordInfo<'/tasks/add/_components/addForm', '/tasks/add/_components/addForm', Record<never, never>, Record<never, never>>,
     '/tasks/add/_components/addSubItem': RouteRecordInfo<'/tasks/add/_components/addSubItem', '/tasks/add/_components/addSubItem', Record<never, never>, Record<never, never>>,
+    '/tasks/star/': RouteRecordInfo<'/tasks/star/', '/tasks/star', Record<never, never>, Record<never, never>>,
   }
 
   /**
@@ -114,6 +115,10 @@ declare module 'vue-router/auto-routes' {
     }
     'src/pages/tasks/add/_components/addSubItem.vue': {
       routes: '/tasks/add/_components/addSubItem'
+      views: never
+    }
+    'src/pages/tasks/star/index.vue': {
+      routes: '/tasks/star/'
       views: never
     }
   }

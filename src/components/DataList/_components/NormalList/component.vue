@@ -29,7 +29,7 @@
           <v-expansion-panel-text
             :style="{ backgroundColor: item.type }"
           >
-            <PublicContent :data="item" :style="{ backgroundColor: item.type }" />
+            <TaskDetailPanel :data="item" :style="{ backgroundColor: item.type }" />
             <v-row>
               <v-col cols="1" offset="9">
                 <v-btn variant="tonal" @click="handleDetail(item)">
@@ -46,7 +46,7 @@
 <script lang="ts" setup>
   import type { TaskItem } from '@/types/TaskItem'
   import { useRouter } from 'vue-router'
-  import { PublicContent } from '@/components/DataList/_components/PublicContent'
+  import { TaskDetailPanel } from '@/components/TaskDetailPanel'
 
   const props = defineProps({
     data: {

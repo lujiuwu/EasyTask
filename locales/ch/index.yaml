@@ -33,6 +33,7 @@ intro:
   steps:
     first-step: 第一步
     second-step: 第二步
+    third-step: 第三步
     prev-step: 上一步
     next-step: 下一步
     skip-step: 跳过
@@ -41,9 +42,11 @@ intro:
     first-step:
       title: 第一步
       intro: 点击此处更换布局
-    
     second-step:
       title: 第二步
+      intro: 点击此处进入收藏夹
+    third-step:
+      title: 第三步
       intro: 点击此处添加任务
 pages:
   tasks:
@@ -61,13 +64,34 @@ pages:
     search:
       milestones: 搜索里程碑
     item:
-      total-number: 共 {{ total }} 项
+      total-number: 共 { total } 项
       delete:
-        title: 确定要删除 {{ title }} 吗？
+        title: 确定要删除 { title } 吗？
         content: 删除后可以在个人回收站中恢复
         cancel: 取消
         delete: 删除
-      detail: 详情
+      detail: 
+        title: 详情
+        id: 任务ID
+        sub-tasks: 子任务
+        create-time: 创建时间
+        update-time: 更新时间
+        type: 类型
+        status: 状态
+        not-found: 任务未找到
+        add-sub-task: 添加子任务
+        save-changes: 保存更改
+      table:
+        id: 编号
+        create-time: 创建时间
+        target-at: 目标完成
+        mark: 备注
+        description: 描述
+    star:
+      title: 收藏夹
+      id: ID
+      tasks-id: 任务ID
+      star-time: 收藏时间
   setting:
     user:
       function:

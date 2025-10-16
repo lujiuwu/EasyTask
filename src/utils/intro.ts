@@ -10,9 +10,15 @@ export function startIntro (t: (key: string) => string) {
       position: 'bottom' as const,
     },
     {
-      element: '.add-tasks',
+      element: '.star-book',
       title: t('intro.contents.second-step.title'),
       intro: t('intro.contents.second-step.intro'),
+      position: 'bottom' as const,
+    },
+    {
+      element: '.add-tasks',
+      title: t('intro.contents.third-step.title'),
+      intro: t('intro.contents.third-step.intro'),
       position: 'bottom' as const,
     },
   ]

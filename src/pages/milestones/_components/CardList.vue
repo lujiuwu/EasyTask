@@ -9,7 +9,7 @@
         <v-card-actions>
           <v-row>
             <v-col cols="1" offset="3">
-              <v-btn density="compact" variant="outlined">详情</v-btn>
+              <v-btn density="compact" variant="outlined">{{ t('pages.milestones.item.detail') }}</v-btn>
             </v-col>
           </v-row>
         </v-card-actions>
@@ -20,7 +20,8 @@
 
 <script lang="ts" setup>
   import type { MileStoneItem } from '@/types/MileStoneItem'
-
+  import { useI18n } from '@/composables/useI18n'
+  const { t } = useI18n()
   const props = defineProps({
     data: {
       type: Array as PropType<MileStoneItem[]>,

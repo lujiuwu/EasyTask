@@ -6,12 +6,12 @@
         contained
         :model-value="props.data.status === TaskStatus.FINISHED"
       >
-        <v-card-title>{{ $t('tool-bar.filter.types.finished') }}</v-card-title>
+        <v-card-title>{{ t('tool-bar.filter.types.finished') }}</v-card-title>
       </v-overlay>
       <v-card-title>{{ props.data.title }}</v-card-title>
       <v-card-subtitle class="mb-2 p-5px!">
         <span class="ml-2">
-          {{ $t('pages.tasks.item.total-number', { total: props.data.content.length }) }}
+          {{ t('pages.tasks.item.total-number', { total: props.data.content.length }) }}
         </span>
         <span>
           <v-chip
@@ -27,7 +27,7 @@
       </v-card-subtitle>
       <v-divider />
       <v-card-text style="cursor: pointer;padding: 5px;">
-        <PublicContent :data="props.data" />
+        <TaskDetailPanel :data="props.data" status="public" :style="{ backgroundColor: props.data.type }" />
       </v-card-text>
       <template #actions>
         <v-row>
@@ -39,7 +39,7 @@
           </v-col>
           <v-col cols="2" offset="4">
             <v-btn density="comfortable" variant="outlined" @click="$router.push(`/tasks/${props.data.id}`)">
-              {{ $t('pages.tasks.item.detail') }}
+              {{ t('pages.tasks.item.detail.title') }}
             </v-btn>
           </v-col>
         </v-row>
@@ -54,8 +54,8 @@
 </template>
 
 <script lang="ts" setup>
-  import { PublicContent } from '@/components/DataList/_components/PublicContent'
   import { Dialog } from '@/components/Dialog'
+  import { TaskDetailPanel } from '@/components/TaskDetailPanel'
   import { useI18n } from '@/composables/useI18n'
   import { TaskStatus } from '@/enum/task_status'
 

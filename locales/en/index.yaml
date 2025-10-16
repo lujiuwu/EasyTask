@@ -27,7 +27,7 @@ footer-nav:
   setting: Settings
 intro:
   alert:
-    title: Would you like to enable the new user guide?
+    title: Would you like to enable theuser guide?
     open: Enable
     close: Disable
   steps:
@@ -41,9 +41,11 @@ intro:
     first-step:
       title: First Step
       intro: Click here to change layout
-    
     second-step:
       title: Second Step
+      intro: Click here to star book
+    third-step:
+      title: Third Step
       intro: Click here to add tasks
 pages:
   tasks:
@@ -56,18 +58,39 @@ pages:
         content: Deleted items can be restored from personal recycle bin
         cancel: Cancel
         delete: Delete
-      detail: Detail
+      detail: 
+        title: Detail
+        id: Task ID
+        sub-tasks: Sub Tasks
+        create-time: Created Time
+        update-time: Updated Time
+        type: Type
+        status: Status
+        not-found: Task Not Found
+        add-sub-task: Add Sub Task
+        save-changes: Save Changes
+    star:
+      title: Star Book
+      id: Star ID
+      tasks-id: Tasks ID
+      star-time: Star Time
   milestones:
     search:
       milestones: Search milestones
     item:
-      total-number: Total {{ total }} items
+      total-number: Total { total } items
       delete:
-        title: Are you sure you want to delete {{ title }}?
+        title: Are you sure you want to delete { title }?
         content: Deleted items can be restored from personal recycle bin
         cancel: Cancel
         delete: Delete
-      detail: Details
+      detail: Detail
+      table:
+        id: ID
+        create-time: Created Time
+        target-at: Target At
+        mark: Mark
+        description: Description
   setting:
     user:
       function:

@@ -51,6 +51,7 @@
     </v-form>
     <data-list />
     <public-add-button to="/tasks/add" />
+    <star-book to="/tasks/star" />
   </div>
 </template>
 
@@ -60,6 +61,7 @@
   import { ref } from 'vue'
   import DataList from '@/components/DataList/component.vue'
   import PublicAddButton from '@/components/PublicAddButton/component.vue'
+  import { StarBook } from '@/components/StarBook'
   import { useI18n } from '@/composables/useI18n'
   import { useTasksCache } from '@/composables/useTasksCache'
   import { startIntro } from '@/utils/intro'
