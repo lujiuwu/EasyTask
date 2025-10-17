@@ -41,7 +41,7 @@
           </v-table>
           <v-row>
             <v-col cols="12" density="comfortable">
-              <v-btn>
+              <v-btn @click="$router.push(`/milestones/${item.id}`)">
                 {{ t('pages.milestones.item.detail') }}
               </v-btn>
             </v-col>
@@ -55,9 +55,6 @@
   import type { MileStoneItem } from '@/types/MileStoneItem'
   import { useI18n } from '@/composables/useI18n'
   const { t } = useI18n()
-  // import type { TaskItem } from '@/types/TaskItem'
-  // import { useQuery } from '@tanstack/vue-query'
-  // import axios from 'axios'
   const props = defineProps({
     data: {
       type: Array as PropType<MileStoneItem[]>,

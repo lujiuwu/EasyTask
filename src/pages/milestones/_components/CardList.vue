@@ -9,7 +9,7 @@
         <v-card-actions>
           <v-row>
             <v-col cols="1" offset="3">
-              <v-btn density="compact" variant="outlined">{{ t('pages.milestones.item.detail') }}</v-btn>
+              <v-btn density="compact" variant="outlined" @click="$router.push(`/milestones/${item.id}`)">{{ t('pages.milestones.item.detail') }}</v-btn>
             </v-col>
           </v-row>
         </v-card-actions>

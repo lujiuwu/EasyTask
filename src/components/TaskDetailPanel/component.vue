@@ -1,6 +1,6 @@
 <template>
   <v-container class="p-0!">
-    <draggable v-model="content!">
+    <draggable v-model="content!" @end="updateContent">
       <template #item="{ element, index }">
         <v-expansion-panels v-if="props.status === 'detail'">
           <v-expansion-panel>
@@ -31,6 +31,7 @@
 
 <script lang="ts" setup>
   import type { TaskItem } from '@/types/TaskItem'
+  import { useDebounceFn } from '@vueuse/core'
   import draggable from 'vuedraggable'
   import { FinishDialog } from '@/components/FinishDialog'
   const props = defineProps({
@@ -43,6 +44,13 @@
     },
   })
   const content = ref<TaskItem[]>(props.data!.content!)
+  const emit = defineEmits<{
+    'update:content': [value: TaskItem[]]
+  }>()
+
+  const updateContent = useDebounceFn(() => {
+    emit('update:content', content.value)
+  }, 1000)
 </script>
 <style scoped lang="scss">
   :deep(.v-list-item) {

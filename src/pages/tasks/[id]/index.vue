@@ -6,9 +6,6 @@
           <v-col cols="10">
             {{ data?.title }}
           </v-col>
-          <v-col cols="2">
-            <v-icon>mdi-pencil</v-icon>
-          </v-col>
         </v-row>
       </v-card-title>
       <v-card-subtitle>{{ t('pages.tasks.item.detail.id') }}: {{ data?.id }}</v-card-subtitle>
@@ -22,7 +19,7 @@
       </v-card-subtitle>
       <v-card-text>
         <v-skeleton v-if="isPending" type="text" />
-        <TaskDetailPanel v-else-if="data" :data="data" />
+        <TaskDetailPanel v-else-if="data" :data="data" @update:content="updateContent" />
         <div v-else>
           {{ t('pages.tasks.item.detail.not-found') }}
         </div>
@@ -37,9 +34,9 @@
   </div>
 </template>
 <script lang="ts" setup>
+  import type { TaskItem } from '@/types/TaskItem'
   import { useQuery } from '@tanstack/vue-query'
   import axios from 'axios'
-  import { watch } from 'vue'
   import { AddSubTaskButton } from '@/components/AddSubTaskButton'
   import { TaskDetailPanel } from '@/components/TaskDetailPanel'
   import { useI18n } from '@/composables/useI18n'
@@ -56,7 +53,8 @@
       return axios.get(`/api/tasks/${id}`).then(res => res.data.data)
     },
   })
-  watch(data, newValue => {
-    console.log(newValue)
-  })
+
+  function updateContent (value: TaskItem[]) {
+    console.log(value)
+  }
 </script>
