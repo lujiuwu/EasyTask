@@ -23,20 +23,6 @@
                 <td class="border-e-sm">{{ t('pages.milestones.item.table.description') }}</td>
                 <td>{{ item.description }}</td>
               </tr>
-              <!-- <tr>
-                <td class="border-e-sm">关联任务</td>
-                <td>
-                  <v-chip
-                    v-for="taskId in item.tasksId"
-                    :key="taskId"
-                    class="mr-6px"
-                    density="compact"
-                    @click="$router.push(`/tasks/${taskId}`)"
-                  >
-                    {{ getTask(taskId) }}
-                  </v-chip>
-                </td>
-              </tr> -->
             </tbody>
           </v-table>
           <v-row>
@@ -62,14 +48,4 @@
       required: false,
     },
   })
-  // const tasks = ref<TaskItem[]>([])
-  // function getTask (id: string) {
-  //   const { data: task } = useQuery({
-  //     queryKey: ['task', id],
-  //     queryFn: () => {
-  //       return axios.get(`/api/tasks/id/${id}`).then(res => res.data.data)
-  //     },
-  //   })
-  //   return task.value?.title
-  // }
 </script>

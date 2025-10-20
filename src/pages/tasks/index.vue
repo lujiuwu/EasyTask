@@ -14,7 +14,7 @@
       </template>
     </v-alert>
     <v-form>
-      <v-container class="relative">
+      <v-container class="relative pb-0!">
         <v-row>
           <v-col class="p-0" cols="12">
             <v-text-field
@@ -49,6 +49,14 @@
         </v-row>
       </v-container>
     </v-form>
+    <v-tabs
+      v-model="tabIndex"
+      center-active
+      color="primary"
+      height="35px"
+      :items="tabs"
+      @update:model-value="appStore.setTabIndex($event as string)"
+    />
     <data-list />
     <public-add-button to="/tasks/add" />
     <star-book to="/tasks/star" />
@@ -64,6 +72,8 @@
   import { StarBook } from '@/components/StarBook'
   import { useI18n } from '@/composables/useI18n'
   import { useTasksCache } from '@/composables/useTasksCache'
+  import { TaskType } from '@/enum/task_type'
+  import { useAppStore } from '@/stores/app'
   import { startIntro } from '@/utils/intro'
 
   definePage({
@@ -100,6 +110,16 @@
     })
     showList.value = list.value.length > 0
   }, 300)
+  const tabs = ref([
+    { text: t('pages.tasks.tabs.all'), value: TaskType.ALL },
+    { text: t('pages.tasks.tabs.normal'), value: TaskType.NORMAL },
+    { text: t('pages.tasks.tabs.schedule'), value: TaskType.SCHEDULE },
+    { text: t('pages.tasks.tabs.important'), value: TaskType.IMPORTANT },
+    { text: t('pages.tasks.tabs.daily'), value: TaskType.DAILY },
+    { text: t('pages.tasks.tabs.work'), value: TaskType.WORK },
+  ])
+  const appStore = useAppStore()
+  const tabIndex = computed(() => appStore.tabIndex)
 </script>
 <style lang="scss" scoped>
   .v-col {

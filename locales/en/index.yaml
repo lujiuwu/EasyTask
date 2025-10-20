@@ -51,6 +51,14 @@ pages:
   tasks:
     search:
       tasks: Search tasks
+
+    tabs:
+      all: All
+      normal: Normal
+      schedule: Schedule
+      important: Important
+      daily: Daily
+      work: Work
     item:
       total-number: Total { total } items
       delete:

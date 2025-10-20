@@ -52,6 +52,13 @@ pages:
   tasks:
     search:
       tasks: 搜索任务
+    tabs:
+      all: 全部
+      normal: 普通
+      schedule: 计划
+      important: 重要
+      daily: 日常
+      work: 工作
     item:
       total-number: 共 {{ total }} 项
       delete:

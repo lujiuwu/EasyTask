@@ -7,6 +7,7 @@ export const useAppStore = defineStore('app', {
     filter: 'all', // all | finished | unfinished
     type: 'all', // all | normal | schedule | important | daily | work
     col: '1', // 1 | 2 | 4
+    tabIndex: 'all', // all | normal | schedule | important | daily | work
   }),
   actions: {
     setLayoutMode (mode: string) {
@@ -20,6 +21,9 @@ export const useAppStore = defineStore('app', {
     },
     setCol (col: string) {
       this.col = col
+    },
+    setTabIndex (tabIndex: string) {
+      this.tabIndex = tabIndex
     },
   },
 })

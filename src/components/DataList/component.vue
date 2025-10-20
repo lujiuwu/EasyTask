@@ -1,7 +1,8 @@
 <template>
   <div>
     <empty-state
-      v-if="customIsPending || error"
+      v-if="customIsPending || error || allItems.length === 0"
+      class="pt-50"
       :headline="'暂无内容'"
       :image="'https://cdn.vuetifyjs.com/docs/images/components/v-empty-state/teamwork.png'"
       :text="'该筛选项没有任务'"
@@ -98,12 +99,10 @@
 
   const allItems = computed(() => {
     const filter = appStore.filter
-    if (filter === TaskStatus.UNFINISHED) {
-      return _.flatMap(data.value?.pages, page => page.data.filter((page: TaskItem) => page.status === TaskStatus.UNFINISHED)) || []
-    } else if (filter === TaskStatus.FINISHED) {
-      return _.flatMap(data.value?.pages, page => page.data.filter((page: TaskItem) => page.status === TaskStatus.FINISHED)) || []
-    }
-    return _.flatMap(data.value?.pages, page => page.data) || []
+    const tabIndex = appStore.tabIndex
+    if (filter === 'all') return tabIndex === 'all' ? _.flatMap(data.value?.pages, page => page.data) || [] : _.flatMap(data.value?.pages, page => page.data.filter((page: TaskItem) => page.type === tabIndex)) || []
+    else if (tabIndex === 'all') return filter === 'all' ? _.flatMap(data.value?.pages, page => page.data) || [] : _.flatMap(data.value?.pages, page => page.data.filter((page: TaskItem) => page.status === filter)) || []
+    else return _.flatMap(data.value?.pages, page => page.data.filter((page: TaskItem) => page.status === filter && page.type === tabIndex)) || []
   })
 
   function handleScroll () {

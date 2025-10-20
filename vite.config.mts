@@ -87,7 +87,8 @@ export default defineConfig({
   },
   server: {
     port: 3000,
-    host: 'localhost', // 只允许本地访问
+    host: '0.0.0.0',
+    open: true, // 自动打开浏览器
     proxy: {
       '/api': {
         target: 'http://127.0.0.1:8080/api/v1',
