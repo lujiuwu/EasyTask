@@ -18,12 +18,29 @@
                 class="mr-5px"
                 color="blue"
                 size="small"
+                variant="tonal"
                 @click="handleCreate(TaskActionModalType.FINISH)"
               >
                 完成
               </v-btn>
-              <v-btn class="mr-5px" color="red" size="small" @click="handleCreate(TaskActionModalType.DELETE)">删除</v-btn>
-              <v-btn v-show="!element.done" color="green" size="small" @click="handleCreate(TaskActionModalType.EDIT)">编辑</v-btn>
+              <v-btn
+                class="mr-5px"
+                color="red"
+                size="small"
+                variant="tonal"
+                @click="handleCreate(TaskActionModalType.DELETE)"
+              >
+                删除
+              </v-btn>
+              <v-btn
+                v-show="!element.done"
+                color="green"
+                size="small"
+                variant="tonal"
+                @click="handleCreate(TaskActionModalType.EDIT)"
+              >
+                编辑
+              </v-btn>
             </v-expansion-panel-text>
           </v-expansion-panel>
         </v-expansion-panels>
