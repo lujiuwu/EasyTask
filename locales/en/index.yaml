@@ -15,7 +15,7 @@ tool-bar:
   layout:
     types:
       list: List
-      grid: Grid
+      grid: Waterfall
       table: Table
   sort:
     types:
@@ -77,6 +77,12 @@ pages:
         not-found: Task Not Found
         add-sub-task: Add Sub Task
         save-changes: Save Changes
+      actions:
+        finish: Finish
+        delete: Delete
+        edit: Edit
+        cancel: Cancel
+        confirm: Confirm
     star:
       title: Star Book
       id: Star ID

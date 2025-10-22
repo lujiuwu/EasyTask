@@ -5,6 +5,7 @@ export const MileStoneItemSchema = z.object({
   title: z.string(),
   description: z.string(),
   createdAt: z.string(),
+  startAt: z.string(),
   targetAt: z.string(),
   mark: z.string().optional(),
   tasksId: z.array(z.string()),

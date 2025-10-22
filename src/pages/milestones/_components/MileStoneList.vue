@@ -27,7 +27,7 @@
           </v-table>
           <v-row>
             <v-col cols="12" density="comfortable">
-              <v-btn @click="$router.push(`/milestones/${item.id}`)">
+              <v-btn color="shades" density="comfortable" variant="tonal" @click="$router.push(`/milestones/${item.id}`)">
                 {{ t('pages.milestones.item.detail') }}
               </v-btn>
             </v-col>

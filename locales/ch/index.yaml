@@ -15,7 +15,7 @@ tool-bar:
   layout:
     types:
       list: 列表
-      grid: 网格
+      grid: 瀑布流
       table: 表格
   sort:
     types:
@@ -67,6 +67,12 @@ pages:
         cancel: 取消
         delete: 删除
       detail: 详情
+      actions:
+        finish: 完成
+        delete: 删除
+        edit: 编辑
+        cancel: 取消
+        confirm: 确认
   milestones:
     search:
       milestones: 搜索里程碑

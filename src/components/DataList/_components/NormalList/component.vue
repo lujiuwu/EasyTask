@@ -29,7 +29,7 @@
           <v-expansion-panel-text
             :style="{ backgroundColor: item.type }"
           >
-            <TaskDetailPanel :data="item" :style="{ backgroundColor: item.type }" />
+            <TaskDetailPanel class="mt-10px mb-10px" :data="item" :style="{ backgroundColor: item.type }" />
             <v-row>
               <v-col cols="1" offset="9">
                 <v-btn variant="tonal" @click="handleDetail(item)">

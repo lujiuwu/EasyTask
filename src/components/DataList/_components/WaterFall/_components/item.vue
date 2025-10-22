@@ -38,7 +38,7 @@
             <v-icon @click="handleDelete">mdi-trash-can-outline</v-icon>
           </v-col>
           <v-col cols="2" offset="4">
-            <v-btn density="comfortable" variant="outlined" @click="$router.push(`/tasks/${props.data.id}`)">
+            <v-btn color="shades" density="comfortable" variant="tonal" @click="$router.push(`/tasks/${props.data.id}`)">
               {{ t('pages.tasks.item.detail.title') }}
             </v-btn>
           </v-col>

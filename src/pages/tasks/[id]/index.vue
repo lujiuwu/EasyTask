@@ -26,7 +26,7 @@
       </v-card-text>
       <v-card-actions>
         <div class="flex flex-col">
-          <v-btn color="primary" variant="flat">{{ t('pages.tasks.item.detail.save-changes') }}</v-btn>
+          <v-btn color="primary" variant="tonal">{{ t('pages.tasks.item.detail.save-changes') }}</v-btn>
           <AddSubTaskButton />
         </div>
       </v-card-actions>

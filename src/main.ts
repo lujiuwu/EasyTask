@@ -3,7 +3,9 @@
  *
  * Bootstraps Vuetify and other plugins then mounts the App`
  */
+
 import { VueQueryPlugin } from '@tanstack/vue-query'
+import VueDatePicker from '@vuepic/vue-datepicker'
 import { createHead } from '@vueuse/head'
 import introJs from 'intro.js'
 // Composables
@@ -19,6 +21,7 @@ import { i18n } from '@/plugins/i18n'
 
 // Components
 import App from './App.vue'
+import '@vuepic/vue-datepicker/dist/main.css'
 import 'vue-toastification/dist/index.css'
 import 'uno.css'
 
@@ -40,7 +43,7 @@ app.use(VueQueryPlugin, {
 })
 app.use(Toast, options)
 app.use(i18n)
-
+app.component('VueDatePicker', VueDatePicker)
 // 配置全局属性
 app.config.globalProperties.$introJs = introJs
 
