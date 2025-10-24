@@ -10,7 +10,6 @@ import { createHead } from '@vueuse/head'
 import introJs from 'intro.js'
 // Composables
 
-import { createApp } from 'vue'
 import { VueMasonryPlugin } from 'vue-masonry'
 import Toast, { type PluginOptions } from 'vue-toastification'
 import { useQueryClient } from '@/composables/useQueryClient'
@@ -18,6 +17,9 @@ import { useQueryClient } from '@/composables/useQueryClient'
 // Plugins
 import { registerPlugins } from '@/plugins'
 import { i18n } from '@/plugins/i18n'
+
+// Stores
+import { useAppStore } from '@/stores/app'
 
 // Components
 import App from './App.vue'
@@ -48,5 +50,9 @@ app.component('VueDatePicker', VueDatePicker)
 app.config.globalProperties.$introJs = introJs
 
 registerPlugins(app)
+
+// 初始化应用状态
+const appStore = useAppStore()
+appStore.initLocale()
 
 app.mount('#app')

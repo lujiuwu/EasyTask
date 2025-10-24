@@ -52,7 +52,6 @@
 <script lang="ts" setup>
   import { toTypedSchema } from '@vee-validate/zod'
   import { useForm } from 'vee-validate'
-  import { computed, watch } from 'vue'
   import { useI18n } from '@/composables/useI18n'
   import { TaskStatus } from '@/enum/task_status'
   import { TaskType } from '@/enum/task_type'

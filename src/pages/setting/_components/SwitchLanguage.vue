@@ -9,13 +9,13 @@
         <v-spacer />
         <v-btn
           :text="t('pages.setting.user.function.switchLanguage.confirm')"
-          variant="outlined"
+          variant="tonal"
           @click="handleLanguage()"
         />
         <v-btn
           :text="t('pages.setting.user.function.switchLanguage.cancel')"
-          variant="outlined"
-          @click="emit('update:open', false)"
+          variant="tonal"
+          @click="handleCancel()"
         />
       </v-card-actions>
     </v-card>
@@ -23,8 +23,9 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref } from 'vue'
+  import { useToast } from 'vue-toastification'
   import { useI18n } from '@/composables/useI18n'
+  import { useAppStore } from '@/stores/app'
 
   const props = defineProps({
     open: {
@@ -33,14 +34,31 @@
     },
   })
   const { switchLocale, t } = useI18n()
+  const appStore = useAppStore()
   const emit = defineEmits(['update:open'])
-  const language = ref('en')
+
+  // 从 store 中获取当前语言设置
+  const language = ref(appStore.locale)
+
   const languages = ref([
-    { title: t('language.ch'), value: 'ch' },
-    { title: t('language.en'), value: 'en' },
+    { title: computed(() => t('language.ch')), value: 'ch' },
+    { title: computed(() => t('language.en')), value: 'en' },
+    { title: computed(() => t('language.ko')), value: 'ko' },
   ])
+
+  // 监听 store 中的语言变化
+  watch(() => appStore.locale, newLocale => {
+    language.value = newLocale
+  })
+  const toast = useToast()
   function handleLanguage () {
     emit('update:open', false)
     switchLocale(language.value)
+    toast.success(t('language.actions.success'))
+  }
+
+  function handleCancel () {
+    emit('update:open', false)
+    language.value = appStore.locale
   }
 </script>

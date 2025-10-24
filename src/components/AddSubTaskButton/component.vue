@@ -22,7 +22,6 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref } from 'vue'
   import { useI18n } from '@/composables/useI18n'
   const { t } = useI18n()
   const open = ref(false)

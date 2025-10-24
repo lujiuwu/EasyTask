@@ -12,8 +12,6 @@
 </template>
 <script lang="ts" setup>
   import { UseDraggable } from '@vueuse/components'
-  import { useRouter } from 'vue-router'
-
   const props = defineProps({
     to: {
       type: String,

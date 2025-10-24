@@ -4,14 +4,17 @@
       <v-card-title>
         {{ t(`pages.tasks.item.actions.${props.type}`) }}
       </v-card-title>
-      <v-card-text>
+      <v-card-text class="pt-0!">
         <v-form>
           <v-text-field v-show="props.type === TaskActionModalType.FINISH" v-model="formValues.finishTime" label="完成时间" />
           <v-text-field v-show="props.type === TaskActionModalType.FINISH" v-model="formValues.remark" label="备注" />
           <v-text-field v-show="props.type === TaskActionModalType.EDIT" v-model="formValues.text" label="任务名称" />
-          <span>
-            {{ t('') }}
-          </span>
+          <div v-show="props.type === TaskActionModalType.DELETE">
+            {{ t('pages.tasks.item.delete.title') }}
+          </div>
+          <div v-show="props.type === TaskActionModalType.DELETE" class="mb-10px">
+            {{ t('pages.tasks.item.delete.content') }}
+          </div>
           <v-btn class="mr-2" color="primary" variant="tonal" @click="handleConfirm">{{ t('pages.tasks.item.actions.confirm') }}</v-btn>
           <v-btn color="error" variant="tonal" @click="handleCancel">{{ t('pages.tasks.item.actions.cancel') }}</v-btn>
         </v-form>
@@ -20,7 +23,6 @@
   </v-dialog>
 </template>
 <script lang="ts" setup>
-  import { ref } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { TaskActionModalType } from '../constants'
 

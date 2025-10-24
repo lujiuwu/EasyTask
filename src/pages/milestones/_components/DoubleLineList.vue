@@ -2,25 +2,26 @@
   <div class="flex flex-wrap">
     <div v-for="item in props.data" :key="item.id" class="m-6px w-47%">
       <v-card>
-        <v-card-title class="wrap-title">
+        <v-card-title class="wrap-title font-size-18px!">
           {{ item.title }}
         </v-card-title>
         <v-card-subtitle>
-          <v-row>
-            <v-col cols="12">
-              {{ t('pages.milestones.item.table.create-time') }}：{{ item.createdAt }}
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="12">
-              {{ t('pages.milestones.item.table.target-at') }}：{{ item.targetAt }}
-            </v-col>
-          </v-row>
+          {{ t('pages.milestones.item.detail.start-at') }}：{{ item.startAt }}
+        </v-card-subtitle>
+        <v-card-subtitle>
+          {{ t('pages.milestones.item.detail.target-at') }}：{{ item.targetAt }}
         </v-card-subtitle>
         <v-card-actions>
           <v-row>
             <v-col cols="1" offset="6">
-              <v-btn color="shades" density="comfortable" variant="tonal" @click="$router.push(`/milestones/${item.id}`)">{{ t('pages.milestones.item.detail') }}</v-btn>
+              <v-btn
+                color="shades"
+                density="comfortable"
+                variant="tonal"
+                @click="$router.push(`/milestones/${item.id}`)"
+              >
+                {{ t('pages.milestones.item.detail.title') }}
+              </v-btn>
             </v-col>
           </v-row>
         </v-card-actions>

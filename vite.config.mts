@@ -1,5 +1,6 @@
 import { fileURLToPath, URL } from 'node:url'
 import Vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
 import UnoCss from 'unocss/vite'
 // Plugins
 import AutoImport from 'unplugin-auto-import/vite'
@@ -28,6 +29,9 @@ export default defineConfig({
         {
           pinia: ['defineStore', 'storeToRefs'],
         },
+        {
+          '@/composables/useHeader': ['useHeader'],
+        },
       ],
       dts: 'src/auto-imports.d.ts',
       eslintrc: {
@@ -41,6 +45,7 @@ export default defineConfig({
     Vue({
       template: { transformAssetUrls },
     }),
+    vueJsx(),
     UnoCss({ configFile: './uno.config.js' }),
     // https://github.com/vuetifyjs/vuetify-loader/tree/master/packages/vite-plugin#readme
     Vuetify({

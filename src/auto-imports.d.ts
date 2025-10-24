@@ -61,6 +61,7 @@ declare global {
   const useAttrs: typeof import('vue')['useAttrs']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
+  const useHeader: typeof import('@/composables/useHeader')['useHeader']
   const useId: typeof import('vue')['useId']
   const useModel: typeof import('vue')['useModel']
   const useRoute: typeof import('vue-router')['useRoute']
@@ -87,6 +88,7 @@ namespace _ComponentCustomProperties {
   const { EffectScope, computed, createApp, customRef, defineAsyncComponent, defineComponent, effectScope, getCurrentInstance, getCurrentScope, getCurrentWatcher, h, inject, isProxy, isReactive, isReadonly, isRef, isShallow, markRaw, nextTick, onActivated, onBeforeMount, onBeforeUnmount, onBeforeUpdate, onDeactivated, onErrorCaptured, onMounted, onRenderTracked, onRenderTriggered, onScopeDispose, onServerPrefetch, onUnmounted, onUpdated, onWatcherCleanup, provide, reactive, readonly, ref, resolveComponent, shallowReactive, shallowReadonly, shallowRef, toRaw, toRef, toRefs, toValue, triggerRef, unref, useAttrs, useCssModule, useCssVars, useId, useModel, useSlots, useTemplateRef, watch, watchEffect, watchPostEffect, watchSyncEffect }: typeof import('vue')
   const { defineStore, storeToRefs }: typeof import('pinia')
   const { onBeforeRouteLeave, onBeforeRouteUpdate, useRoute, useRouter }: typeof import('vue-router')
+  const { useHeader }: typeof import('@/composables/useHeader')
 }
 declare module 'vue' {
   interface ComponentCustomProperties extends UnwrapRefs<typeof _ComponentCustomProperties> {}

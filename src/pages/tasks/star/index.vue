@@ -20,7 +20,6 @@
 
 <script lang="ts" setup>
   import type { StarItem } from '@/types/StarItem'
-  import { ref } from 'vue'
   import { useI18n } from '@/composables/useI18n'
   const { t } = useI18n()
   const items = ref<StarItem[]>([

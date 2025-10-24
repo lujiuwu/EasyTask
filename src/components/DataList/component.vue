@@ -36,7 +36,6 @@
   import { useInfiniteQuery } from '@tanstack/vue-query'
   import axios from 'axios'
   import _ from 'lodash'
-  import { onMounted, onUnmounted, ref, watch } from 'vue'
   import { EmptyState } from '@/components/EmptyState'
   import { TaskStatus } from '@/enum/task_status'
   import { useAppStore } from '@/stores/app'

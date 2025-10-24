@@ -14,10 +14,15 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: setupLayouts([
     {
-      path: '/', redirect: '/tasks',
+      path: '/', redirect: '/auth',
     },
     {
       path: '/add', redirect: '/add/tasks',
+    },
+    {
+      path: '/auth',
+      component: () => import('@/pages/auth/index.vue'),
+      meta: { layout: 'auth' },
     },
     ...routes,
   ]),

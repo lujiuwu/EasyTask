@@ -45,7 +45,6 @@
 </template>
 <script lang="ts" setup>
   import type { TaskItem } from '@/types/TaskItem'
-  import { useRouter } from 'vue-router'
   import { TaskDetailPanel } from '@/components/TaskDetailPanel'
 
   const props = defineProps({

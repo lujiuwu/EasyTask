@@ -1,9 +1,33 @@
 language:
   ch: 中文
   en: 英文
+  ko: 韩文
+  actions:
+    success: 语言切换成功
+    error: 语言切换失败
+login:
+  username:
+    label: 用户名
+    placeholder: 请输入用户名
+    errors:
+      min: "用户名至少需要{min}个字符"
+      max: "用户名不能超过{max}个字符"
+      regex: "用户名只能包含字母、数字和下划线"
+  password:
+    label: 密码
+    placeholder: 请输入密码
+    errors:
+      min: "密码至少需要{min}个字符"
+      max: "密码不能超过{max}个字符"
+  login: 登录
+  register: 注册
+  forgot-password: 忘记密码?
+  remember-me: 记住我
+  login-success: 登录成功
+  login-error: 登录失败
 tool-bar:
   filter:
-    types: 
+    types:
       all: 全部
       unfinished: 未完成
       finished: 已完成
@@ -50,6 +74,7 @@ intro:
       intro: 点击此处添加任务
 pages:
   tasks:
+    title: 任务
     search:
       tasks: 搜索任务
     tabs:
@@ -60,13 +85,14 @@ pages:
       daily: 日常
       work: 工作
     item:
-      total-number: 共 {{ total }} 项
+      total-number: 共 { total } 项
       delete:
-        title: 确定要删除 {{ title }} 吗？
+        title: 确定要删除此项吗？
         content: 删除后可以在个人回收站中恢复
         cancel: 取消
         delete: 删除
-      detail: 详情
+      detail:
+        title: 详情
       actions:
         finish: 完成
         delete: 删除
@@ -83,12 +109,13 @@ pages:
         content: 删除后可以在个人回收站中恢复
         cancel: 取消
         delete: 删除
-      detail: 
+      detail:
         title: 详情
         id: 任务ID
         sub-tasks: 子任务
         create-time: 创建时间
-        update-time: 更新时间
+        start-at: 开始时间
+        target-at: 目标完成
         type: 类型
         status: 状态
         not-found: 任务未找到
@@ -116,6 +143,11 @@ pages:
           languages:
             ch: 中文
             en: 英文
+            ko: 韩文
+        login-out:
+            title: 退出登录
+            cancel: 取消
+            confirm: 确认
     useful-functions:
       title: 常用功能
       items:

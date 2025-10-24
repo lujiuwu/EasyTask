@@ -49,7 +49,6 @@
   import { toTypedSchema } from '@vee-validate/zod'
   import { v4 as uuidv4 } from 'uuid'
   import { useForm } from 'vee-validate'
-  import { computed, ref } from 'vue'
   import { TaskItemSchema } from '@/types/TaskItem'
 
   const { defineField, meta, errors } = useForm({

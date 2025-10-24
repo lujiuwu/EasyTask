@@ -5,11 +5,11 @@
     :density="'comfortable'"
     :elevation="8"
   >
-    <v-btn :disabled="!canGoBack" icon="mdi-arrow-left" @click="router.back()" />
-    <v-toolbar-title class="text-h6">
-      {{ t(`footer-nav.${currentRoute.path.slice(1)}`) }}
-    </v-toolbar-title>
-    <Filter v-if="currentRoute.path !== '/setting'" />
+    <v-btn icon="mdi-arrow-left" @click="router.back()" />
+    <template #title>
+      <component :is="renderHeader.title" />
+    </template>
+    <Filter v-if="currentRoute.path === '/tasks'" />
     <Layout v-if="currentRoute.path === '/tasks'" />
     <Share v-if="currentRoute.path === '/setting'" />
     <Col v-if="currentRoute.path === '/milestones'" />
@@ -19,24 +19,13 @@
 
 <script lang="ts" setup>
   import _ from 'lodash'
-  import { computed, ref } from 'vue'
-  import { useRouter } from 'vue-router'
+  import { renderHeader } from '@/composables/useHeader'
   import { useI18n } from '@/composables/useI18n'
-  import router from '@/router'
   import { Col, Filter, Layout, Share, Sort } from './_components'
 
   const currentRoute = computed(() => router.currentRoute.value)
   const { t } = useI18n()
-
-  const r = useRouter()
-  const canGoBack = ref(false)
-  function updateNavigationState () {
-    canGoBack.value = window.history.state?.back
-  }
-  r.afterEach(() => {
-    updateNavigationState()
-  })
-
+  const router = useRouter()
 </script>
 
 <style scoped>

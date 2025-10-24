@@ -12,6 +12,10 @@
                 <td>{{ item.createdAt }}</td>
               </tr>
               <tr>
+                <td class="border-e-sm">{{ t('pages.milestones.item.detail.start-at') }}</td>
+                <td>{{ item.startAt }}</td>
+              </tr>
+              <tr>
                 <td class="border-e-sm">{{ t('pages.milestones.item.table.target-at') }}</td>
                 <td>{{ item.targetAt }}</td>
               </tr>
@@ -28,7 +32,7 @@
           <v-row>
             <v-col cols="12" density="comfortable">
               <v-btn color="shades" density="comfortable" variant="tonal" @click="$router.push(`/milestones/${item.id}`)">
-                {{ t('pages.milestones.item.detail') }}
+                {{ t('pages.milestones.item.detail.title') }}
               </v-btn>
             </v-col>
           </v-row>

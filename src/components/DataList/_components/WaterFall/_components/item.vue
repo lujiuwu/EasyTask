@@ -17,6 +17,7 @@
           <v-chip
             v-for="chip in props.data.chips"
             :key="chip.label"
+            class="ml-2"
             :color="chip.color"
             :icon="chip.icon"
             size="x-small"

@@ -1,6 +1,6 @@
 <template>
   <div class="p-20px">
-    <v-list>
+    <v-list lines="three">
       <v-list-item
         prepend-avatar="https://p.sda1.dev/27/c5845af66375176df88f9c56704bbed4/bb.png"
         subtitle="admin@admin.com"
@@ -20,14 +20,24 @@
               <v-list-item @click="handleOpen">
                 <v-list-item-title>{{ t('pages.setting.user.function.switchLanguage.title') }}</v-list-item-title>
               </v-list-item>
+              <v-list-item @click="handleLoginOut">
+                <v-list-item-title>{{ t('pages.setting.user.function.login-out.title') }}</v-list-item-title>
+              </v-list-item>
             </v-list>
           </v-menu>
         </template>
       </v-list-item>
       <v-divider />
-      <v-list>
-        <v-list-subheader>{{ t('pages.setting.useful-functions.title') }}</v-list-subheader>
-        <v-list-item v-for="item in useful_fns" :key="item.to" color="primary" :to="item.to">
+      <v-list-subheader>{{ t('pages.setting.useful-functions.title') }}</v-list-subheader>
+      <v-list class="border-thin">
+        <v-list-item
+          v-for="item in useful_fns"
+          :key="item.to"
+
+          color="primary"
+          lines="two"
+          :to="item.to"
+        >
           <template #prepend>
             <v-icon :icon="item.icon" />
           </template>
@@ -36,8 +46,8 @@
           </v-list-item-title>
         </v-list-item>
       </v-list>
-      <v-list>
-        <v-list-subheader>{{ t('pages.setting.other.title') }}</v-list-subheader>
+      <v-list-subheader>{{ t('pages.setting.other.title') }}</v-list-subheader>
+      <v-list class="border-thin">
         <v-list-item v-for="item in other_fns" :key="item.to" color="primary" :to="item.to">
           <template #prepend>
             <v-icon :icon="item.icon" />
@@ -53,15 +63,17 @@
 </template>
 
 <script lang="ts" setup>
-  import { computed, ref } from 'vue'
   import { useI18n } from '@/composables/useI18n'
   import { SwitchLanguage } from './_components'
 
   const { t } = useI18n()
-
+  const router = useRouter()
   const open = ref(false)
   function handleOpen () {
     open.value = !open.value
+  }
+  function handleLoginOut () {
+    router.push('/auth')
   }
   definePage({
     meta: { key: 'mdi-cogs', title: '设置' },

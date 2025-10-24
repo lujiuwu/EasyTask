@@ -2,14 +2,21 @@
   <div class="flex flex-wrap">
     <div v-for="item in props.data" :key="item.id" class="m-6px w-30%">
       <v-card>
-        <v-card-title class="wrap-title">
+        <v-card-title class="wrap-title font-size-18px!">
           {{ item.title }}
         </v-card-title>
         <v-divider />
         <v-card-actions>
           <v-row>
             <v-col cols="1" offset="3">
-              <v-btn color="shades" density="comfortable" variant="tonal" @click="$router.push(`/milestones/${item.id}`)">{{ t('pages.milestones.item.detail') }}</v-btn>
+              <v-btn
+                color="shades"
+                density="comfortable"
+                variant="tonal"
+                @click="$router.push(`/milestones/${item.id}`)"
+              >
+                {{ t('pages.milestones.item.detail.title') }}
+              </v-btn>
             </v-col>
           </v-row>
         </v-card-actions>

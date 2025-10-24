@@ -71,6 +71,7 @@
     "useAttrs": true,
     "useCssModule": true,
     "useCssVars": true,
+    "useHeader": true,
     "useId": true,
     "useModel": true,
     "useRoute": true,

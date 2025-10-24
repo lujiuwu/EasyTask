@@ -1,6 +1,4 @@
 import _ from 'lodash'
-import { defineStore } from 'pinia'
-
 export const useAppStore = defineStore('app', {
   state: () => ({
     layoutMode: 'water-fall', // water-fall | normal-list
@@ -8,6 +6,7 @@ export const useAppStore = defineStore('app', {
     type: 'all', // all | normal | schedule | important | daily | work
     col: '1', // 1 | 2 | 4
     tabIndex: 'all', // all | normal | schedule | important | daily | work
+    locale: 'en', // 当前语言设置
   }),
   actions: {
     setLayoutMode (mode: string) {
@@ -24,6 +23,18 @@ export const useAppStore = defineStore('app', {
     },
     setTabIndex (tabIndex: string) {
       this.tabIndex = tabIndex
+    },
+    setLocale (locale: string) {
+      this.locale = locale
+      // 持久化存储到 localStorage
+      localStorage.setItem('app-locale', locale)
+    },
+    // 从 localStorage 初始化语言设置
+    initLocale () {
+      const savedLocale = localStorage.getItem('app-locale')
+      if (savedLocale && ['en', 'ch', 'ko'].includes(savedLocale)) {
+        this.locale = savedLocale
+      }
     },
   },
 })

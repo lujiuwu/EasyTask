@@ -1,9 +1,33 @@
 language:
   ch: Chinese
   en: English
+  ko: Korean
+  actions:
+    success: Language switch successfully
+    error: Language switch failed
+login:
+  username:
+    label: Username
+    placeholder: Please enter username
+    errors:
+      min: "Username must be at least {min} characters"
+      max: "Username cannot be more than {max} characters"
+      regex: "Username can only contain letters, numbers and underscores"
+  password:
+    label: Password
+    placeholder: Please enter password
+    errors:
+      min: "Password must be at least {min} characters"
+      max: "Password cannot be more than {max} characters"
+  login: Login
+  register: Register
+  forgot-password: Forgot Password?
+  remember-me: Remember Me
+  login-success: Login Success
+  login-error: Login Failed
 tool-bar:
   filter:
-    types: 
+    types:
       all: All
       unfinished: Unfinished
       finished: Finished
@@ -49,6 +73,7 @@ intro:
       intro: Click here to add tasks
 pages:
   tasks:
+    title: Tasks
     search:
       tasks: Search tasks
 
@@ -62,7 +87,7 @@ pages:
     item:
       total-number: Total { total } items
       delete:
-        title: Are you sure you want to delete { title }?
+        title: Are you sure you want to delete this item?
         content: Deleted items can be restored from personal recycle bin
         cancel: Cancel
         delete: Delete
@@ -89,16 +114,28 @@ pages:
       tasks-id: Tasks ID
       star-time: Star Time
   milestones:
+    title: Milestones
     search:
       milestones: Search milestones
     item:
       total-number: Total { total } items
       delete:
-        title: Are you sure you want to delete { title }?
+        title: Are you sure you want to delete this item?
         content: Deleted items can be restored from personal recycle bin
         cancel: Cancel
         delete: Delete
-      detail: Detail
+      detail:
+        title: Detail
+        id: ID
+        sub-tasks: Sub Tasks
+        create-time: Created Time
+        start-at: Start At
+        target-at: Target At
+        type: Type
+        status: Status
+        not-found: Task Not Found
+        add-sub-task: Add Sub Task
+        save-changes: Save Changes
       table:
         id: ID
         create-time: Created Time
@@ -106,6 +143,7 @@ pages:
         mark: Mark
         description: Description
   setting:
+    title: Settings
     user:
       function:
         switchLanguage:
@@ -116,6 +154,11 @@ pages:
           languages:
             ch: Chinese
             en: English
+            ko: Korean
+        login-out:
+            title: Login Out
+            cancel: Cancel
+            confirm: Confirm
     useful-functions:
       title: Useful Functions
       items:

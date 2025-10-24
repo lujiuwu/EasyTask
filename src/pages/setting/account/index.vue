@@ -1,11 +1,14 @@
 <template>
   <div>
     <h1>Account</h1>
+    <div>username: {{ accountStore.username }}</div>
+    <div>password: {{ accountStore.password }}</div>
   </div>
 </template>
 
 <script lang="ts" setup>
-</script>
+  import { useAccountStore } from '@/stores/account'
 
-<style scoped>
-</style>
+  const accountStore = useAccountStore()
+
+</script>

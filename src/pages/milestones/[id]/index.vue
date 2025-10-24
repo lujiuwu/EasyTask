@@ -4,10 +4,10 @@
     <v-card v-else>
       <v-card-title>
         {{ targetInfo?.title }}
-        <span class="text-sm text-grey ml-3" @click="showBottomSheet = true">
-          {{ targetInfo?.startAt }} - {{ targetInfo?.targetAt }}
-        </span>
       </v-card-title>
+      <v-card-subtitle>
+        {{ targetInfo?.startAt }} - {{ targetInfo?.targetAt }}
+      </v-card-subtitle>
       <v-card-subtitle>
         ID：{{ targetInfo?.id }}
       </v-card-subtitle>
@@ -109,7 +109,6 @@
   import { useQueries, useQuery } from '@tanstack/vue-query'
   import axios from 'axios'
   import dayjs from 'dayjs'
-  import { computed } from 'vue'
   const route = useRoute()
   const id = (route.params as { id: string }).id
 

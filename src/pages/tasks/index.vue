@@ -9,7 +9,7 @@
     >
       <span>{{ t('intro.alert.title') }}</span>
       <template #append>
-        <v-btn class="mr-2px" density="compact" @click="() => startIntro(t)">{{ t('intro.alert.open') }}</v-btn>
+        <v-btn class="mr-2px" density="compact" @click="() => startIntro(t as any)">{{ t('intro.alert.open') }}</v-btn>
         <v-btn density="compact" @click="show = false">{{ t('intro.alert.close') }}</v-btn>
       </template>
     </v-alert>
@@ -63,10 +63,9 @@
   </div>
 </template>
 
-<script lang="ts" setup>
+<script lang="tsx" setup>
   import { useDebounceFn } from '@vueuse/core'
   import _ from 'lodash'
-  import { ref } from 'vue'
   import DataList from '@/components/DataList/component.vue'
   import PublicAddButton from '@/components/PublicAddButton/component.vue'
   import { StarBook } from '@/components/StarBook'
@@ -76,9 +75,6 @@
   import { useAppStore } from '@/stores/app'
   import { startIntro } from '@/utils/intro'
 
-  definePage({
-    meta: { key: 'mdi-format-list-checks', title: 'r' },
-  })
   const { t } = useI18n()
   const value = ref('')
   const showList = ref(false)
@@ -92,7 +88,7 @@
       list.value = []
       return
     }
-    const cachedData = getCachedTasks()
+    const cachedData = getCachedTasks() as any
     const currentTasks = _.flatMap((cachedData.pages as any[]), (page: any) => page.data)
     // eslint-disable-next-line unicorn/no-array-for-each
     _.forEach(currentTasks, item => {
@@ -120,6 +116,10 @@
   ])
   const appStore = useAppStore()
   const tabIndex = computed(() => appStore.tabIndex)
+
+  useHeader({
+    title: () => t('pages.tasks.title'),
+  })
 </script>
 <style lang="scss" scoped>
   .v-col {

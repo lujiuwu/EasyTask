@@ -1,6 +1,4 @@
 import introJs from 'intro.js'
-import { nextTick } from 'vue'
-
 export function startIntro (t: (key: string) => string) {
   const steps = [
     {

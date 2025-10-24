@@ -1,0 +1,67 @@
+# i18n Ally 配置文件
+# 项目根目录的 i18n ally 配置
+
+# 语言文件路径
+localesPaths:
+  - locales
+
+# 键名风格
+keystyle: nested
+
+# 默认命名空间
+defaultNamespace: index
+
+# 启用命名空间
+namespace: true
+
+# 路径匹配模式
+pathMatcher: "{locale}/{namespace}.{ext}"
+
+# 提取键的前缀
+extract:
+  keyPrefix: ""
+
+# 源语言（用于提取）
+sourceLanguage: en
+
+# 显示语言（在编辑器中显示的语言）
+displayLanguage: ch
+
+# 启用的解析器
+enabledParsers:
+  - yaml
+
+# 启用的框架
+enabledFrameworks:
+  - vue
+  - vue-i18n
+
+# 目录结构
+dirStructure: file
+
+# 不排序键
+sortKeys: false
+
+# 保持已完成的翻译
+keepFulfilled: true
+
+# 键生成风格
+extract:
+  keygenStyle: camelCase
+
+# 使用情况扫描目录
+usage:
+  scanningDirs:
+    - src
+  exclude:
+    - node_modules
+    - dist
+    - build
+
+# 注释配置
+annotation:
+  inPlace: true
+  maxLength: 0
+  keyMatchReg:
+    - "[^\\w\\d]t\\(['\"`]([^'\"`]+)['\"`]"
+    - "[^\\w\\d]\\$t\\(['\"`]([^'\"`]+)['\"`]"

@@ -21,7 +21,7 @@
                 variant="tonal"
                 @click="handleCreate(TaskActionModalType.FINISH)"
               >
-                完成
+                {{ t('pages.tasks.item.actions.finish') }}
               </v-btn>
               <v-btn
                 class="mr-5px"
@@ -30,7 +30,7 @@
                 variant="tonal"
                 @click="handleCreate(TaskActionModalType.DELETE)"
               >
-                删除
+                {{ t('pages.tasks.item.actions.delete') }}
               </v-btn>
               <v-btn
                 v-show="!element.done"
@@ -39,7 +39,7 @@
                 variant="tonal"
                 @click="handleCreate(TaskActionModalType.EDIT)"
               >
-                编辑
+                {{ t('pages.tasks.item.actions.edit') }}
               </v-btn>
             </v-expansion-panel-text>
           </v-expansion-panel>
@@ -58,12 +58,13 @@
 <script lang="ts" setup>
   import type { TaskItem } from '@/types/TaskItem'
   import { useDebounceFn } from '@vueuse/core'
-  import { ref } from 'vue'
   import draggable from 'vuedraggable'
   import { FinishDialog } from '@/components/FinishDialog'
+  import { useI18n } from '@/composables/useI18n'
   import { TaskActionModalType } from './_modals/constants'
   import { TaskActionModal } from './_modals/TaskActionModal'
 
+  const { t } = useI18n()
   const props = defineProps({
     data: {
       type: Object,
