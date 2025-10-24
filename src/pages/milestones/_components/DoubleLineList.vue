@@ -32,8 +32,6 @@
 
 <script lang="ts" setup>
   import type { MileStoneItem } from '@/types/MileStoneItem'
-  import { useI18n } from '@/composables/useI18n'
-  const { t } = useI18n()
   const props = defineProps({
     data: {
       type: Array as PropType<MileStoneItem[]>,

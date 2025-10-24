@@ -34,24 +34,31 @@
 <script lang="ts" setup>
   import type { TaskItem } from '@/types/TaskItem'
   import { useInfiniteQuery } from '@tanstack/vue-query'
-  import axios from 'axios'
   import _ from 'lodash'
   import { EmptyState } from '@/components/EmptyState'
-  import { TaskStatus } from '@/enum/task_status'
   import { useAppStore } from '@/stores/app'
-
+  import httpClient from '@/utils/http'
   import { NormalList, WaterFall } from './_components'
 
   const appStore = useAppStore()
-
   // 自定义加载状态管理
   const customIsPending = ref(false)
   const customIsFetchingNextPage = ref(false)
 
   async function getTasksByPage ({ pageParam = 1 }) {
-    const res = await axios.get('/api/tasks?page=' + pageParam)
-
-    return res.data.data
+    try {
+      console.log('发起任务请求，page:', pageParam)
+      const res = await httpClient.get('/tasks?page=' + pageParam)
+      console.log('任务请求成功:', res.data)
+      return res.data.data
+    } catch (error) {
+      console.error('获取任务失败:', error)
+      // 如果是401错误，显示登录过期提示
+      if ((error as any).response?.status === 401) {
+        console.log('Token已过期，需要重新登录')
+      }
+      throw error
+    }
   }
 
   const {
@@ -68,9 +75,6 @@
       return lastPage.hasNextPage ? lastPage.nextPage : undefined
     },
     initialPageParam: 1,
-  })
-  watch(data, newValue => {
-    console.log(newValue)
   })
 
   // 延迟

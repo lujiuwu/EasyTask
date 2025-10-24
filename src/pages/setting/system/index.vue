@@ -5,6 +5,9 @@
 </template>
 
 <script lang="ts" setup>
+  useHeader({
+    title: () => t('pages.setting.useful-functions.items.about-system'),
+  })
 </script>
 
 <style scoped>

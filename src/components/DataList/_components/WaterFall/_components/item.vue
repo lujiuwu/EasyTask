@@ -57,10 +57,8 @@
 <script lang="ts" setup>
   import { Dialog } from '@/components/Dialog'
   import { TaskDetailPanel } from '@/components/TaskDetailPanel'
-  import { useI18n } from '@/composables/useI18n'
   import { TaskStatus } from '@/enum/task_status'
 
-  const { t } = useI18n()
 
   const props = defineProps({
     data: {

@@ -74,6 +74,8 @@ intro:
       intro: 여기를 클릭하여 작업 추가
 pages:
   tasks:
+    title: 작업
+    placeholder: 작업 상세
     search:
       tasks: 작업 검색
     tabs:
@@ -113,6 +115,8 @@ pages:
       tasks-id: 작업 ID
       star-time: 즐겨찾기 시간
   milestones:
+    title: 마일스톤
+    placeholder: 마일스톤 상세
     search:
       milestones: 마일스톤 검색
     item:
@@ -146,6 +150,8 @@ pages:
       tasks-id: 작업 ID
       star-time: 즐겨찾기 시간
   setting:
+    title: 설정
+    placeholder: 설정 상세
     user:
       function:
         switchLanguage:

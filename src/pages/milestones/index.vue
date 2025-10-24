@@ -18,9 +18,10 @@
 
 <script lang="ts" setup>
   import { useQuery } from '@tanstack/vue-query'
-  import axios from 'axios'
+  import { ToolBarOptions } from '@/enum/toolBar_options'
   import { useAppStore } from '@/stores/app'
   import { CardList, DoubleLineList, MileStoneList } from './_components'
+  import httpClient from '@/utils/http'
   definePage({
     meta: { key: 'mdi-flag-checkered', title: '里程碑' },
   })
@@ -29,12 +30,15 @@
     data,
   } = useQuery({
     queryKey: ['milestones'],
-    queryFn: () => axios.get('/api/milestones').then(res => res.data.data),
+    queryFn: () => httpClient.get('/milestones').then(res => res.data.data),
     staleTime: 10 * 60 * 1000, // 10分钟内数据被认为是新鲜的
     refetchOnWindowFocus: false, // 禁用窗口焦点时自动刷新
     refetchOnReconnect: false, // 禁用重连时自动刷新
   })
-
+  useHeader({
+    title: () => t('pages.milestones.title'),
+    options: [ToolBarOptions.COL],
+  })
 </script>
 
 <style scoped>

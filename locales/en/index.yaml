@@ -74,6 +74,7 @@ intro:
 pages:
   tasks:
     title: Tasks
+    placeholder: Task Detail
     search:
       tasks: Search tasks
 
@@ -115,6 +116,7 @@ pages:
       star-time: Star Time
   milestones:
     title: Milestones
+    placeholder: Milestone Detail
     search:
       milestones: Search milestones
     item:
@@ -144,6 +146,7 @@ pages:
         description: Description
   setting:
     title: Settings
+    placeholder: Setting Detail
     user:
       function:
         switchLanguage:

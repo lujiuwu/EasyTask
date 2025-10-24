@@ -63,10 +63,9 @@
 </template>
 
 <script lang="ts" setup>
-  import { useI18n } from '@/composables/useI18n'
+  import { ToolBarOptions } from '@/enum/toolBar_options'
   import { SwitchLanguage } from './_components'
 
-  const { t } = useI18n()
   const router = useRouter()
   const open = ref(false)
   function handleOpen () {
@@ -86,4 +85,9 @@
   const other_fns = computed(() => [
     { label: t('pages.setting.other.items.other-functions'), icon: 'mdi-help-circle', to: '/setting/others' },
   ])
+
+  useHeader({
+    title: () => t('pages.setting.title'),
+    options: [ToolBarOptions.SHARE],
+  })
 </script>

@@ -67,5 +67,3 @@ const outputPath = path.join(process.cwd(), 'src', 'types', 'i18n.d.ts')
 fs.mkdirSync(path.dirname(outputPath), { recursive: true })
 fs.writeFileSync(outputPath, typeDefinition)
 
-console.log('✅ i18n 类型定义已生成:', outputPath)
-console.log(`📝 共生成 ${allKeys.length} 个翻译键`)

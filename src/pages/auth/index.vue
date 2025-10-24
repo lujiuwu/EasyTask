@@ -71,17 +71,17 @@
 <script lang="ts" setup>
   import { useMutation } from '@tanstack/vue-query'
   import { toTypedSchema } from '@vee-validate/zod'
-  import axios from 'axios'
   import { useForm } from 'vee-validate'
+  import { useI18n } from 'vue-i18n'
   import { useToast } from 'vue-toastification'
   import { z } from 'zod'
-  import { useI18n } from '@/composables/useI18n'
-  import { useAccountStore } from '@/stores/account'
+  import { useAuth } from '@/composables/useAuth'
+  import httpClient from '@/utils/http'
 
-  const accountStore = useAccountStore()
-  const { t } = useI18n()
   const toast = useToast()
+  const { setAuth } = useAuth()
   const router = useRouter()
+  const { t: tFn } = useI18n()
   const visible = ref(false)
   const schema = z.object({
     username: z.string()
@@ -104,28 +104,36 @@
   const [username, usernameProps] = defineField('username')
   const [password, passwordProps] = defineField('password')
 
-  const { mutate: useLoginFn } = useMutation({
+  const { mutate: LoginFn } = useMutation({
     mutationFn: (formData: { username: string, password: string }) => {
-      return axios.post('/api/auth/login', formData)
+      return httpClient.post('/auth/login', formData)
     },
-    onSuccess: _data => {
-      toast.success(t('login.login-success'))
-      accountStore.setUsername(username.value!)
-      accountStore.setPassword(password.value!)
-      router.push('/tasks')
+    onSuccess: response => {
+      console.log('登录成功响应:', response.data)
+      console.log('响应数据结构:', JSON.stringify(response.data, null, 2))
+      // 设置认证信息 - token在data.data中
+      if (response.data.data && response.data.data.token) {
+        setAuth(response.data.data.token)
+        toast.success(tFn('login.login-success'))
+        router.push('/tasks')
+      } else {
+        console.error('登录响应中缺少token，完整响应:', response.data)
+        toast.error('登录响应中缺少token')
+      }
     },
-    onError: _error => {
-      toast.error(t('login.login-error'))
+    onError: error => {
+      toast.error((error as any).response.data.message)
     },
   })
 
   async function handleLogin () {
+    console.log('handleLogin 被调用, meta.valid:', meta.value.valid)
     if (meta.value.valid) {
       const formData = {
         username: username.value!,
         password: password.value!,
       }
-      await useLoginFn(formData)
+      LoginFn(formData)
     }
   }
 

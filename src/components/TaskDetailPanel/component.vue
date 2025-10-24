@@ -60,11 +60,9 @@
   import { useDebounceFn } from '@vueuse/core'
   import draggable from 'vuedraggable'
   import { FinishDialog } from '@/components/FinishDialog'
-  import { useI18n } from '@/composables/useI18n'
   import { TaskActionModalType } from './_modals/constants'
   import { TaskActionModal } from './_modals/TaskActionModal'
 
-  const { t } = useI18n()
   const props = defineProps({
     data: {
       type: Object,

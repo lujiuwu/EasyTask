@@ -52,6 +52,7 @@ declare global {
   const shallowReadonly: typeof import('vue')['shallowReadonly']
   const shallowRef: typeof import('vue')['shallowRef']
   const storeToRefs: typeof import('pinia')['storeToRefs']
+  const t: typeof import('@/composables/useI18n')['t']
   const toRaw: typeof import('vue')['toRaw']
   const toRef: typeof import('vue')['toRef']
   const toRefs: typeof import('vue')['toRefs']
@@ -62,6 +63,7 @@ declare global {
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
   const useHeader: typeof import('@/composables/useHeader')['useHeader']
+  const useI18n: typeof import('@/composables/useI18n')['useI18n']
   const useId: typeof import('vue')['useId']
   const useModel: typeof import('vue')['useModel']
   const useRoute: typeof import('vue-router')['useRoute']
@@ -86,8 +88,10 @@ type UnwrapRefs<T> = {
 }
 namespace _ComponentCustomProperties {
   const { EffectScope, computed, createApp, customRef, defineAsyncComponent, defineComponent, effectScope, getCurrentInstance, getCurrentScope, getCurrentWatcher, h, inject, isProxy, isReactive, isReadonly, isRef, isShallow, markRaw, nextTick, onActivated, onBeforeMount, onBeforeUnmount, onBeforeUpdate, onDeactivated, onErrorCaptured, onMounted, onRenderTracked, onRenderTriggered, onScopeDispose, onServerPrefetch, onUnmounted, onUpdated, onWatcherCleanup, provide, reactive, readonly, ref, resolveComponent, shallowReactive, shallowReadonly, shallowRef, toRaw, toRef, toRefs, toValue, triggerRef, unref, useAttrs, useCssModule, useCssVars, useId, useModel, useSlots, useTemplateRef, watch, watchEffect, watchPostEffect, watchSyncEffect }: typeof import('vue')
+  const { default as httpClient }: typeof import('@/utils/http')
   const { defineStore, storeToRefs }: typeof import('pinia')
   const { onBeforeRouteLeave, onBeforeRouteUpdate, useRoute, useRouter }: typeof import('vue-router')
+  const { t, useI18n }: typeof import('@/composables/useI18n')
   const { useHeader }: typeof import('@/composables/useHeader')
 }
 declare module 'vue' {

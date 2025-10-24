@@ -30,3 +30,9 @@ export function useI18n (): {
     switchLocale,
   }
 }
+
+// 导出 t 函数用于全局自动导入
+export function t (key: I18nKey, ...args: any[]): string {
+  const { t: tFn } = useI18n()
+  return tFn(key, ...args)
+}

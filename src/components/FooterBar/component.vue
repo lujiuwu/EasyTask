@@ -15,8 +15,6 @@
 </template>
 
 <script lang="ts" setup>
-  import { useI18n } from '@/composables/useI18n'
-  const { t } = useI18n()
   const navigationItems = [
     { label: computed(() => t('footer-nav.tasks')), value: 'task', icon: 'mdi-format-list-checks', to: '/tasks' },
     { label: computed(() => t('footer-nav.milestones')), value: 'milestone', icon: 'mdi-flag-checkered', to: '/milestones' },

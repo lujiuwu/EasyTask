@@ -21,7 +21,7 @@
         </v-chip>
       </v-card-subtitle>
       <v-card-text>
-        <v-skeleton v-if="isPending" type="text" />
+        <div v-if="isPending">资源加载中</div>
         <TaskDetailPanel v-else-if="data" :data="data" @update:content="updateContent" />
         <div v-else>
           {{ t('pages.tasks.item.detail.not-found') }}
@@ -39,13 +39,11 @@
 <script lang="ts" setup>
   import type { TaskItem } from '@/types/TaskItem'
   import { useQuery } from '@tanstack/vue-query'
-  import axios from 'axios'
   import html2canvas from 'html2canvas'
   import { AddSubTaskButton } from '@/components/AddSubTaskButton'
   import { TaskDetailPanel } from '@/components/TaskDetailPanel'
-  import { useI18n } from '@/composables/useI18n'
+  import httpClient from '@/utils/http'
 
-  const { t } = useI18n()
   const route = useRoute()
   const id = (route.params as { id: string }).id
   const {
@@ -54,7 +52,7 @@
   } = useQuery({
     queryKey: ['task', id],
     queryFn: () => {
-      return axios.get(`/api/tasks/${id}`).then(res => res.data.data)
+      return httpClient.get(`/tasks/${id}`).then(res => res.data.data)
     },
   })
 
@@ -83,4 +81,8 @@
       console.error('截图失败:', error)
     })
   }
+
+  useHeader({
+    title: () => data.value?.title ?? t('pages.tasks.placeholder'),
+  })
 </script>

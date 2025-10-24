@@ -69,13 +69,12 @@
   import DataList from '@/components/DataList/component.vue'
   import PublicAddButton from '@/components/PublicAddButton/component.vue'
   import { StarBook } from '@/components/StarBook'
-  import { useI18n } from '@/composables/useI18n'
   import { useTasksCache } from '@/composables/useTasksCache'
   import { TaskType } from '@/enum/task_type'
+  import { ToolBarOptions } from '@/enum/toolBar_options'
   import { useAppStore } from '@/stores/app'
   import { startIntro } from '@/utils/intro'
 
-  const { t } = useI18n()
   const value = ref('')
   const showList = ref(false)
   const show = ref(true)
@@ -119,6 +118,7 @@
 
   useHeader({
     title: () => t('pages.tasks.title'),
+    options: [ToolBarOptions.FILTER, ToolBarOptions.LAYOUT, ToolBarOptions.SORT],
   })
 </script>
 <style lang="scss" scoped>

@@ -24,7 +24,6 @@
 
 <script lang="ts" setup>
   import { useToast } from 'vue-toastification'
-  import { useI18n } from '@/composables/useI18n'
   import { useAppStore } from '@/stores/app'
 
   const props = defineProps({
@@ -33,7 +32,7 @@
       default: false,
     },
   })
-  const { switchLocale, t } = useI18n()
+  const { switchLocale } = useI18n()
   const appStore = useAppStore()
   const emit = defineEmits(['update:open'])
 

@@ -5,27 +5,30 @@
     :density="'comfortable'"
     :elevation="8"
   >
-    <v-btn icon="mdi-arrow-left" @click="router.back()" />
+    <template #prepend>
+      <v-btn v-if="route.path !== '/tasks'" icon="mdi-arrow-left" @click="router.back()" />
+    </template>
     <template #title>
       <component :is="renderHeader.title" />
     </template>
-    <Filter v-if="currentRoute.path === '/tasks'" />
-    <Layout v-if="currentRoute.path === '/tasks'" />
-    <Share v-if="currentRoute.path === '/setting'" />
-    <Col v-if="currentRoute.path === '/milestones'" />
-    <Sort v-if="currentRoute.path === '/tasks'" />
+    <template #append>
+      <Filter v-if="renderHeader.options.includes(ToolBarOptions.FILTER)" />
+      <Layout v-if="renderHeader.options.includes(ToolBarOptions.LAYOUT)" />
+      <Share v-if="renderHeader.options.includes(ToolBarOptions.SHARE)" />
+      <Col v-if="renderHeader.options.includes(ToolBarOptions.COL)" />
+      <Sort v-if="renderHeader.options.includes(ToolBarOptions.SORT)" />
+    </template>
   </v-toolbar>
 </template>
 
 <script lang="ts" setup>
   import _ from 'lodash'
   import { renderHeader } from '@/composables/useHeader'
-  import { useI18n } from '@/composables/useI18n'
+  import { ToolBarOptions } from '@/enum/toolBar_options'
   import { Col, Filter, Layout, Share, Sort } from './_components'
 
-  const currentRoute = computed(() => router.currentRoute.value)
-  const { t } = useI18n()
   const router = useRouter()
+  const route = useRoute()
 </script>
 
 <style scoped>

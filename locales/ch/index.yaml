@@ -75,6 +75,7 @@ intro:
 pages:
   tasks:
     title: 任务
+    placeholder: 任务详情
     search:
       tasks: 搜索任务
     tabs:
@@ -100,6 +101,8 @@ pages:
         cancel: 取消
         confirm: 确认
   milestones:
+    title: 里程碑
+    placeholder: 里程碑详情
     search:
       milestones: 搜索里程碑
     item:
@@ -133,6 +136,8 @@ pages:
       tasks-id: 任务ID
       star-time: 收藏时间
   setting:
+    title: 设置
+    placeholder: 设置详情
     user:
       function:
         switchLanguage:

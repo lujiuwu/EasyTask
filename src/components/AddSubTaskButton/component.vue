@@ -22,8 +22,6 @@
 </template>
 
 <script lang="ts" setup>
-  import { useI18n } from '@/composables/useI18n'
-  const { t } = useI18n()
   const open = ref(false)
   const value = ref('')
 </script>

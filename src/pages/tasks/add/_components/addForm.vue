@@ -52,7 +52,6 @@
 <script lang="ts" setup>
   import { toTypedSchema } from '@vee-validate/zod'
   import { useForm } from 'vee-validate'
-  import { useI18n } from '@/composables/useI18n'
   import { TaskStatus } from '@/enum/task_status'
   import { TaskType } from '@/enum/task_type'
   import { TaskItemSchema } from '@/types/TaskItem'
@@ -71,7 +70,6 @@
     '养成习惯',
   ]
 
-  const { t } = useI18n()
 
   const taskStatusOptions = [
     { title: t('tool-bar.filter.types.unfinished'), value: TaskStatus.UNFINISHED },

@@ -37,18 +37,18 @@
 <script lang="ts" setup>
   import type { TaskItem } from '@/types/TaskItem'
   import { useMutation } from '@tanstack/vue-query'
-  import axios from 'axios'
   import { v4 as uuidv4 } from 'uuid'
   import { useToast } from 'vue-toastification'
   import AddForm from './_components/addForm.vue'
   import AddSubItem from './_components/addSubItem.vue'
+  import httpClient from '@/utils/http'
 
   const toast = useToast()
   const currentStep = ref(0)
   const addFormRef = ref<InstanceType<typeof AddForm> | null>(null)
   const addSubItemRef = ref<InstanceType<typeof AddSubItem> | null>(null)
   function addTask (newTask: TaskItem) {
-    return axios.post('/api/tasks', newTask)
+    return httpClient.post('/tasks', newTask)
   }
 
   const { mutate: addTaskFn } = useMutation({
@@ -74,5 +74,4 @@
     if (currentStep.value !== 0) return false
     return !addFormRef.value?.isValid
   })
-
 </script>

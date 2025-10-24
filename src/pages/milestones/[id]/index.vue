@@ -107,13 +107,13 @@
 <script lang="ts" setup>
   import type { MileStoneItem } from '@/types/MileStoneItem'
   import { useQueries, useQuery } from '@tanstack/vue-query'
-  import axios from 'axios'
   import dayjs from 'dayjs'
+  import httpClient from '@/utils/http'
   const route = useRoute()
   const id = (route.params as { id: string }).id
 
   function getMilestoneById () {
-    return axios.get(`/api/milestones/${id}`).then(res => res.data.data)
+    return httpClient.get(`/milestones/${id}`).then(res => res.data.data)
   }
 
   type MileStone = MileStoneItem & { tasksId: string[] }
@@ -136,7 +136,7 @@
     queries: computed(() =>
       taskIds.value.map((taskId: string) => ({
         queryKey: ['task', taskId],
-        queryFn: () => axios.get(`/api/tasks/${taskId}`).then(res => res.data.data),
+        queryFn: () => httpClient.get(`/tasks/${taskId}`).then(res => res.data.data),
         enabled: !!taskId,
       })),
     ),
@@ -149,6 +149,10 @@
   const selectedTasks = ref<string[]>([])
   const batchAction = ref<boolean>(false)
   const showBottomSheet = ref<boolean>(false)
+
+  useHeader({
+    title: () => targetInfo.value?.title ?? t('pages.milestones.placeholder'),
+  })
 </script>
 
 <style scoped>

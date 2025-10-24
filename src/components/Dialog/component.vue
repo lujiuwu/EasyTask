@@ -16,13 +16,13 @@
 </template>
 <script lang="ts" setup>
   import { useMutation, useQueryClient } from '@tanstack/vue-query'
-  import axios from 'axios'
   import { useToast } from 'vue-toastification'
+  import httpClient from '@/utils/http'
 
   const toast = useToast()
   const queryClient = useQueryClient()
   function deleteTask (taskId: string) {
-    return axios.delete(`/api/tasks/${taskId}`)
+    return httpClient.delete(`/tasks/${taskId}`)
   }
 
   const { mutate: deleteTaskFn } = useMutation({

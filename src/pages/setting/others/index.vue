@@ -5,6 +5,9 @@
 </template>
 
 <script lang="ts" setup>
+  useHeader({
+    title: () => t('pages.setting.other.items.other-functions'),
+  })
 </script>
 
 <style scoped>

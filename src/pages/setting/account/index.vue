@@ -10,5 +10,7 @@
   import { useAccountStore } from '@/stores/account'
 
   const accountStore = useAccountStore()
-
+  useHeader({
+    title: () => t('pages.setting.useful-functions.items.about-account'),
+  })
 </script>

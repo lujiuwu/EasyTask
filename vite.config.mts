@@ -32,6 +32,12 @@ export default defineConfig({
         {
           '@/composables/useHeader': ['useHeader'],
         },
+        {
+          '@/composables/useI18n': ['useI18n', 't'],
+        },
+        {
+          '@/utils/http': ['default as httpClient'],
+        },
       ],
       dts: 'src/auto-imports.d.ts',
       eslintrc: {

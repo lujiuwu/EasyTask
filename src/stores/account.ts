@@ -2,6 +2,7 @@ export const useAccountStore = defineStore('account', {
   state: () => ({
     username: '',
     password: '',
+    token: '',
   }),
   actions: {
     setUsername (username: string) {
@@ -9,6 +10,12 @@ export const useAccountStore = defineStore('account', {
     },
     setPassword (password: string) {
       this.password = password
+    },
+    setToken (token: string) {
+      this.token = token
+    },
+    getToken () {
+      return this.token
     },
   },
 })
