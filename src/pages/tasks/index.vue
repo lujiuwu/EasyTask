@@ -9,7 +9,7 @@
     >
       <span>{{ t('intro.alert.title') }}</span>
       <template #append>
-        <v-btn class="mr-2px" density="compact" @click="() => startIntro(t as any)">{{ t('intro.alert.open') }}</v-btn>
+        <v-btn class="mr-2px" density="compact" @click="handleStartIntro">{{ t('intro.alert.open') }}</v-btn>
         <v-btn density="compact" @click="show = false">{{ t('intro.alert.close') }}</v-btn>
       </template>
     </v-alert>
@@ -70,6 +70,7 @@
   import PublicAddButton from '@/components/PublicAddButton/component.vue'
   import { StarBook } from '@/components/StarBook'
   import { useTasksCache } from '@/composables/useTasksCache'
+  import { getIntroConfig } from '@/data/intro'
   import { TaskType } from '@/enum/task_type'
   import { ToolBarOptions } from '@/enum/toolBar_options'
   import { useAppStore } from '@/stores/app'
@@ -81,6 +82,12 @@
   const list = ref<{ title: string, to: string, supItem?: string }[]>([])
 
   const { getCachedTasks } = useTasksCache()
+
+  const introConfig = getIntroConfig(t as any)
+
+  function handleStartIntro () {
+    startIntro(introConfig.labels, introConfig.steps)
+  }
 
   const handleSearch = useDebounceFn(() => {
     if (value.value === '') {

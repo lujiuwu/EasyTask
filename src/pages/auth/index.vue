@@ -109,15 +109,12 @@
       return httpClient.post('/auth/login', formData)
     },
     onSuccess: response => {
-      console.log('登录成功响应:', response.data)
-      console.log('响应数据结构:', JSON.stringify(response.data, null, 2))
       // 设置认证信息 - token在data.data中
       if (response.data.data && response.data.data.token) {
         setAuth(response.data.data.token)
         toast.success(tFn('login.login-success'))
         router.push('/tasks')
       } else {
-        console.error('登录响应中缺少token，完整响应:', response.data)
         toast.error('登录响应中缺少token')
       }
     },
@@ -127,7 +124,6 @@
   })
 
   async function handleLogin () {
-    console.log('handleLogin 被调用, meta.valid:', meta.value.valid)
     if (meta.value.valid) {
       const formData = {
         username: username.value!,

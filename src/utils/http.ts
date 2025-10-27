@@ -15,16 +15,12 @@ httpClient.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
     // 获取token并添加到请求头
     const tokenData = SecureStorage().getTokens()
-    console.log('请求拦截器 - token数据:', tokenData)
     if (tokenData) {
       // 使用set方法设置headers
       // eslint-disable-next-line unicorn/no-array-for-each
       Object.entries(tokenData).forEach(([key, value]) => {
         config.headers.set(key, value as string)
       })
-      console.log('请求拦截器 - 已添加认证头:', config.headers.get('Authorization'))
-    } else {
-      console.log('请求拦截器 - 没有找到token')
     }
     return config
   },

@@ -47,16 +47,9 @@
 
   async function getTasksByPage ({ pageParam = 1 }) {
     try {
-      console.log('发起任务请求，page:', pageParam)
       const res = await httpClient.get('/tasks?page=' + pageParam)
-      console.log('任务请求成功:', res.data)
       return res.data.data
     } catch (error) {
-      console.error('获取任务失败:', error)
-      // 如果是401错误，显示登录过期提示
-      if ((error as any).response?.status === 401) {
-        console.log('Token已过期，需要重新登录')
-      }
       throw error
     }
   }
