@@ -16,7 +16,7 @@
     <v-form>
       <v-container class="relative pb-0!">
         <v-row>
-          <v-col class="p-0" cols="12">
+          <v-col class="p-0" cols="11">
             <v-text-field
               v-model="value"
               clearable
@@ -24,6 +24,9 @@
               prepend-inner-icon="mdi-magnify"
               @update:model-value="handleSearch"
             />
+          </v-col>
+          <v-col cols="1">
+            <v-btn icon="mdi-dots-vertical" variant="text" @click="showCustomShowElements = true" />
           </v-col>
         </v-row>
         <v-row
@@ -57,7 +60,7 @@
       :items="tabs"
       @update:model-value="appStore.setTabIndex($event as string)"
     />
-    <data-list />
+    <data-list class="bg-[#eee] h-[calc(100vh-100px)]" />
     <public-add-button icon="mdi-plus" to="/tasks/add" />
     <public-add-button icon="mdi-star-box-multiple-outline" :initial-position="initialPosition" to="/tasks/star" />
   </div>
@@ -76,6 +79,7 @@
   import { startIntro } from '@/utils/intro'
 
   const value = ref('')
+  const showCustomShowElements = ref(false)
   const showList = ref(false)
   const show = ref(true)
   const list = ref<{ title: string, to: string, supItem?: string }[]>([])

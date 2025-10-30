@@ -34,6 +34,9 @@
       starTime: '2021-01-02',
     },
   ])
+  useHeader({
+    title: () => '收藏夹',
+  })
 </script>
 
 <style scoped>
