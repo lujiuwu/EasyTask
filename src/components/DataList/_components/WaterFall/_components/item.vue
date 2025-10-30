@@ -57,7 +57,6 @@
   import { TaskDetailPanel } from '@/components/TaskDetailPanel'
   import { TaskStatus } from '@/enum/task_status'
 
-
   const props = defineProps({
     data: {
       type: Object,

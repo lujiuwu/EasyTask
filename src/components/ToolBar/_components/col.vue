@@ -7,7 +7,9 @@
       <v-list-item
         v-for="item in colItems"
         :key="item.value"
+        :active="item.value === appStore.col"
         :append-icon="item.icon"
+        color="primary"
         @click="handleCol(item.value)"
       >
         <v-list-item-title>{{ item.label }}</v-list-item-title>

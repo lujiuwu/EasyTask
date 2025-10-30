@@ -7,7 +7,7 @@
       <v-list-item
         v-for="item in sortItems"
         :key="item.value"
-        :append-icon="item.icon"
+        color="primary"
       >
         <v-list-item-title>{{ item.label }}</v-list-item-title>
       </v-list-item>

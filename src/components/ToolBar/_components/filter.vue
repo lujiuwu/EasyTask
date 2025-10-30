@@ -10,7 +10,9 @@
       <v-list-item
         v-for="item in filterItems"
         :key="item.value"
+        :active="item.value === appStore.filter"
         :append-icon="item.icon"
+        color="primary"
         @click="handleFilter(item.value)"
       >
         <v-list-item-title>{{ item.label }}</v-list-item-title>
@@ -30,3 +32,6 @@
     appStore.setFilter(value)
   }
 </script>
+<style scoped lang="scss">
+
+</style>
