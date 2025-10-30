@@ -8,11 +8,13 @@
       <v-card-actions>
         <v-spacer />
         <v-btn
+          color="primary"
           :text="t('pages.setting.user.function.switchLanguage.confirm')"
           variant="tonal"
           @click="handleLanguage()"
         />
         <v-btn
+          color="error"
           :text="t('pages.setting.user.function.switchLanguage.cancel')"
           variant="tonal"
           @click="handleCancel()"

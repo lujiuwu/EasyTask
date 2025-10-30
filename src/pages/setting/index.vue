@@ -20,7 +20,7 @@
               <v-list-item @click="handleOpen">
                 <v-list-item-title>{{ t('pages.setting.user.function.switchLanguage.title') }}</v-list-item-title>
               </v-list-item>
-              <v-list-item @click="handleLoginOut">
+              <v-list-item @click="isOpenDialog = true">
                 <v-list-item-title>{{ t('pages.setting.user.function.login-out.title') }}</v-list-item-title>
               </v-list-item>
             </v-list>
@@ -59,12 +59,25 @@
       </v-list>
     </v-list>
     <SwitchLanguage :open="open" @update:open="handleOpen" />
+    <v-dialog v-model="isOpenDialog">
+      <v-card>
+        <v-card-title>
+          确认退出登录吗？
+        </v-card-title>
+        <v-card-actions>
+          <v-btn color="primary" variant="tonal" @click="handleLoginOut">确认</v-btn>
+          <v-btn color="error" variant="tonal" @click="isOpenDialog = false">取消</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
 <script lang="ts" setup>
   import { ToolBarOptions } from '@/enum/toolBar_options'
   import { SwitchLanguage } from './_components'
+
+  const isOpenDialog = ref(false)
 
   const router = useRouter()
   const open = ref(false)
