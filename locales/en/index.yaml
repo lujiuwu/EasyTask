@@ -51,7 +51,7 @@ footer-nav:
   setting: Settings
 intro:
   alert:
-    title: Would you like to enable theuser guide?
+    title: Enable the user guide?
     open: Enable
     close: Disable
   steps:

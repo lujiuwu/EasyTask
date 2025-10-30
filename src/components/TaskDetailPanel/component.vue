@@ -1,16 +1,20 @@
 <template>
   <v-container class="p-0!">
-    <draggable v-model="content!" item-key="key" @end="updateContent">
+    <draggable
+      ghost-class="ghost-item"
+      item-key="key"
+      :list="content"
+      @end="updateContent"
+    >
       <template #item="{ element, index }">
         <v-expansion-panels v-if="props.status === 'detail'">
           <v-expansion-panel>
-            <v-expansion-panel-title class="pt-0! pb-0!">
-              <v-card class="p-0! outline-none! shadow-none! bg-transparent!" @click="console.log(element)">
-                <v-card-text class="p-0! outline-none! bg-transparent!">
-                  <span class="color-red mr-2">{{ index+1 }}.</span>
-                  <span :style="{textDecoration:element.done?'line-through red':'none'}">{{ element.text }}</span>
-                </v-card-text>
-              </v-card>
+            <v-expansion-panel-title class="pt-0! pb-0! shadow-none!">
+              <span class="color-red mr-2">{{ index+1 }}.</span>
+              <span :style="{textDecoration:element.done?'line-through red':'none'}">{{ element.text }}</span>
+              <template #actions="{ expanded }">
+                <v-icon :icon="expanded ? 'mdi-chevron-double-up' : 'mdi-chevron-double-down'" />
+              </template>
             </v-expansion-panel-title>
             <v-expansion-panel-text class="pt-5px">
               <v-btn
@@ -93,5 +97,10 @@
 <style scoped lang="scss">
   :deep(.v-list-item) {
     padding-inline: 10px !important;
+  }
+
+  .ghost-item {
+    opacity: 0.7;
+    border:1px solid rgb(137, 187, 185);
   }
 </style>

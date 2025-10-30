@@ -32,13 +32,11 @@
       </v-card-text>
       <template #actions>
         <v-row>
-          <v-col cols="1">
+          <v-col class="flex" cols="7">
             <v-icon color="red" @click="handleStar">{{ icon }}</v-icon>
-          </v-col>
-          <v-col cols="1">
             <v-icon @click="handleDelete">mdi-trash-can-outline</v-icon>
           </v-col>
-          <v-col cols="2" offset="4">
+          <v-col cols="5">
             <v-btn color="shades" density="comfortable" variant="tonal" @click="$router.push(`/tasks/${props.data.id}`)">
               {{ t('pages.tasks.item.detail.title') }}
             </v-btn>
@@ -58,7 +56,6 @@
   import { Dialog } from '@/components/Dialog'
   import { TaskDetailPanel } from '@/components/TaskDetailPanel'
   import { TaskStatus } from '@/enum/task_status'
-
 
   const props = defineProps({
     data: {

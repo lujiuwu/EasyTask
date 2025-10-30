@@ -11,7 +11,9 @@
       <v-list-item
         v-for="item in layoutItems"
         :key="item.value"
+        :active="item.value === appStore.layoutMode"
         :append-icon="item.icon"
+        color="primary"
         @click="changeLayout(item.value)"
       >
         <v-list-item-title>{{ item.label }}</v-list-item-title>
