@@ -1,11 +1,11 @@
 <template>
   <use-draggable
     class="draggable-button add-tasks"
-    :initial-value="initialPosition"
+    :initial-value="props.initialPosition as any"
   >
     <v-btn
       color="primary"
-      icon="mdi-plus"
+      :icon="props.icon"
       @click="handleAddTask"
     />
   </use-draggable>
@@ -17,10 +17,16 @@
       type: String,
       required: true,
     },
+    icon: {
+      type: String,
+      required: true,
+    },
+    initialPosition: {
+      type: Object,
+      default: () => ({ x: window.innerWidth - 60, y: window.innerHeight - 120 }),
+    },
   })
   const router = useRouter()
-  const initialPosition = { x: window.innerWidth - 60, y: window.innerHeight - 120 }
-
   function handleAddTask () {
     router.push(props.to)
   }

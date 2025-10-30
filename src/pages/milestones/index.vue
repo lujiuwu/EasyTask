@@ -13,15 +13,18 @@
     <MileStoneList v-if="appStore.col === '1'" :data="data" />
     <CardList v-if="appStore.col === '4'" :data="data" />
     <DoubleLineList v-if="appStore.col === '2'" :data="data" />
+    <public-add-button icon="mdi-plus" to="/milestones/add" />
   </div>
 </template>
 
 <script lang="ts" setup>
   import { useQuery } from '@tanstack/vue-query'
+  import PublicAddButton from '@/components/PublicAddButton/component.vue'
   import { ToolBarOptions } from '@/enum/toolBar_options'
   import { useAppStore } from '@/stores/app'
-  import { CardList, DoubleLineList, MileStoneList } from './_components'
   import httpClient from '@/utils/http'
+  import { CardList, DoubleLineList, MileStoneList } from './_components'
+
   definePage({
     meta: { key: 'mdi-flag-checkered', title: '里程碑' },
   })

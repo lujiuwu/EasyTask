@@ -58,8 +58,8 @@
       @update:model-value="appStore.setTabIndex($event as string)"
     />
     <data-list />
-    <public-add-button to="/tasks/add" />
-    <star-book to="/tasks/star" />
+    <public-add-button icon="mdi-plus" to="/tasks/add" />
+    <public-add-button icon="mdi-star-box-multiple-outline" :initial-position="initialPosition" to="/tasks/star" />
   </div>
 </template>
 
@@ -68,7 +68,6 @@
   import _ from 'lodash'
   import DataList from '@/components/DataList/component.vue'
   import PublicAddButton from '@/components/PublicAddButton/component.vue'
-  import { StarBook } from '@/components/StarBook'
   import { useTasksCache } from '@/composables/useTasksCache'
   import { getIntroConfig } from '@/data/intro'
   import { TaskType } from '@/enum/task_type'
@@ -80,6 +79,8 @@
   const showList = ref(false)
   const show = ref(true)
   const list = ref<{ title: string, to: string, supItem?: string }[]>([])
+
+  const initialPosition = { x: window.innerWidth - 60, y: window.innerHeight - 200 }
 
   const { getCachedTasks } = useTasksCache()
 
