@@ -13,48 +13,11 @@
         <v-btn density="compact" @click="show = false">{{ t('intro.alert.close') }}</v-btn>
       </template>
     </v-alert>
-    <v-form>
-      <v-container class="relative pb-0!">
-        <v-row>
-          <v-col class="p-0" cols="11">
-            <v-text-field
-              v-model="value"
-              clearable
-              :placeholder="t('pages.tasks.search.tasks')"
-              prepend-inner-icon="mdi-magnify"
-              @update:model-value="handleSearch"
-            />
-          </v-col>
-          <v-col cols="1">
-            <v-btn icon="mdi-dots-vertical" variant="text" @click="showCustomShowElements = true" />
-          </v-col>
-        </v-row>
-        <v-row
-          v-show="showList"
-          class="absolute top-14 left-[-1] w-full z-10"
-        >
-          <v-col cols="12">
-            <v-list class="max-h-[300px] overflow-y-auto border-b-md">
-              <v-list-item
-                v-for="item in list"
-                :key="item.title"
-                :to="item.to"
-              >
-                <v-list-item-title>
-                  {{ item.title }}
-                </v-list-item-title>
-                <v-list-item-subtitle v-if="item.supItem">
-                  {{ item.supItem }}
-                </v-list-item-subtitle>
-              </v-list-item>
-            </v-list>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-form>
+    <SearchWithHL />
     <v-tabs
       v-model="tabIndex"
       center-active
+      class="sticky top-56px z-10 bg-white"
       color="primary"
       height="35px"
       :items="tabs"
@@ -67,26 +30,19 @@
 </template>
 
 <script lang="tsx" setup>
-  import { useDebounceFn } from '@vueuse/core'
   import _ from 'lodash'
   import DataList from '@/components/DataList/component.vue'
   import PublicAddButton from '@/components/PublicAddButton/component.vue'
-  import { useTasksCache } from '@/composables/useTasksCache'
   import { getIntroConfig } from '@/data/intro'
   import { TaskType } from '@/enum/task_type'
   import { ToolBarOptions } from '@/enum/toolBar_options'
   import { useAppStore } from '@/stores/app'
   import { startIntro } from '@/utils/intro'
+  import SearchWithHL from './_components/SearchWithHL.vue'
 
-  const value = ref('')
-  const showCustomShowElements = ref(false)
-  const showList = ref(false)
   const show = ref(true)
-  const list = ref<{ title: string, to: string, supItem?: string }[]>([])
 
   const initialPosition = { x: window.innerWidth - 60, y: window.innerHeight - 200 }
-
-  const { getCachedTasks } = useTasksCache()
 
   const introConfig = getIntroConfig(t as any)
 
@@ -94,29 +50,6 @@
     startIntro(introConfig.labels, introConfig.steps)
   }
 
-  const handleSearch = useDebounceFn(() => {
-    if (value.value === '') {
-      list.value = []
-      return
-    }
-    const cachedData = getCachedTasks() as any
-    const currentTasks = _.flatMap((cachedData.pages as any[]), (page: any) => page.data)
-    // eslint-disable-next-line unicorn/no-array-for-each
-    _.forEach(currentTasks, item => {
-      if (item.title.includes(value.value)) {
-        list.value.push({ title: item.title, to: `/tasks/${item.id}` })
-      }
-      if (item.content) {
-        // eslint-disable-next-line unicorn/no-array-for-each
-        _.forEach(item.content, subItem => {
-          if (subItem.text.includes(value.value)) {
-            list.value.push({ title: subItem.text, supItem: item.title, to: `/tasks/${subItem.id}` })
-          }
-        })
-      }
-    })
-    showList.value = list.value.length > 0
-  }, 300)
   const tabs = ref([
     { text: t('pages.tasks.tabs.all'), value: TaskType.ALL },
     { text: t('pages.tasks.tabs.normal'), value: TaskType.NORMAL },

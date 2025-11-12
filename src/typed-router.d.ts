@@ -32,6 +32,8 @@ declare module 'vue-router/auto-routes' {
     '/setting/prefer/': RouteRecordInfo<'/setting/prefer/', '/setting/prefer', Record<never, never>, Record<never, never>>,
     '/setting/system/': RouteRecordInfo<'/setting/system/', '/setting/system', Record<never, never>, Record<never, never>>,
     '/tasks/': RouteRecordInfo<'/tasks/', '/tasks', Record<never, never>, Record<never, never>>,
+    '/tasks/_components/SearchWithHL': RouteRecordInfo<'/tasks/_components/SearchWithHL', '/tasks/_components/SearchWithHL', Record<never, never>, Record<never, never>>,
+    '/tasks/_components/TextHighlight': RouteRecordInfo<'/tasks/_components/TextHighlight', '/tasks/_components/TextHighlight', Record<never, never>, Record<never, never>>,
     '/tasks/[id]/': RouteRecordInfo<'/tasks/[id]/', '/tasks/:id', { id: ParamValue<true> }, { id: ParamValue<false> }>,
     '/tasks/add/': RouteRecordInfo<'/tasks/add/', '/tasks/add', Record<never, never>, Record<never, never>>,
     '/tasks/add/_components/addForm': RouteRecordInfo<'/tasks/add/_components/addForm', '/tasks/add/_components/addForm', Record<never, never>, Record<never, never>>,
@@ -104,6 +106,14 @@ declare module 'vue-router/auto-routes' {
     }
     'src/pages/tasks/index.vue': {
       routes: '/tasks/'
+      views: never
+    }
+    'src/pages/tasks/_components/SearchWithHL.vue': {
+      routes: '/tasks/_components/SearchWithHL'
+      views: never
+    }
+    'src/pages/tasks/_components/TextHighlight.vue': {
+      routes: '/tasks/_components/TextHighlight'
       views: never
     }
     'src/pages/tasks/[id]/index.vue': {

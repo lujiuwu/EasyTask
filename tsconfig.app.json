@@ -1,6 +1,13 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "src/**/*.tsx", "src/**/*.jsx"],
+  "include": [
+    "env.d.ts", 
+    "src/**/*", 
+    "src/**/*.vue", 
+    "src/**/*.tsx", 
+    "src/**/*.jsx",
+    "src/pages/**/_components/**/*.vue"
+  ],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
     "composite": true,
@@ -8,7 +15,6 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "jsx": "preserve",
     "jsxImportSource": "vue",
-
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
