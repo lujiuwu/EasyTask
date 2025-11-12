@@ -1,7 +1,7 @@
 import type { I18nKey } from '@/types/i18n'
 import { useI18n as useVueI18n } from 'vue-i18n'
-import { useAppStore } from '@/stores/app'
 import { i18n } from '@/plugins/i18n'
+import { useAppStore } from '@/stores/app'
 
 export function useI18n (): {
   t: (key: I18nKey, ...args: any[]) => string

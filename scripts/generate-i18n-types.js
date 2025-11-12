@@ -66,4 +66,3 @@ declare module '@intlify/core-base' {
 const outputPath = path.join(process.cwd(), 'src', 'types', 'i18n.d.ts')
 fs.mkdirSync(path.dirname(outputPath), { recursive: true })
 fs.writeFileSync(outputPath, typeDefinition)
-

@@ -20,13 +20,13 @@ export function SecureStorage () {
     if (storedToken) {
       return { Authorization: `Bearer ${storedToken}` }
     }
-    
+
     // 如果localStorage没有，从store获取
     const originToken = accountStore.getToken()
     if (originToken) {
       return { Authorization: `Bearer ${originToken}` }
     }
-    
+
     return null
   }
   return {

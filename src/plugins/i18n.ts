@@ -1,6 +1,6 @@
+import type { I18nMessages } from '@/types/i18n'
 import yaml from 'js-yaml'
 import { createI18n } from 'vue-i18n'
-import type { I18nMessages } from '@/types/i18n'
 
 // 导入 YAML 文件
 import chIndex from '../../locales/ch/index.yaml?raw'

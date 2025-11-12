@@ -27,36 +27,25 @@
           </v-menu>
         </template>
       </v-list-item>
-      <v-divider />
-      <v-list-subheader>{{ t('pages.setting.useful-functions.title') }}</v-list-subheader>
-      <v-list class="border-thin">
-        <v-list-item
-          v-for="item in useful_fns"
-          :key="item.to"
-
-          color="primary"
-          lines="two"
-          :to="item.to"
-        >
-          <template #prepend>
-            <v-icon :icon="item.icon" />
-          </template>
-          <v-list-item-title>
-            {{ item.label }}
-          </v-list-item-title>
-        </v-list-item>
-      </v-list>
-      <v-list-subheader>{{ t('pages.setting.other.title') }}</v-list-subheader>
-      <v-list class="border-thin">
-        <v-list-item v-for="item in other_fns" :key="item.to" color="primary" :to="item.to">
-          <template #prepend>
-            <v-icon :icon="item.icon" />
-          </template>
-          <v-list-item-title>
-            {{ item.label }}
-          </v-list-item-title>
-        </v-list-item>
-      </v-list>
+    </v-list>
+    <v-list v-for="listItem in listItems" :key="listItem.title" class="py-0!">
+      <v-list-subheader>
+        {{ listItem.title }}
+      </v-list-subheader>
+      <v-list-item
+        v-for="item in listItem.children"
+        :key="item.to"
+        color="primary"
+        lines="two"
+        :to="item.to"
+      >
+        <template #prepend>
+          <v-icon :icon="item.icon" />
+        </template>
+        <v-list-item-title>
+          {{ item.label }}
+        </v-list-item-title>
+      </v-list-item>
     </v-list>
     <SwitchLanguage :open="open" @update:open="handleOpen" />
     <v-dialog v-model="isOpenDialog">
@@ -88,20 +77,25 @@
   function handleLoginOut () {
     router.push('/auth')
   }
-  definePage({
-    meta: { key: 'mdi-cogs', title: '设置' },
-  })
-  const useful_fns = computed(() => [
-    { label: t('pages.setting.useful-functions.items.about-system'), icon: 'mdi-alert-circle', to: '/setting/system' },
-    { label: t('pages.setting.useful-functions.items.about-account'), icon: 'mdi-account', to: '/setting/account' },
-    { label: t('pages.setting.useful-functions.items.prefer-setting'), icon: 'mdi-heart', to: '/setting/prefer' },
-  ])
-  const other_fns = computed(() => [
-    { label: t('pages.setting.other.items.other-functions'), icon: 'mdi-help-circle', to: '/setting/others' },
-  ])
-
   useHeader({
     title: () => t('pages.setting.title'),
     options: [ToolBarOptions.SHARE],
   })
+
+  const listItems = computed(() => [
+    {
+      title: t('pages.setting.useful-functions.title'),
+      children: [
+        { label: t('pages.setting.useful-functions.items.about-system'), icon: 'mdi-alert-circle', to: '/setting/system' },
+        { label: t('pages.setting.useful-functions.items.about-account'), icon: 'mdi-account', to: '/setting/account' },
+        { label: t('pages.setting.useful-functions.items.prefer-setting'), icon: 'mdi-heart', to: '/setting/prefer' },
+      ],
+    },
+    {
+      title: t('pages.setting.other.title'),
+      children: [
+        { label: t('pages.setting.other.items.other-functions'), icon: 'mdi-help-circle', to: '/setting/others' },
+      ],
+    },
+  ])
 </script>
