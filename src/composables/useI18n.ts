@@ -19,6 +19,8 @@ export function useI18n (): {
   const switchLocale = (newLocale: string) => {
     if (availableLocales.includes(newLocale)) {
       locale.value = newLocale
+      // 同步更新 i18n 实例的全局 locale
+      i18n.global.locale.value = newLocale
       // 同步到 store 并持久化存储
       appStore.setLocale(newLocale)
     }

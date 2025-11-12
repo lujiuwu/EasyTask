@@ -31,9 +31,8 @@ displayLanguage: ch
 enabledParsers:
   - yaml
 
-# 启用的框架
+# 启用的框架（只使用 vue-i18n）
 enabledFrameworks:
-  - vue
   - vue-i18n
 
 # 目录结构

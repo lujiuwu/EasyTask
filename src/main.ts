@@ -54,5 +54,9 @@ registerPlugins(app)
 // 初始化应用状态
 const appStore = useAppStore()
 appStore.initLocale()
+// 同步 store 中的语言设置到 i18n 实例
+if (appStore.locale) {
+  i18n.global.locale.value = appStore.locale
+}
 
 app.mount('#app')

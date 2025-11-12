@@ -44,6 +44,7 @@
   import { TaskDetailPanel } from '@/components/TaskDetailPanel'
   import httpClient from '@/utils/http'
 
+  const { t } = useI18n()
   const route = useRoute()
   const id = (route.params as { id: string }).id
   const {

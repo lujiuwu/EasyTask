@@ -77,6 +77,7 @@
   import { ToolBarOptions } from '@/enum/toolBar_options'
   import { SwitchLanguage } from './_components'
 
+  const { t } = useI18n()
   const isOpenDialog = ref(false)
 
   const router = useRouter()
