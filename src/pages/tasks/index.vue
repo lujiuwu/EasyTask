@@ -40,6 +40,7 @@
   import { startIntro } from '@/utils/intro'
   import SearchWithHL from './_components/SearchWithHL.vue'
 
+  const { t } = useI18n()
   const show = ref(true)
 
   const initialPosition = { x: window.innerWidth - 60, y: window.innerHeight - 200 }

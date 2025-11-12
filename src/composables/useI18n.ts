@@ -1,6 +1,7 @@
 import type { I18nKey } from '@/types/i18n'
 import { useI18n as useVueI18n } from 'vue-i18n'
 import { useAppStore } from '@/stores/app'
+import { i18n } from '@/plugins/i18n'
 
 export function useI18n (): {
   t: (key: I18nKey, ...args: any[]) => string
@@ -32,7 +33,7 @@ export function useI18n (): {
 }
 
 // 导出 t 函数用于全局自动导入
+// 直接使用 i18n 实例，避免在非 setup 顶层调用 useI18n()
 export function t (key: I18nKey, ...args: any[]): string {
-  const { t: tFn } = useI18n()
-  return tFn(key, ...args)
+  return i18n.global.t(key, ...args)
 }

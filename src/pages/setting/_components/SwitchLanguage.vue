@@ -34,7 +34,7 @@
       default: false,
     },
   })
-  const { switchLocale } = useI18n()
+  const { switchLocale, t } = useI18n()
   const appStore = useAppStore()
   const emit = defineEmits(['update:open'])
 
