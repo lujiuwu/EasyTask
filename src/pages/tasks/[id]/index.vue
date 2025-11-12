@@ -1,5 +1,5 @@
 <template>
-  <div class="p-10px">
+  <div class="p-10px flex gap-10px flex-col bg-coolGray-300">
     <v-card>
       <v-card-title>
         <v-row>
@@ -34,6 +34,14 @@
         </div>
       </v-card-actions>
     </v-card>
+    <v-card>
+      <v-card-title>
+        Timeline
+      </v-card-title>
+      <v-card-text class="p-0!">
+        <Timeline :data="timelineData" />
+      </v-card-text>
+    </v-card>
   </div>
 </template>
 <script lang="ts" setup>
@@ -43,6 +51,8 @@
   import { AddSubTaskButton } from '@/components/AddSubTaskButton'
   import { TaskDetailPanel } from '@/components/TaskDetailPanel'
   import httpClient from '@/utils/http'
+  import Timeline from '../_components/Timeline.vue'
+  import { TimelineItemIcon, TimelineItemType } from '../types/timelineItemType'
 
   const { t } = useI18n()
   const route = useRoute()
@@ -86,4 +96,21 @@
   useHeader({
     title: () => data.value?.title ?? t('pages.tasks.placeholder'),
   })
+
+  const timelineData = [
+    {
+      title: 'Create Task',
+      description: 'Create Task',
+      date: '2021-01-01',
+      color: TimelineItemType.CREATE,
+      icon: TimelineItemIcon.CREATE,
+    },
+    {
+      title: 'Finish subTask',
+      description: 'Finish subTask',
+      date: '2021-5-11',
+      icon: TimelineItemIcon.FINISH,
+      color: TimelineItemType.FINISH,
+    },
+  ]
 </script>

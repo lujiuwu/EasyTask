@@ -34,6 +34,7 @@ declare module 'vue-router/auto-routes' {
     '/tasks/': RouteRecordInfo<'/tasks/', '/tasks', Record<never, never>, Record<never, never>>,
     '/tasks/_components/SearchWithHL': RouteRecordInfo<'/tasks/_components/SearchWithHL', '/tasks/_components/SearchWithHL', Record<never, never>, Record<never, never>>,
     '/tasks/_components/TextHighlight': RouteRecordInfo<'/tasks/_components/TextHighlight', '/tasks/_components/TextHighlight', Record<never, never>, Record<never, never>>,
+    '/tasks/_components/Timeline': RouteRecordInfo<'/tasks/_components/Timeline', '/tasks/_components/Timeline', Record<never, never>, Record<never, never>>,
     '/tasks/[id]/': RouteRecordInfo<'/tasks/[id]/', '/tasks/:id', { id: ParamValue<true> }, { id: ParamValue<false> }>,
     '/tasks/add/': RouteRecordInfo<'/tasks/add/', '/tasks/add', Record<never, never>, Record<never, never>>,
     '/tasks/add/_components/addForm': RouteRecordInfo<'/tasks/add/_components/addForm', '/tasks/add/_components/addForm', Record<never, never>, Record<never, never>>,
@@ -114,6 +115,10 @@ declare module 'vue-router/auto-routes' {
     }
     'src/pages/tasks/_components/TextHighlight.vue': {
       routes: '/tasks/_components/TextHighlight'
+      views: never
+    }
+    'src/pages/tasks/_components/Timeline.vue': {
+      routes: '/tasks/_components/Timeline'
       views: never
     }
     'src/pages/tasks/[id]/index.vue': {

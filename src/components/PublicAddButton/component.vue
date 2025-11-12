@@ -1,6 +1,6 @@
 <template>
   <use-draggable
-    class="draggable-button add-tasks"
+    :class="['draggable-button', props.to === '/tasks/add' ? 'add-tasks' : 'star-book']"
     :initial-value="props.initialPosition as any"
   >
     <v-btn

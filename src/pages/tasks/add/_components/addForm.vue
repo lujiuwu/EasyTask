@@ -70,7 +70,6 @@
     '养成习惯',
   ]
 
-
   const taskStatusOptions = [
     { title: t('tool-bar.filter.types.unfinished'), value: TaskStatus.UNFINISHED },
     { title: t('tool-bar.filter.types.finished'), value: TaskStatus.FINISHED },
@@ -90,10 +89,6 @@
   const [type, typeProps] = defineField('type')
   const [status, statusProps] = defineField('status')
   const [chips, chipsProps] = defineField('chips')
-
-  watch(() => errors.value.title, isValid => {
-    console.log('title error:', isValid)
-  })
 
   // 暴露表单验证状态给父组件
   defineExpose({
