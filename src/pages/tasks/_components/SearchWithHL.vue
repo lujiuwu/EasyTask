@@ -29,8 +29,11 @@
               :key="item.id"
               :to="`/tasks/${item.id}`"
             >
-              <v-list-item-title>
+              <v-list-item-title class="flex flex-justify-between">
                 <text-highlight :highlight-range="[item.indices[0]!, item.indices[1]!]" :text="item.label" />
+                <span v-if="item.supLabel" class="text-sm text-gray-500">
+                  {{ item.supLabel }}
+                </span>
               </v-list-item-title>
             </v-list-item>
           </v-list>

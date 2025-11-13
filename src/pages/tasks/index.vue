@@ -17,7 +17,6 @@
     <v-tabs
       v-model="tabIndex"
       center-active
-      class="sticky top-56px z-10 bg-white"
       color="primary"
       height="35px"
       :items="tabs"
