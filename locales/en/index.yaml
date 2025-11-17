@@ -49,6 +49,7 @@ footer-nav:
   tasks: Tasks
   milestones: Milestones
   setting: Settings
+  star: Star
 intro:
   alert:
     title: Enable the user guide?
@@ -92,7 +93,7 @@ pages:
         content: Deleted items can be restored from personal recycle bin
         cancel: Cancel
         delete: Delete
-      detail: 
+      detail:
         title: Detail
         id: Task ID
         sub-tasks: Sub Tasks

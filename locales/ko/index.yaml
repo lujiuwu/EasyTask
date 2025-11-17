@@ -49,6 +49,7 @@ footer-nav:
   tasks: 작업
   milestones: 마일스톤
   setting: 설정
+  star: 즐겨찾기
 intro:
   alert:
     title: 사용자 가이드를 활성화하시겠습니까?

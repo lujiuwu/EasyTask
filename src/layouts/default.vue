@@ -1,5 +1,6 @@
 <template>
   <ToolBar />
+  <BackToTop />
   <v-main class="main-with-toolbar">
     <router-view />
   </v-main>
@@ -7,7 +8,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { FooterBar, ToolBar } from '@/components'
+  import { BackToTop, FooterBar, ToolBar } from '@/components'
 </script>
 
 <style scoped>

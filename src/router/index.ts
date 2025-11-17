@@ -17,9 +17,6 @@ const router = createRouter({
       path: '/', redirect: '/auth',
     },
     {
-      path: '/add', redirect: '/add/tasks',
-    },
-    {
       path: '/auth',
       component: () => import('@/pages/auth/index.vue'),
       meta: { layout: 'auth' },

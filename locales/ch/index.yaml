@@ -49,6 +49,7 @@ footer-nav:
   tasks: 任务
   milestones: 里程碑
   setting: 设置
+  star: 收藏
 intro:
   alert:
     title: 是否开启新手指引？
@@ -163,3 +164,6 @@ pages:
       title: 其他
       items:
         other-functions: 其他功能
+  add:
+
+

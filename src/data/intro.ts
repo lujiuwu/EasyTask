@@ -41,18 +41,6 @@ export function getIntroConfig (t: (key: string) => string): IntroConfig {
       intro: t('intro.contents.first-step.intro'),
       position: 'bottom',
     },
-    {
-      element: '.star-book',
-      title: t('intro.contents.second-step.title'),
-      intro: t('intro.contents.second-step.intro'),
-      position: 'bottom',
-    },
-    {
-      element: '.add-tasks',
-      title: t('intro.contents.third-step.title'),
-      intro: t('intro.contents.third-step.intro'),
-      position: 'bottom',
-    },
   ]
 
   return { labels, steps }

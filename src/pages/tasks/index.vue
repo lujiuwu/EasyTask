@@ -23,15 +23,12 @@
       @update:model-value="appStore.setTabIndex($event as string)"
     />
     <data-list class="bg-[#eee] h-[calc(100vh-100px)]" />
-    <public-add-button icon="mdi-plus" to="/tasks/add" />
-    <public-add-button icon="mdi-star-box-multiple-outline" :initial-position="initialPosition" to="/tasks/star" />
   </div>
 </template>
 
 <script lang="tsx" setup>
   import _ from 'lodash'
   import DataList from '@/components/DataList/component.vue'
-  import PublicAddButton from '@/components/PublicAddButton/component.vue'
   import { getIntroConfig } from '@/data/intro'
   import { TaskType } from '@/enum/task_type'
   import { ToolBarOptions } from '@/enum/toolBar_options'
@@ -41,8 +38,6 @@
 
   const { t } = useI18n()
   const show = ref(true)
-
-  const initialPosition = { x: window.innerWidth - 60, y: window.innerHeight - 200 }
 
   const introConfig = getIntroConfig(t as any)
 

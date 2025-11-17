@@ -15,6 +15,7 @@ declare module 'vue' {
     Layout: typeof import('./components/ToolBar/_components/layout.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SelectionSheet: typeof import('./components/FooterBar/_components/SelectionSheet.vue')['default']
     Share: typeof import('./components/ToolBar/_components/share.vue')['default']
     Sort: typeof import('./components/ToolBar/_components/sort.vue')['default']
   }

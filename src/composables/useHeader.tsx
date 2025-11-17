@@ -19,8 +19,8 @@ export const renderHeader = shallowRef<{
 export function useHeader (renderOptions: { title: () => string | JSX.Element, options?: Array<ToolBarOptions> }) {
   const old = renderHeader.value
   renderHeader.value = {
-    ...old,
-    ...renderOptions,
+    title: renderOptions.title,
+    options: renderOptions.options ?? [],
   }
   tryOnBeforeUnmount(() => {
     renderHeader.value = old

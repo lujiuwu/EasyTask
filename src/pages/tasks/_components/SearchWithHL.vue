@@ -20,10 +20,10 @@
       <v-row
         v-show="showSearchResModal"
         ref="searchResModal"
-        class="absolute top-12 left-[10px] w-full z-10"
+        class="absolute top-12 left-[10px] w-full z-10 overflow-hidden"
       >
         <v-col cols="12 p-0!">
-          <v-list class="max-h-[300px] overflow-y-auto border-b-md">
+          <v-list class="max-h-[300px] border-b-md p-0!">
             <v-list-item
               v-for="item in list"
               :key="item.id"

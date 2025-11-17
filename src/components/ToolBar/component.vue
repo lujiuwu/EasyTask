@@ -6,7 +6,7 @@
     :elevation="8"
   >
     <template #prepend>
-      <v-btn v-if="route.path !== '/tasks'" icon="mdi-arrow-left" @click="router.back()" />
+      <v-btn v-if="route.path !== '/tasks'" icon="mdi-arrow-left" @click="handleBack()" />
     </template>
     <template #title>
       <component :is="renderHeader.title" />
@@ -25,10 +25,17 @@
   import _ from 'lodash'
   import { renderHeader } from '@/composables/useHeader'
   import { ToolBarOptions } from '@/enum/toolBar_options'
+  import { isDescendentOf } from '@/utils/router'
   import { Col, Filter, Layout, Share, Sort } from './_components'
 
   const router = useRouter()
   const route = useRoute()
+
+  function handleBack () {
+    // add 具有特殊行为
+    if (isDescendentOf('/add', route.path)) router.push('/add')
+    router.back()
+  }
 </script>
 
 <style scoped>
