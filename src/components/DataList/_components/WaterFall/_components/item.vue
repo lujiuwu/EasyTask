@@ -55,7 +55,7 @@
 <script lang="ts" setup>
   import { Dialog } from '@/components/Dialog'
   import { TaskDetailPanel } from '@/components/TaskDetailPanel'
-  import { TaskStatus } from '@/enum/task_status'
+  import { TaskStatus } from '@/enum/task'
 
   const props = defineProps({
     data: {

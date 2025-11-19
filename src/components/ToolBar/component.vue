@@ -24,7 +24,7 @@
 <script lang="ts" setup>
   import _ from 'lodash'
   import { renderHeader } from '@/composables/useHeader'
-  import { ToolBarOptions } from '@/enum/toolBar_options'
+  import { ToolBarOptions } from '@/enum/layout'
   import { isDescendentOf } from '@/utils/router'
   import { Col, Filter, Layout, Share, Sort } from './_components'
 
@@ -34,7 +34,7 @@
   function handleBack () {
     // add 具有特殊行为
     if (isDescendentOf('/add', route.path)) router.push('/add')
-    router.back()
+    else router.back()
   }
 </script>
 

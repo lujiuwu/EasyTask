@@ -18,7 +18,7 @@
 
 <script lang="ts" setup>
   import { useQuery } from '@tanstack/vue-query'
-  import { ToolBarOptions } from '@/enum/toolBar_options'
+  import { ToolBarOptions } from '@/enum/layout'
   import { useAppStore } from '@/stores/app'
   import httpClient from '@/utils/http'
   import { CardList, DoubleLineList, MileStoneList } from './_components'

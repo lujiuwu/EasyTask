@@ -63,7 +63,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { ToolBarOptions } from '@/enum/toolBar_options'
+  import { ToolBarOptions } from '@/enum/layout'
   import { SwitchLanguage } from './_components'
 
   const { t } = useI18n()

@@ -6,8 +6,11 @@
           <v-card class="auth-card" elevation="8">
             <v-card-title class="text-center pa-6">
               <h2 class="text-h4 font-weight-bold">
-                {{ t('login.login') }}
+                Easy Task
               </h2>
+              <div class="text-subtitle-1 text-grey-darken-1">
+                less task, more fun!
+              </div>
             </v-card-title>
             <v-card-text class="pa-6">
               <v-form>

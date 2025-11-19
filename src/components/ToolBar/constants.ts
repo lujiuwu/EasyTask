@@ -1,5 +1,5 @@
 import type { I18nKey } from '@/types/i18n'
-import { TaskStatus } from '@/enum/task_status'
+import { TaskStatus } from '@/enum/task'
 
 export function getFilterItems (t: (key: I18nKey, ...args: any[]) => string) {
   return [

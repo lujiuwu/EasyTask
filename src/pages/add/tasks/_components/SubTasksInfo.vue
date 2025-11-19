@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-30px">
+  <div>
     <v-bottom-sheet :model-value="open" @update:model-value="open = $event">
       <template #activator="{ props: activatorProps }">
         <v-btn v-bind="activatorProps">新增子任务</v-btn>
@@ -44,14 +44,13 @@
     </v-card>
   </div>
 </template>
-
 <script lang="ts" setup>
   import { toTypedSchema } from '@vee-validate/zod'
   import { v4 as uuidv4 } from 'uuid'
   import { useForm } from 'vee-validate'
   import { TaskItemSchema } from '@/types/TaskItem'
 
-  const { defineField, meta, errors } = useForm({
+  const { resetForm: resetSubTasksInfoForm, defineField, meta, errors } = useForm({
     validationSchema: toTypedSchema(TaskItemSchema),
     initialValues: {
       content: [],
@@ -80,5 +79,6 @@
     formData: computed(() => ({
       content: content.value,
     })),
+    resetForm: resetSubTasksInfoForm,
   })
 </script>

@@ -19,7 +19,10 @@ declare module 'vue-router/auto-routes' {
    */
   export interface RouteNamedMap {
     '/add/': RouteRecordInfo<'/add/', '/add', Record<never, never>, Record<never, never>>,
-    '/add/[type]/': RouteRecordInfo<'/add/[type]/', '/add/:type', { type: ParamValue<true> }, { type: ParamValue<false> }>,
+    '/add/milestones/': RouteRecordInfo<'/add/milestones/', '/add/milestones', Record<never, never>, Record<never, never>>,
+    '/add/tasks/': RouteRecordInfo<'/add/tasks/', '/add/tasks', Record<never, never>, Record<never, never>>,
+    '/add/tasks/_components/BaseInfo': RouteRecordInfo<'/add/tasks/_components/BaseInfo', '/add/tasks/_components/BaseInfo', Record<never, never>, Record<never, never>>,
+    '/add/tasks/_components/SubTasksInfo': RouteRecordInfo<'/add/tasks/_components/SubTasksInfo', '/add/tasks/_components/SubTasksInfo', Record<never, never>, Record<never, never>>,
     '/auth/': RouteRecordInfo<'/auth/', '/auth', Record<never, never>, Record<never, never>>,
     '/milestones/': RouteRecordInfo<'/milestones/', '/milestones', Record<never, never>, Record<never, never>>,
     '/milestones/_components/CardList': RouteRecordInfo<'/milestones/_components/CardList', '/milestones/_components/CardList', Record<never, never>, Record<never, never>>,
@@ -41,9 +44,6 @@ declare module 'vue-router/auto-routes' {
     '/tasks/_components/TextHighlight': RouteRecordInfo<'/tasks/_components/TextHighlight', '/tasks/_components/TextHighlight', Record<never, never>, Record<never, never>>,
     '/tasks/_components/Timeline': RouteRecordInfo<'/tasks/_components/Timeline', '/tasks/_components/Timeline', Record<never, never>, Record<never, never>>,
     '/tasks/[id]/': RouteRecordInfo<'/tasks/[id]/', '/tasks/:id', { id: ParamValue<true> }, { id: ParamValue<false> }>,
-    '/tasks/add/': RouteRecordInfo<'/tasks/add/', '/tasks/add', Record<never, never>, Record<never, never>>,
-    '/tasks/add/_components/addForm': RouteRecordInfo<'/tasks/add/_components/addForm', '/tasks/add/_components/addForm', Record<never, never>, Record<never, never>>,
-    '/tasks/add/_components/addSubItem': RouteRecordInfo<'/tasks/add/_components/addSubItem', '/tasks/add/_components/addSubItem', Record<never, never>, Record<never, never>>,
   }
 
   /**
@@ -61,8 +61,20 @@ declare module 'vue-router/auto-routes' {
       routes: '/add/'
       views: never
     }
-    'src/pages/add/[type]/index.vue': {
-      routes: '/add/[type]/'
+    'src/pages/add/milestones/index.vue': {
+      routes: '/add/milestones/'
+      views: never
+    }
+    'src/pages/add/tasks/index.vue': {
+      routes: '/add/tasks/'
+      views: never
+    }
+    'src/pages/add/tasks/_components/BaseInfo.vue': {
+      routes: '/add/tasks/_components/BaseInfo'
+      views: never
+    }
+    'src/pages/add/tasks/_components/SubTasksInfo.vue': {
+      routes: '/add/tasks/_components/SubTasksInfo'
       views: never
     }
     'src/pages/auth/index.vue': {
@@ -147,18 +159,6 @@ declare module 'vue-router/auto-routes' {
     }
     'src/pages/tasks/[id]/index.vue': {
       routes: '/tasks/[id]/'
-      views: never
-    }
-    'src/pages/tasks/add/index.vue': {
-      routes: '/tasks/add/'
-      views: never
-    }
-    'src/pages/tasks/add/_components/addForm.vue': {
-      routes: '/tasks/add/_components/addForm'
-      views: never
-    }
-    'src/pages/tasks/add/_components/addSubItem.vue': {
-      routes: '/tasks/add/_components/addSubItem'
       views: never
     }
   }

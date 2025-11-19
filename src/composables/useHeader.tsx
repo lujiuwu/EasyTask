@@ -1,4 +1,4 @@
-import type { ToolBarOptions } from '@/enum/toolBar_options'
+import type { ToolBarOptions } from '@/enum/layout'
 import { tryOnBeforeUnmount } from '@vueuse/core'
 // 标题（主标题 || 副标题）
 const title = shallowRef<() => string | JSX.Element>(() => '')

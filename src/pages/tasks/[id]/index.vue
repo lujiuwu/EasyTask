@@ -50,9 +50,9 @@
   import html2canvas from 'html2canvas'
   import { AddSubTaskButton } from '@/components/AddSubTaskButton'
   import { TaskDetailPanel } from '@/components/TaskDetailPanel'
+  import { TaskTimelineItemIcon, TaskTimelineItemType } from '@/enum/task'
   import httpClient from '@/utils/http'
   import Timeline from '../_components/Timeline.vue'
-  import { TimelineItemIcon, TimelineItemType } from '../types/timelineItemType'
 
   const { t } = useI18n()
   const route = useRoute()
@@ -102,15 +102,15 @@
       title: 'Create Task',
       description: 'Create Task',
       date: '2021-01-01',
-      color: TimelineItemType.CREATE,
-      icon: TimelineItemIcon.CREATE,
+      color: TaskTimelineItemType.CREATE,
+      icon: TaskTimelineItemIcon.CREATE,
     },
     {
       title: 'Finish subTask',
       description: 'Finish subTask',
       date: '2021-5-11',
-      icon: TimelineItemIcon.FINISH,
-      color: TimelineItemType.FINISH,
+      icon: TaskTimelineItemIcon.FINISH,
+      color: TaskTimelineItemType.FINISH,
     },
   ]
 </script>

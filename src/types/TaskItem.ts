@@ -1,8 +1,7 @@
 import dayjs from 'dayjs'
 import { v4 as uuidv4 } from 'uuid'
 import z from 'zod'
-import { TaskStatus } from '@/enum/task_status'
-import { TaskType } from '@/enum/task_type'
+import { TaskStatus, TaskType } from '@/enum/task'
 import { SubTaskItemSchema } from './SubTaskItem'
 
 export const TaskItemSchema = z.object({
