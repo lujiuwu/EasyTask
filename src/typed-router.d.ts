@@ -34,6 +34,8 @@ declare module 'vue-router/auto-routes' {
     '/setting/prefer/': RouteRecordInfo<'/setting/prefer/', '/setting/prefer', Record<never, never>, Record<never, never>>,
     '/setting/system/': RouteRecordInfo<'/setting/system/', '/setting/system', Record<never, never>, Record<never, never>>,
     '/star/': RouteRecordInfo<'/star/', '/star', Record<never, never>, Record<never, never>>,
+    '/star/_components/milestoneStar': RouteRecordInfo<'/star/_components/milestoneStar', '/star/_components/milestoneStar', Record<never, never>, Record<never, never>>,
+    '/star/_components/taskStar': RouteRecordInfo<'/star/_components/taskStar', '/star/_components/taskStar', Record<never, never>, Record<never, never>>,
     '/tasks/': RouteRecordInfo<'/tasks/', '/tasks', Record<never, never>, Record<never, never>>,
     '/tasks/_components/SearchWithHL': RouteRecordInfo<'/tasks/_components/SearchWithHL', '/tasks/_components/SearchWithHL', Record<never, never>, Record<never, never>>,
     '/tasks/_components/TextHighlight': RouteRecordInfo<'/tasks/_components/TextHighlight', '/tasks/_components/TextHighlight', Record<never, never>, Record<never, never>>,
@@ -117,6 +119,14 @@ declare module 'vue-router/auto-routes' {
     }
     'src/pages/star/index.vue': {
       routes: '/star/'
+      views: never
+    }
+    'src/pages/star/_components/milestoneStar.vue': {
+      routes: '/star/_components/milestoneStar'
+      views: never
+    }
+    'src/pages/star/_components/taskStar.vue': {
+      routes: '/star/_components/taskStar'
       views: never
     }
     'src/pages/tasks/index.vue': {

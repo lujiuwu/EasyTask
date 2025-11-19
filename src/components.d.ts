@@ -8,11 +8,14 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    CalendarBaseContent: typeof import('./components/CalendarList/_components/CalendarBaseContent.vue')['default']
     Col: typeof import('./components/ToolBar/_components/col.vue')['default']
     Component: typeof import('./components/AddSubTaskButton/component.vue')['default']
     Filter: typeof import('./components/ToolBar/_components/filter.vue')['default']
-    Item: typeof import('./components/DataList/_components/WaterFall/_components/item.vue')['default']
+    Header: typeof import('./components/CalendarList/_components/Header.vue')['default']
+    Item: typeof import('./components/CalendarList/_components/Item.vue')['default']
     Layout: typeof import('./components/ToolBar/_components/layout.vue')['default']
+    Main: typeof import('./components/CalendarList/_components/Main.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SelectionSheet: typeof import('./components/FooterBar/_components/SelectionSheet.vue')['default']

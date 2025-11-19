@@ -3,7 +3,7 @@
     class="fixed-toolbar"
     color="surface"
     :density="'comfortable'"
-    :elevation="8"
+    :elevation="2"
   >
     <template #prepend>
       <v-btn v-if="route.path !== '/tasks'" icon="mdi-arrow-left" @click="handleBack()" />
@@ -46,5 +46,6 @@
   right: 0;
   z-index: 1000;
   width: 100%;
+  height: 50px;
 }
 </style>

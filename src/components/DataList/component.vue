@@ -35,6 +35,7 @@
   import type { TaskItem } from '@/types/TaskItem'
   import { useInfiniteQuery } from '@tanstack/vue-query'
   import _ from 'lodash'
+  import { CalendarList } from '@/components/CalendarList'
   import { EmptyState } from '@/components/EmptyState'
   import { useAppStore } from '@/stores/app'
   import httpClient from '@/utils/http'

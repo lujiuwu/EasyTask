@@ -1,5 +1,5 @@
 <template>
-  <div style="border: 1px solid #eee;margin-bottom: 5px;padding: 2px;">
+  <div class="p-2px">
     <v-card :style="{ backgroundColor: props.data.type }">
       <v-overlay
         class="color-white align-center justify-center"

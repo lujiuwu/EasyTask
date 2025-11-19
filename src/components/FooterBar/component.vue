@@ -41,17 +41,15 @@
   const route = useRoute()
   const items = [
     { label: '任务', to: '/tasks', icon: 'mdi-format-list-checks' },
-    { label: '收藏夹', to: '/star', icon: 'mdi-star' },
     { label: '里程碑', to: '/milestones', icon: 'mdi-flag-checkered' },
-    { label: '设置', to: '/setting', icon: 'mdi-cogs' },
   ]
 
   const modelValue = ref(false)
   const navigationItems = [
     { label: computed(() => t('footer-nav.tasks')), value: 'task', icon: 'mdi-format-list-checks', to: '/tasks' },
-    { label: computed(() => t('footer-nav.star')), value: 'star', icon: 'mdi-star', to: '/star' },
-    { value: 'add', icon: 'mdi-plus', to: '/add', isSupBtn: true },
     { label: computed(() => t('footer-nav.milestones')), value: 'milestone', icon: 'mdi-flag-checkered', to: '/milestones' },
+    { value: 'add', icon: 'mdi-plus', to: '/add', isSupBtn: true },
+    { label: computed(() => t('footer-nav.star')), value: 'star', icon: 'mdi-star', to: '/star' },
     { label: computed(() => t('footer-nav.setting')), value: 'settings', icon: 'mdi-cogs', to: '/setting' },
   ]
 

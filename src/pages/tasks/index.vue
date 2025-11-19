@@ -22,6 +22,7 @@
       :items="tabs"
       @update:model-value="appStore.setTabIndex($event as string)"
     />
+    <v-divider />
     <data-list class="bg-[#eee] h-[calc(100vh-100px)]" />
   </div>
 </template>
