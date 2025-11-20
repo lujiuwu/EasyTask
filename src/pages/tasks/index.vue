@@ -59,7 +59,7 @@
 
   useHeader({
     title: () => t('pages.tasks.title'),
-    options: [ToolBarOptions.FILTER, ToolBarOptions.LAYOUT, ToolBarOptions.SORT],
+    options: [ToolBarOptions.FILTER, ToolBarOptions.SORT, ToolBarOptions.LAYOUT],
   })
 </script>
 <style lang="scss" scoped>

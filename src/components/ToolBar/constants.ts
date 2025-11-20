@@ -9,13 +9,6 @@ export function getFilterItems (t: (key: I18nKey, ...args: any[]) => string) {
   ]
 }
 
-export function getLayoutItems (t: (key: I18nKey, ...args: any[]) => string) {
-  return [
-    { label: t('tool-bar.layout.types.list'), value: 'normal-list', icon: 'mdi-view-list' },
-    { label: t('tool-bar.layout.types.grid'), value: 'water-fall', icon: 'mdi-view-grid' },
-  ]
-}
-
 export function getColItems (t: (key: I18nKey, ...args: any[]) => string) {
   return [
     { label: t('tool-bar.col.types.oneLine'), value: '1', icon: 'mdi-land-rows-horizontal' },
